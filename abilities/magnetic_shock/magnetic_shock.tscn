@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqqgv1ew3sgcp"]
+
+[ext_resource type="Script" path="res://abilities/magnetic_shock/Magnetic_shock.gd" id="1_54llx"]
+
+[node name="magnetic_shock" type="Node2D"]
+script = ExtResource("1_54llx")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://3uyts32css58"]
+
+[ext_resource type="Texture2D" uid="uid://cwblhc7i8yup5" path="res://MAIN_MENU-export.png" id="1_5slrt"]
+[ext_resource type="Texture2D" uid="uid://b8iu6c1lm7l6d" path="res://sprites/BUTTONS/PLAY_BTN_NORMAL.png" id="2_2ugxw"]
+[ext_resource type="Texture2D" uid="uid://4jnwxepb7m6d" path="res://sprites/BUTTONS/PLAY_BTN_PRESSED.png" id="3_s4dar"]
+[ext_resource type="Texture2D" uid="uid://cudj2rdudrdb4" path="res://sprites/BUTTONS/PLAY_BTN_HOVER.png" id="4_f8xpr"]
+[ext_resource type="Script" path="res://scripts/PLAY_BTN.gd" id="5_2rkpl"]
+[ext_resource type="Texture2D" uid="uid://bl36ox2ivnjgi" path="res://sprites/BUTTONS/OPT_BTN_NORMAL.png" id="6_8ff4m"]
+[ext_resource type="Texture2D" uid="uid://dp8cc05s2hnfi" path="res://sprites/BUTTONS/OPT_BTN_PRESSED.png" id="7_xawnx"]
+[ext_resource type="Texture2D" uid="uid://dvbk5c0cid0nf" path="res://sprites/BUTTONS/OPT_BTN_HOVER.png" id="8_npukt"]
+[ext_resource type="Texture2D" uid="uid://bhj7is8f58cx3" path="res://sprites/BUTTONS/EXIT_BTN_NORMAL.png" id="9_2beeq"]
+[ext_resource type="Texture2D" uid="uid://b80pcg5ers6e0" path="res://sprites/BUTTONS/EXIT_BTN_HOVER.png" id="10_d3fnr"]
+[ext_resource type="Script" path="res://scripts/EXIT_BUTTON.gd" id="11_qbaec"]
+
+[node name="MAIN_MENU" type="Node2D"]
+
+[node name="MAIN_MENU_SPRITE" type="Sprite2D" parent="."]
+position = Vector2(575.5, 325.25)
+scale = Vector2(0.959167, 1.016)
+texture = ExtResource("1_5slrt")
+
+[node name="PLAY_BTN" type="TextureButton" parent="."]
+offset_left = 417.0
+offset_top = 295.0
+offset_right = 652.0
+offset_bottom = 405.0
+scale = Vector2(0.959, 1.016)
+texture_normal = ExtResource("2_2ugxw")
+texture_pressed = ExtResource("3_s4dar")
+texture_hover = ExtResource("4_f8xpr")
+script = ExtResource("5_2rkpl")
+
+[node name="OPTIONS_BTN" type="TextureButton" parent="."]
+offset_left = 887.0
+offset_top = 508.0
+offset_right = 1042.0
+offset_bottom = 553.0
+scale = Vector2(0.959, 1.016)
+texture_normal = ExtResource("6_8ff4m")
+texture_pressed = ExtResource("7_xawnx")
+texture_hover = ExtResource("8_npukt")
+
+[node name="EXIT_BUTTON" type="TextureButton" parent="."]
+offset_left = 887.0
+offset_top = 564.0
+offset_right = 982.0
+offset_bottom = 609.0
+scale = Vector2(0.959, 1.016)
+texture_normal = ExtResource("9_2beeq")
+texture_hover = ExtResource("10_d3fnr")
+script = ExtResource("11_qbaec")
