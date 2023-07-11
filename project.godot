@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="CyberChip"
+config/description="Игра zksiphpsir"
 run/main_scene="res://scenes/SPLASH_TEAM.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

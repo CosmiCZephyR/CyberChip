@@ -9,8 +9,9 @@ func _init():
 func _ready():
 	area_entered.connect(self._on_area_entered)
 
-func _on_area_entered(hitbox: AttackHitBox):
-	if hitbox == null: return
+func _on_area_entered(hitbox):
+	if not hitbox is AttackHitBox:
+		return
 	if hitbox.owner == owner: return
 	
 	if owner.has_method("apply_damage"):

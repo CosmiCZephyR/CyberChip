@@ -4,6 +4,7 @@ class_name Magnetism
 
 @warning_ignore("shadowed_variable_base_class")
 func activate(player_rect: Rect2, delta: float, owner) -> void:
+	# TODO: выделить проверку инпута в отдельный класс
 	if Input.is_action_pressed("Magnetism"):
 		var magnetic_objects = get_magnetic_objects()
 		for obj in magnetic_objects:

@@ -26,6 +26,8 @@ var current_room: Area2D
 var previous_room: Area2D = current_room
 
 # Dash
+# NOTE: ОЧЕНЬ напрашивается машина состояний
+# получится избавиться от лишних переменных и сигналов в классе
 var can_dash: bool = true
 var dash_speed: int = 5000
 var dash_duration: float = 0.2
@@ -44,12 +46,13 @@ func _ready():
 	add_to_group("Player")
 
 func _physics_process(_delta):
+	# TODO: можно будет потом заменить на таймер ноду
 	counter += 1
 	if counter % 60 == 0:
 		self.regen_health()
 		self.regen_kosuki()
 	
-	direction = Input.get_vector("left", "right", "up", "down").normalized()
+	direction = Input.get_vector("left", "right", "up", "down")
 	
 	var input_vector = get_input_vector()
 	
@@ -66,6 +69,7 @@ func _process(_delta):
 	repairing.activate_repairing(tilemap, self)
 	magnetic_shock.activate_magnetic_shock(owner)
 	
+	# TODO: перенести в скрипт двери и комнаты
 	if current_room != previous_room:
 		door_open = false
 		previous_room = current_room
@@ -94,6 +98,8 @@ func check_wires_connection(tilemap: TileMap, area: Area2D):
 	var shape_extents = collision_shape.shape.extents
 	var area_rect = Rect2(area.global_position - shape_extents, shape_extents * 2)
 	
+	# TODO: реклмендую перенести поломанные тайлы проводов в отдельный слой или сделать их тайлами-сцен
+	# избавиться от atlas_coords_list
 	for cell in tilemap.get_used_cells(1):
 		var cell_position = tilemap.map_to_local(cell)
 		if not area_rect.has_point(cell_position):
@@ -114,6 +120,8 @@ func open_door(current_door):
 			door_open = true
 
 func Movement(delta):
+	# TODO: проверить, что move_and_slide уже умножает на дельта тайм
+	# если так, убрать умножение
 	speed += acceleration * delta
 	movement = movement.normalized() * speed
 	set_velocity(movement)
@@ -142,6 +150,7 @@ func Attack():
 	await get_tree().create_timer(0.35).timeout
 	attacking = false
 
+# NOTE: в скором времени напрашивается еще одна машина состояний для анимаций
 func update_animation_parameters():
 	var current_state = "idle"
 	
@@ -152,6 +161,7 @@ func update_animation_parameters():
 		current_state = "attack"
 		animation_tree["parameters/attack/blend_position"] = position.direction_to(get_global_mouse_position()).normalized()
 	
+	# NOTE: изменения стейта анимации лучше выделить в методы перехода
 	animation_tree["parameters/conditions/idle"] = current_state == "idle"
 	animation_tree["parameters/conditions/walk"] = current_state == "walk"
 	animation_tree["parameters/conditions/attack"] = current_state == "attack"

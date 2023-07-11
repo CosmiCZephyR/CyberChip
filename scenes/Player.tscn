@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2nqcg"]
 [ext_resource type="Texture2D" uid="uid://dn15dawnaeead" path="res://sprites/Player.png" id="2_agkut"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="3_mlv48"]
-[ext_resource type="Texture2D" uid="uid://dgo5sytisri04" path="res://Hud.png" id="5_ta4tw"]
+[ext_resource type="Texture2D" uid="uid://dgo5sytisri04" path="res://sprites/Hud.png" id="5_ta4tw"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://drcscpts61ybs" path="res://scenes/Player.tres" id="6_ioy4s"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="6_x7occ"]
 
@@ -365,7 +365,6 @@ drag_bottom_margin = 0.1
 texture = ExtResource("2_agkut")
 hframes = 9
 vframes = 9
-frame = 46
 
 [node name="Hud" type="Sprite2D" parent="."]
 visible = false
