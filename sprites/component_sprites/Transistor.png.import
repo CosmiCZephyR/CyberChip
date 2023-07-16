@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfe5i4ll2ljs3"
-path="res://.godot/imported/MAIN_MENU.png-2642e68cb2863079b0f0fa0f44f7f39c.ctex"
+uid="uid://7s8f7k62mg1e"
+path="res://.godot/imported/Transistor.png-4200e8c690c8d0ae2c08e3cf1672e031.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/MAIN_MENU.png"
-dest_files=["res://.godot/imported/MAIN_MENU.png-2642e68cb2863079b0f0fa0f44f7f39c.ctex"]
+source_file="res://sprites/component_sprites/Transistor.png"
+dest_files=["res://.godot/imported/Transistor.png-4200e8c690c8d0ae2c08e3cf1672e031.ctex"]
 
 [params]
 

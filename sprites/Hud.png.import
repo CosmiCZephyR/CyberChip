@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgo5sytisri04"
-path="res://.godot/imported/Hud.png-aeab3a283c991b8bec5d7377bf45bb50.ctex"
+path="res://.godot/imported/Hud.png-a088c82acda4029b0eb9274dbcc9cb60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hud.png"
-dest_files=["res://.godot/imported/Hud.png-aeab3a283c991b8bec5d7377bf45bb50.ctex"]
+source_file="res://sprites/Hud.png"
+dest_files=["res://.godot/imported/Hud.png-a088c82acda4029b0eb9274dbcc9cb60.ctex"]
 
 [params]
 
