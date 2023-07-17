@@ -16,7 +16,6 @@ func _ready():
 
 func _process(delta):
 	wires_connected = _player.check_wires_connection(_room)
-	transistor_on = transistor.get_state()
 	if _room.has_node("Transistor"):
 		if wires_connected and transistor_on:
 			open_door(self)
@@ -24,14 +23,14 @@ func _process(delta):
 		if wires_connected:
 			open_door(self)
 
-func open_door(door):
+func open_door(door) -> void:
 	if not open:
 		await get_tree().create_timer(0.1).timeout
 		if not _animation.is_playing():
 			_animation.play("Open")
 			open = true
 
-func transistor_door_open(_transistor):
+func transistor_door_open(_transistor) -> void:
 	transistor = _transistor
 	transistor_on = transistor.get_state()
 	print(transistor_on)
