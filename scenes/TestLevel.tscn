@@ -141,10 +141,6 @@ layer_2/tile_data = PackedInt32Array(0, 458753, 2, -196601, 458753, 2, -2, 45875
 z_index = 5
 path_to_tilemap = NodePath("../TileMap2")
 
-[node name="Enemy" parent="." instance=ExtResource("3_xddfp")]
-position = Vector2(63, 119)
-path_to_player = NodePath("../Player")
-
 [node name="Block2" type="RigidBody2D" parent="."]
 position = Vector2(-133, -4)
 script = ExtResource("4_b3lof")
@@ -211,6 +207,10 @@ script = ExtResource("6_66qk2")
 visible = false
 position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_vgitu")
+
+[node name="Enemy" parent="Room2" instance=ExtResource("3_xddfp")]
+position = Vector2(9, 14)
+path_to_player = NodePath("../../Player")
 
 [node name="Room3" type="Area2D" parent="."]
 position = Vector2(-262, 105)
