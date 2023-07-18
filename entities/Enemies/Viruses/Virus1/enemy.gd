@@ -10,7 +10,8 @@ var _velocity: Vector2 = Vector2.ZERO
 
 @onready var _timer: Timer = $Timer
 @onready var _agent: NavigationAgent2D = $NavigationAgent2D
-@onready var _player: CharacterBody2D = get_node(path_to_player)
+@onready var _player: Player = get_node(path_to_player)
+@onready var _room: Area2D = get_parent()
 
 #shock variables
 var is_shocked = false
@@ -40,7 +41,11 @@ func _process(_delta):
 		queue_free()
 
 func _update_pathfinding() -> void:
-	_agent.set_target_position(_player.global_position)
+	await get_tree().create_timer(1).timeout
+	var bodies = _room.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("Player"):
+			_agent.set_target_position(_player.global_position)
 
 func apply_shock() -> void:
 	if not is_shocked:

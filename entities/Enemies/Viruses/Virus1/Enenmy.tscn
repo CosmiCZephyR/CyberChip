@@ -77,6 +77,8 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_btwrj")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("3_05u7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -86,6 +88,8 @@ shape = SubResource("RectangleShape2D_btwrj")
 
 [node name="AttackHitBox" type="Area2D" parent="."]
 position = Vector2(2, -2)
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("4_joe55")
 damage = 15
 
