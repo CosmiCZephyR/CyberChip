@@ -356,10 +356,12 @@ shape = SubResource("RectangleShape2D_pw2vj")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
 position_smoothing_speed = 3.0
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
 
 [node name="Player" type="Sprite2D" parent="."]
 texture = ExtResource("2_oevav")
@@ -380,6 +382,8 @@ one_shot = true
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("4_yv6h0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
@@ -389,7 +393,7 @@ shape = SubResource("RectangleShape2D_frsso")
 [node name="AttackHitBox" type="Area2D" parent="."]
 disable_mode = 1
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("5_3qshv")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHitBox"]

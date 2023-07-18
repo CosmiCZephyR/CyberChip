@@ -10,6 +10,9 @@ var acceleration: float = 1.2
 var direction: Vector2 =  Vector2.ZERO
 @onready var player_rect: Rect2 = Rect2(global_position - player_size / 2, player_size)
 
+var arr: Array = []
+var size = arr.resize(10)
+
 # Door
 var door_open = false
 var current_door
@@ -48,7 +51,7 @@ var transistor = null
 
 func _ready():
 	animation_tree.active = true
-	Event.transistor_activated.connect(self._on_transistor_available)
+	Event.transistor_selected.connect(self._on_transistor_available)
 	add_to_group("Player")
 
 func _physics_process(_delta):
