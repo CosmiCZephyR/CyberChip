@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bisaf4xjv7imw"]
+
+[ext_resource type="Script" path="res://components/diode/diode.gd" id="1_4qogv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wubwn"]
+size = Vector2(16, 16)
+
+[node name="Diode" type="Area2D"]
+script = ExtResource("1_4qogv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_wubwn")
