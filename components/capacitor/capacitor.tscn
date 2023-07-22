@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brwn3cv4tjxjx"]
+
+[ext_resource type="Script" path="res://components/capacitor/Capcicator.gd" id="1_fq8xc"]
+[ext_resource type="Texture2D" uid="uid://dp8mulr3ff4b6" path="res://sprites/component_sprites/Capacitor.png" id="2_axmkw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x2bq"]
+radius = 8.0
+
+[node name="capacitor" type="Area2D"]
+script = ExtResource("1_fq8xc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_6x2bq")
+
+[node name="Capacitor" type="Sprite2D" parent="."]
+texture = ExtResource("2_axmkw")
