@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2jp1hekqb3dq"]
+
+[ext_resource type="Script" path="res://scripts/Copter.gd" id="1_l04wa"]
+[ext_resource type="Texture2D" uid="uid://vrna6wc1b373" path="res://sprites/copter.png" id="2_xfi7t"]
+
+[node name="Copter" type="Node2D"]
+script = ExtResource("1_l04wa")
+
+[node name="Copter" type="Sprite2D" parent="."]
+texture = ExtResource("2_xfi7t")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+position = Vector2(3, 0)

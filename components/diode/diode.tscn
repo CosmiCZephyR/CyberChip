@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bisaf4xjv7imw"]
+
+[ext_resource type="Script" path="res://components/diode/diode.gd" id="1_4qogv"]
+[ext_resource type="Texture2D" uid="uid://cjhrbmixgthlv" path="res://sprites/component_sprites/Diode.png" id="2_e3fb3"]
+[ext_resource type="Texture2D" uid="uid://crmbq8l5jpyyr" path="res://sprites/component_sprites/laser.png" id="4_iqhgf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wubwn"]
+size = Vector2(16, 16)
+
+[node name="Diode" type="Area2D"]
+script = ExtResource("1_4qogv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_wubwn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 150)
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 28)
+width = 16.0
+texture = ExtResource("4_iqhgf")
+texture_mode = 1
+
+[node name="Diode" type="Sprite2D" parent="."]
+texture = ExtResource("2_e3fb3")
+
+[node name="LaserCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 14)

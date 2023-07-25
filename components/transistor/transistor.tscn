@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhe61ebf6togp"]
+
+[ext_resource type="Texture2D" uid="uid://7s8f7k62mg1e" path="res://sprites/component_sprites/Transistor.png" id="1_au36f"]
+[ext_resource type="Script" path="res://components/transistor/transistor.gd" id="1_l0cq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4h26"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_pw72c"]
+resource_name = "Off"
+length = 0.12
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transistor:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_1ks4l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transistor:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrvmu"]
+_data = {
+"Off": SubResource("Animation_pw72c"),
+"RESET": SubResource("Animation_1ks4l")
+}
+
+[node name="Collision" type="Area2D"]
+script = ExtResource("1_l0cq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_y4h26")
+
+[node name="Transistor" type="Sprite2D" parent="."]
+texture = ExtResource("1_au36f")
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wrvmu")
+}

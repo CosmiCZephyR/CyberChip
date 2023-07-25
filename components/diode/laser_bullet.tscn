@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://brsh67rbxrgpc"]
+
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="1_1wm1q"]
+[ext_resource type="Texture2D" uid="uid://bndypf44wy0y0" path="res://sprites/component_sprites/laser_bullet.png" id="1_f2i04"]
+[ext_resource type="Script" path="res://components/diode/laser_bullet.gd" id="2_3xh3l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tyls"]
+size = Vector2(4.0001, 16)
+
+[node name="Sprite2D" type="Sprite2D"]
+rotation = 1.5708
+texture = ExtResource("1_f2i04")
+script = ExtResource("2_3xh3l")
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_1wm1q")
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+position = Vector2(1.12059e-05, 3.5882e-05)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_7tyls")
+
+[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]

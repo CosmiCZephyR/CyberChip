@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://chr8iga7fqq4b"]
+
+[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="1_imp4c"]
+[ext_resource type="Texture2D" uid="uid://dc6y2lsqqcrn5" path="res://sprites/Bullet.png" id="1_rcyqu"]
+[ext_resource type="Script" path="res://scripts/Bullet.gd" id="2_8xnbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niqeo"]
+size = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D"]
+texture = ExtResource("1_rcyqu")
+offset = Vector2(3, 0)
+script = ExtResource("2_8xnbp")
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+position = Vector2(3, -1)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_imp4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+visible = false
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_niqeo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(3.5, -0.5)
+scale = Vector2(0.05, 0.05)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

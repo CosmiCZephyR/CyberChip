@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c86jstn7ui42y"]
+
+[ext_resource type="Script" path="res://components/resistor/Resistor.gd" id="1_0krt5"]
+[ext_resource type="Texture2D" uid="uid://cks4ogh4oaqx6" path="res://sprites/component_sprites/Resistor.png" id="2_3xaxp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blisx"]
+radius = 8.0
+
+[node name="Resistor" type="Area2D"]
+script = ExtResource("1_0krt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_blisx")
+
+[node name="Resistor" type="Sprite2D" parent="."]
+texture = ExtResource("2_3xaxp")
