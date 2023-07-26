@@ -55,12 +55,6 @@ func _ready():
 	add_to_group("Player")
 
 func _physics_process(_delta):
-	match States:
-		States.IDLE:
-			idle_state()
-		States.WALK:
-			walk_state()
-	
 	if Input.is_action_pressed("Magnetism"):
 		magnetism.activate(player_rect, _delta, self)
 	if Input.is_action_just_pressed("Repairing"):
@@ -71,6 +65,12 @@ func _physics_process(_delta):
 		transistor.toggle()
 	
 	direction = Input.get_vector("left", "right", "up", "down")
+	
+	movement = direction * speed
+	movement = movement.normalized() * speed
+	set_velocity(movement)
+	move_and_slide()
+	
 
 func _process(_delta):
 	update_animation_parameters()
@@ -152,14 +152,11 @@ func idle_state():
 	current_state = States.IDLE
 	if Input.is_action_just_pressed("attack"):
 		change_state(States.ATTACK)
-	else:
+	elif Input.is_anything_pressed():
 		change_state(States.WALK)
 
 func walk_state():
 	current_state = States.WALK
-	movement = movement.normalized() * direction * speed
-	set_velocity(movement)
-	move_and_slide()
 	
 	if movement == Vector2.ZERO:
 		change_state(States.IDLE)

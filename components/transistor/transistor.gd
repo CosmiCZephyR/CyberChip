@@ -4,8 +4,6 @@ class_name Transistor
 
 var is_on: bool = false
 
-
-
 @onready var _animation: AnimationPlayer = $AnimationPlayer
 
 func _ready():
@@ -14,7 +12,6 @@ func _ready():
 
 func _interaction(_body) -> void:
 	if _body.is_in_group("Player"):
-		#print_debug("Signal emmited")
 		Event.emit_signal("transistor_selected", self)
 
 func toggle() -> void:

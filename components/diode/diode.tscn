@@ -20,6 +20,7 @@ target_position = Vector2(0, 150)
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 28)
 width = 16.0
@@ -33,4 +34,7 @@ texture = ExtResource("2_e3fb3")
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
+visible = false
 position = Vector2(0, 14)
+
+[connection signal="timeout" from="LaserCooldown" to="." method="variable_laser"]
