@@ -157,8 +157,10 @@ class IdleState:
 	func enter():
 		current_animation = "idle"
 		animation_tree["parameters/conditions/idle"] = current_animation == "idle"
+		# TODO: тут коннектишь сигналы
 	
 	func try_transition():
+		# TODO: заменить на коннект к сигналу
 		if Input.is_action_pressed("Movement"):
 			change_state_to(WALK)
 		if Input.is_action_just_pressed("attack"):
