@@ -142,10 +142,10 @@ func change_state_to(new_state):
 class CharacterState:
 	extends Player
 	
-	func update():
+	func enter():
 		pass
 	
-	func enter():
+	func update():
 		pass
 	
 	func try_transition():
@@ -211,3 +211,10 @@ class SprintState:
 		if not Input.is_anything_pressed():
 			change_state_to(IDLE)
 		print("try_transition called for state:", self)
+
+class AttackState:
+	extends CharacterState
+	
+	func enter():
+		current_animation = "attack"
+		animation_tree["parameters/attack/blend_position"] = position.direction_to(get_global_mouse_position()).normalized()
