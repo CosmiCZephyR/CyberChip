@@ -71,6 +71,7 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	update_animation_parameters()
+	state.update()
 
 func _on_dash_duration_timeout():
 	movement = Vector2.ZERO
