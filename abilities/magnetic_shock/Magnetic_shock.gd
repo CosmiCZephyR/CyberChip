@@ -5,6 +5,7 @@ class_name Magnetic_shock
 var is_on_cooldown: bool = false
 var magnetic_shock_cooldown: int = 3
 
+@warning_ignore("shadowed_variable_base_class")
 func activate_magnetic_shock(owner) -> void:
 	if not is_on_cooldown:
 		is_on_cooldown = true

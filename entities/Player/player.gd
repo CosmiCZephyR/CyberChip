@@ -12,11 +12,13 @@ var direction: Vector2 = Vector2.ZERO
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
 
-# ANIMATIONs
+# Animations
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+var current_animation = "idle"
+
 # Rooms
-var current_room: Area2D
+var current_room: Area2D: set = get_current_room
 var previous_room: Area2D = current_room
 
 # Dash
@@ -28,9 +30,15 @@ var dash_cooldown: float = 2.0
 @onready var cooldown_timer = $DashCooldown
 
 # State machine
-enum States {IDLE, WALK, DASH, SPRINT, ATTACK}
+enum States {ATTACK}
 
-var current_state = States.IDLE: set = change_state
+@onready var IDLE = IdleState.new()
+@onready var WALK = WalkState.new()
+@onready var DASH = DashState.new()
+@onready var SPRINT = SprintState.new()
+@onready var ATTACK = null
+
+var state = IDLE
 
 # Abilities
 @onready var magnetism: Magnetism = load_ability("magnetism")
@@ -42,15 +50,10 @@ var nearby_component: Area2D
 
 var transistor = null
 
-# Double click
-
-var max_double_click_time: float = 250
-var last_key_press_time: float = 0.0
-var key_code: int = 0
-
 func _ready():
 	animation_tree.active = true
 	Event.transistor_selected.connect(self._on_transistor_available)
+#	InputHandler.dash.connect(InputHandler.dash)
 	sec_timer.timeout.connect(self._second_passed)
 	add_to_group("Player")
 
@@ -61,33 +64,13 @@ func _physics_process(_delta):
 		repairing.activate_repairing(tilemap, self)
 	if Input.is_action_pressed("MagneticShock"):
 		magnetic_shock.activate_magnetic_shock(owner)
-	if Input.is_action_just_pressed("toggle") and transistor != null:
+	if Input.is_action_just_pressed("interaction") and transistor != null:
 		transistor.toggle()
 	
 	direction = Input.get_vector("left", "right", "up", "down")
-	
-	movement = direction * speed
-	movement = movement.normalized() * speed
-	set_velocity(movement)
-	move_and_slide()
-	
 
 func _process(_delta):
 	update_animation_parameters()
-
-func is_double_click(e):
-	var current_time := Time.get_ticks_msec()
-	return current_time - last_key_press_time < max_double_click_time and e.get_keycode() == key_code and can_dash and not e.is_echo()
-
-func _unhandled_input(event):
-	if event is InputEventKey and event.pressed:
-		var current_time := Time.get_ticks_msec()
-		direction = Input.get_vector("left", "right", "up", "down")
-		if is_double_click(event):
-			dash(direction)
-			change_state(States.DASH)
-		last_key_press_time = current_time
-		key_code = event.get_keycode() 
 
 func _on_dash_duration_timeout():
 	movement = Vector2.ZERO
@@ -102,6 +85,11 @@ func _on_transistor_available(_transistor):
 func _second_passed():
 	self.regen_health()
 	self.regen_kosuki()
+
+#func dash_pressed():
+#	if can_dash:
+#		direction = Input.get_vector("left", "right", "up", "down")
+#		dash(direction)
 
 func check_wires_connection(area: Area2D):
 	var collision_shape = area.get_node("CollisionShape2D")
@@ -131,39 +119,92 @@ func dash(input_vector):
 	cooldown_timer.start(dash_cooldown)
 
 func update_animation_parameters():
-	var current_state = "idle"
+	current_animation = "idle"
 	
 	if movement != Vector2.ZERO:
-		current_state = "walk"
+		current_animation = "walk"
 		animation_tree["parameters/walk/blend_position"] = movement.normalized()
 	elif Input.is_action_pressed("attack"):
-		current_state = "attack"
+		current_animation = "attack"
 		animation_tree["parameters/attack/blend_position"] = position.direction_to(get_global_mouse_position()).normalized()
 	
-	animation_tree["parameters/conditions/idle"] = current_state == "idle"
-	animation_tree["parameters/conditions/walk"] = current_state == "walk"
-	animation_tree["parameters/conditions/attack"] = current_state == "attack"
+	animation_tree["parameters/conditions/idle"] = current_animation == "idle"
+	animation_tree["parameters/conditions/walk"] = current_animation == "walk"
+	animation_tree["parameters/conditions/attack"] = current_animation == "attack"
 
-func change_state(new_state):
-	current_state = new_state
-	return new_state
+func change_state_to(new_state):
+	state.exit()
+	state = new_state
+	new_state.enter()
+	print_debug("change_state_to called with new_state:", new_state)
 
-func idle_state():
-	current_state = States.IDLE
-	if Input.is_action_just_pressed("attack"):
-		change_state(States.ATTACK)
-	elif Input.is_anything_pressed():
-		change_state(States.WALK)
-
-func walk_state():
-	current_state = States.WALK
+class CharacterState:
+	extends Player
 	
-	if movement == Vector2.ZERO:
-		change_state(States.IDLE)
-	if is_double_click(Input):
-		change_state(States.DASH)
+	func update():
+		pass
+	
+	func enter():
+		pass
+	
+	func try_transition():
+		pass
 
-func attack_state():
-	if Input.is_action_just_pressed("attack"):
-		change_state(States.ATTACK)
+class IdleState:
+	extends CharacterState
+	
+	func enter():
+		current_animation = "idle"
+		animation_tree["parameters/conditions/idle"] = current_animation == "idle"
+	
+	func try_transition():
+		if Input.is_action_pressed("Movement"):
+			change_state_to(WALK)
+		if Input.is_action_just_pressed("attack"):
+			change_state_to(state)
+		if InputHandler.is_double_click(InputEventKey) and can_dash:
+			change_state_to(DASH)
+		print("try_transition called for state:", self)
 
+class WalkState:
+	extends CharacterState
+	
+	func enter():
+		current_animation = "walk"
+		animation_tree["parameters/walk/blend_position"] = movement.normalized()
+		animation_tree["parameters/conditions/walk"] = current_animation == "walk"
+	
+	func update():
+		direction = Input.get_vector("left", "right", "up", "down")
+		movement = movement.normalized() * direction * (speed ** 2)
+		set_velocity(movement)
+		move_and_slide()
+		print("update called for state:", self)
+	
+	func try_transition():
+		if InputHandler.is_double_click(InputEventKey) and can_dash:
+			change_state_to(DASH)
+
+class DashState:
+	extends CharacterState
+	
+	func enter():
+		dash(direction)
+	
+	func try_transition():
+		if Input.is_action_pressed("Movement"):
+			change_state_to(SPRINT)
+		if not Input.is_anything_pressed():
+			change_state_to(IDLE)
+		print("try_transition called for state:", self)
+
+class SprintState:
+	extends CharacterState
+	
+	func enter():
+		movement *= speed
+	
+	func try_transition():
+		if not Input.is_anything_pressed():
+			change_state_to(IDLE)
+		print("try_transition called for state:", self)

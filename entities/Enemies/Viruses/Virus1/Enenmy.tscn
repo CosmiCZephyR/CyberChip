@@ -70,6 +70,7 @@ _data = {
 [node name="enemy" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_s80nu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

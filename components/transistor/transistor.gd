@@ -23,6 +23,7 @@ func toggle() -> void:
 	else:
 		_animation.play_backwards("Off")
 		is_on = not is_on
+	
 	Event.emit_signal("transistor_activated", self)
 
 func get_state() -> bool:
@@ -31,6 +32,7 @@ func get_state() -> bool:
 func player_in_zone() -> bool:
 	var final_flag := false
 	var all_bodies = get_overlapping_bodies()
+	
 	for body in all_bodies:
 		final_flag = final_flag || body.is_in_group("Player")
 	

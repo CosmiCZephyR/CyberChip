@@ -45,10 +45,12 @@ _data = {
 }
 
 [node name="Collision" type="Area2D"]
+collision_mask = 8
 script = ExtResource("1_l0cq2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_y4h26")
 
 [node name="Transistor" type="Sprite2D" parent="."]

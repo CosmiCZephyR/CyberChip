@@ -1,6 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dqakbrvs4w5jj"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dqakbrvs4w5jj"]
 
 [ext_resource type="Texture2D" uid="uid://c3gqtdlqg774x" path="res://sprites/tileset.png" id="1_1r4vb"]
+[ext_resource type="PackedScene" uid="uid://ds8dkig7e06tw" path="res://scenes/energy_source.tscn" id="1_hdhug"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r2l15"]
+resource_name = "WireSource"
+scenes/1/scene = ExtResource("1_hdhug")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b2xdk"]
 texture = ExtResource("1_1r4vb")
@@ -155,3 +160,4 @@ texture = ExtResource("1_1r4vb")
 [resource]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_b2xdk")
+sources/0 = SubResource("TileSetScenesCollectionSource_r2l15")

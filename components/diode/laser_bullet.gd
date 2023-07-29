@@ -2,7 +2,7 @@ extends Sprite2D
 
 var has_hit: bool = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position.y += 1
 
 func _on_attack_hit_box_body_entered(body):

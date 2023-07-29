@@ -7,7 +7,6 @@ enum States {PERMANENT_LASER, VARIABLE_LASER, PERMANENT_LIGHT, VARIABLE_LIGHT}
 var current_state = States.PERMANENT_LASER
 
 @onready var _laser_scene: PackedScene = preload("res://components/diode/laser_bullet.tscn")
-@onready var _timer_cooldown: Timer = $LaserCooldown
 @onready var _ray: RayCast2D = $RayCast2D
 @onready var _line: Line2D = $Line2D
 
