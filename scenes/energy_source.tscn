@@ -1,21 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds8dkig7e06tw"]
+[gd_scene load_steps=4 format=3 uid="uid://bvwxfm01ruhx4"]
 
+[ext_resource type="Script" path="res://scripts/energy_source.gd" id="1_5vphu"]
 [ext_resource type="Texture2D" uid="uid://crl5t8beh1rex" path="res://sprites/EnergySourceTile.png" id="1_c8x77"]
-[ext_resource type="Script" path="res://scenes/energy_source.gd" id="1_pujhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kysso"]
 size = Vector2(16, 16)
 
-[sub_resource type="Environment" id="Environment_6f3dl"]
-background_mode = 3
-glow_enabled = true
-glow_blend_mode = 1
-glow_hdr_threshold = 0.27
-
 [node name="EnergySource" type="Area2D"]
-script = ExtResource("1_pujhx")
+script = ExtResource("1_5vphu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(14.4, 13.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -24,6 +19,3 @@ shape = SubResource("RectangleShape2D_kysso")
 
 [node name="EnergySourceTile" type="Sprite2D" parent="."]
 texture = ExtResource("1_c8x77")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6f3dl")

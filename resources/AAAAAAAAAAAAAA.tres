@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dqakbrvs4w5jj"]
 
 [ext_resource type="Texture2D" uid="uid://c3gqtdlqg774x" path="res://sprites/tileset.png" id="1_1r4vb"]
-[ext_resource type="PackedScene" uid="uid://ds8dkig7e06tw" path="res://scenes/energy_source.tscn" id="1_hdhug"]
+[ext_resource type="PackedScene" uid="uid://bvwxfm01ruhx4" path="res://scenes/energy_source.tscn" id="1_hdhug"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r2l15"]
 resource_name = "WireSource"

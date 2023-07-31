@@ -226,7 +226,6 @@ shape = SubResource("RectangleShape2D_vgitu")
 
 [node name="Enemy" parent="Room2" instance=ExtResource("3_xddfp")]
 position = Vector2(9, 14)
-path_to_player = NodePath("../../Player")
 
 [node name="Room3" type="Area2D" parent="."]
 position = Vector2(-262, 105)

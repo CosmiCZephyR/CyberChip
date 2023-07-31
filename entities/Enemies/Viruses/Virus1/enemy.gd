@@ -4,13 +4,11 @@ class_name Enemy
 
 var enemy_virus: Entity = Entity.new()
 
-@export var path_to_player: NodePath = NodePath()
-
 var _velocity: Vector2 = Vector2.ZERO
 
 @onready var _timer: Timer = $Timer
 @onready var _agent: NavigationAgent2D = $NavigationAgent2D
-@onready var _player: Player = get_node(path_to_player)
+@onready var _player := get_tree().get_first_node_in_group("Player")
 @onready var _room: Area2D = get_parent()
 
 #shock variables
