@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://byhb5cjp8hnva"]
+[gd_scene load_steps=21 format=3 uid="uid://byhb5cjp8hnva"]
 
 [ext_resource type="TileSet" uid="uid://dqakbrvs4w5jj" path="res://resources/AAAAAAAAAAAAAA.tres" id="1_nd3fa"]
 [ext_resource type="PackedScene" uid="uid://brwn3cv4tjxjx" path="res://components/capacitor/capacitor.tscn" id="2_n1cjg"]
@@ -112,21 +112,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbqgp"]
 size = Vector2(48, 240)
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_qywj4"]
-vertices = PackedVector2Array(-32, 64, 144, 64, 144, 88, -32, 88)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, 88, 144, 88, 144, 64, -32, 64)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_eyxy6"]
-vertices = PackedVector2Array(-32, 56, 8, 56, 8, 104, -32, 104)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, 56, 8, 56, 8, 104, -32, 104)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_r6re2"]
-vertices = PackedVector2Array(56, 64, 56, 104, -32, 104, -32, 56, 56, 56)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(56, 64, 56, 104, -32, 104, -32, 56, 56, 56)])
 
 [node name="TestScene" type="Node2D"]
 
@@ -310,25 +295,6 @@ shape = SubResource("RectangleShape2D_gju7m")
 libraries = {
 "": SubResource("AnimationLibrary_3o26u")
 }
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_qywj4")
-
-[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(0, 72)
-navigation_polygon = SubResource("NavigationPolygon_qywj4")
-
-[node name="NavigationRegion2D3" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(0, 32)
-navigation_polygon = SubResource("NavigationPolygon_eyxy6")
-
-[node name="NavigationRegion2D4" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(88, 32)
-navigation_polygon = SubResource("NavigationPolygon_r6re2")
 
 [node name="Resistor" parent="." instance=ExtResource("9_i4pnt")]
 position = Vector2(-200, 136)

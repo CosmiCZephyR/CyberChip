@@ -8,7 +8,7 @@ var _velocity: Vector2 = Vector2.ZERO
 
 @onready var _timer: Timer = $Timer
 @onready var _agent: NavigationAgent2D = $NavigationAgent2D
-@onready var _player := get_tree().get_first_node_in_group("Player")
+@onready var _player: Player = get_tree().get_first_node_in_group("Player")
 @onready var _room: Area2D = get_parent()
 
 #shock variables
@@ -16,7 +16,7 @@ var is_shocked = false
 var shock_duration = 3
 var speed = 50 
 
-func  _ready() -> void:
+func _ready() -> void:
 	max_health = 100
 	current_health = 50
 	_timer.timeout.connect(self._update_pathfinding)
@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if _agent.is_navigation_finished():
 		await get_tree().create_timer(0.3).timeout
 		return
-
+	
 	var direction = global_position.direction_to(_agent.get_next_path_position())
 	
 	var desired_velocity = direction * speed 

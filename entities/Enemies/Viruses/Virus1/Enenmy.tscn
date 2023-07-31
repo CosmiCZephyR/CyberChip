@@ -114,7 +114,6 @@ wait_time = 0.2
 autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
 target_desired_distance = 15.0
 path_max_distance = 100000.0
 avoidance_enabled = true
