@@ -12,6 +12,13 @@ var glowing_tiles_count = 0
 func _process(delta):
 	find_tiles()
 
+# вызываем на заранее свободной клетке
+func fool_fill(pos: Vector2i):
+#	закрашиваем
+#	если сосед свободен
+#		fool_fill(pos соседа)
+	pass
+
 func find_tiles():
 	for x in range(_tilemap.get_used_rect().size.x):
 		for y in range(_tilemap.get_used_rect().size.y):
