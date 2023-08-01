@@ -2,29 +2,35 @@ extends Area2D
 
 class_name EnergySource
 
-var layer = 1
-var stop_layer = 2
+var wire_layer = 1
+var broken_wires_layer = 2
 
-@onready var _tilemap = get_parent()
+@onready var _tilemap: TileMap = get_parent()
 
-var glowing_tiles_count = 0
+var glowing_tiles: Dictionary = {}
 
 func _process(delta):
-	find_tiles()
+	fool_fill(_tilemap.local_to_map(global_position))
 
 # вызываем на заранее свободной клетке
 func fool_fill(pos: Vector2i):
-#	закрашиваем
-#	если сосед свободен
-#		fool_fill(pos соседа)
-	pass
+	await get_tree().create_timer(0.5).timeout
+	var neighboring_tiles = get_neighbors_pos(pos)
+	
+	for neighbor_tile in neighboring_tiles:
+		_tilemap.set_cell(1, neighbor_tile, -1)
+		fool_fill(neighbor_tile)
 
-func find_tiles():
-	for x in range(_tilemap.get_used_rect().size.x):
-		for y in range(_tilemap.get_used_rect().size.y):
-			var tile_pos = Vector2(x, y)
-			if _tilemap.get_cell_source_id(stop_layer, tile_pos) != -1:
-				return # остановиться, если тайл на слое 2
-			if _tilemap.get_cell_source_id(layer, tile_pos) != -1:
-				glowing_tiles_count += 1
-				print_debug(glowing_tiles_count)
+func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
+	var neighbors_pos: Array[Vector2i]
+	var neighbor_tile_pos: Vector2i
+	
+	var neighbors: Array[Vector2i] = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
+	
+	for neighbor in neighbors:
+		if _tilemap.get_cell_source_id(1, tile_pos + neighbor) != -1:
+			neighbor_tile_pos = tile_pos + neighbor
+			neighbors_pos.append(neighbor_tile_pos)
+	
+	return neighbors_pos
+

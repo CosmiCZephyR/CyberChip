@@ -195,5 +195,7 @@ texture = ExtResource("1_1r4vb")
 [resource]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
+custom_data_layer_0/name = "is_glowing"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_b2xdk")
 sources/0 = SubResource("TileSetScenesCollectionSource_r2l15")
