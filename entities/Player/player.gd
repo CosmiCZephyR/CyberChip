@@ -129,6 +129,7 @@ func change_state_to(new_state):
 	new_state.enter()
 
 class CharacterState:
+	extends RefCounted
 	
 	var player: Player
 	
