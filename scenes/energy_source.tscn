@@ -19,3 +19,8 @@ shape = SubResource("RectangleShape2D_kysso")
 
 [node name="EnergySourceTile" type="Sprite2D" parent="."]
 texture = ExtResource("1_c8x77")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+autostart = true

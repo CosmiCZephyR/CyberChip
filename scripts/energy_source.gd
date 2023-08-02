@@ -4,12 +4,17 @@ class_name EnergySource
 
 var wire_layer = 1
 var broken_wires_layer = 2
+var glowing_tiles_layer = 3
 
 @onready var _tilemap: TileMap = get_parent()
+@onready var _update_timer: Timer = $Timer
 
-var glowing_tiles: Dictionary = {}
+var glowing_tiles: Dictionary
 
-func _process(delta):
+func _ready():
+	_update_timer.timeout.connect(self._timer_timeout)
+
+func _timer_timeout():
 	fool_fill(_tilemap.local_to_map(global_position))
 
 # вызываем на заранее свободной клетке
@@ -18,8 +23,9 @@ func fool_fill(pos: Vector2i):
 	var neighboring_tiles = get_neighbors_pos(pos)
 	
 	for neighbor_tile in neighboring_tiles:
-		_tilemap.set_cell(1, neighbor_tile, -1)
+		_tilemap.set_cell(glowing_tiles_layer, neighbor_tile)
 		fool_fill(neighbor_tile)
+		glowing_tiles[neighbor_tile] = true
 
 func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 	var neighbors_pos: Array[Vector2i]
