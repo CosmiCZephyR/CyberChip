@@ -4,7 +4,7 @@ class_name EnergySource
 
 var wire_layer = 1
 var broken_wires_layer = 2
-var glowing_tiles_layer = 3
+var glowing_wires_layer = 3
 
 @onready var _tilemap: TileMap = get_parent()
 @onready var _update_timer: Timer = $Timer
@@ -23,7 +23,7 @@ func fool_fill(pos: Vector2i):
 	var neighboring_tiles = get_neighbors_pos(pos)
 	
 	for neighbor_tile in neighboring_tiles:
-		_tilemap.set_cell(glowing_tiles_layer, neighbor_tile)
+		_tilemap.set_cell(glowing_wires_layer, neighbor_tile)
 		fool_fill(neighbor_tile)
 		glowing_tiles[neighbor_tile] = true
 

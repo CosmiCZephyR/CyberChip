@@ -139,7 +139,7 @@ layer_3/enabled = true
 layer_3/modulate = Color(1, 0, 0.0156863, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
-layer_3/z_index = 100
+layer_3/z_index = 2
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]

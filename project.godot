@@ -23,6 +23,7 @@ InputHandler="*res://scripts/Input_handler.gd"
 
 [display]
 
+window/size/initial_position_type=2
 window/vsync/vsync_mode=2
 
 [editor_plugins]
