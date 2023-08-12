@@ -18,7 +18,9 @@ visible = false
 shape = SubResource("RectangleShape2D_kysso")
 
 [node name="EnergySourceTile" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_c8x77")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true

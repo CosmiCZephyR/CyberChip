@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dqakbrvs4w5jj"]
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://dqakbrvs4w5jj"]
 
 [ext_resource type="Texture2D" uid="uid://c3gqtdlqg774x" path="res://sprites/tileset.png" id="1_1r4vb"]
 [ext_resource type="PackedScene" uid="uid://bvwxfm01ruhx4" path="res://scenes/energy_source.tscn" id="1_hdhug"]
@@ -192,6 +192,8 @@ texture = ExtResource("1_1r4vb")
 0:5/0/physics_layer_0/angular_velocity = 0.0
 0:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_g42gg")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_khcsh"]
+
 [resource]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
@@ -199,3 +201,4 @@ custom_data_layer_0/name = "is_glowing"
 custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_b2xdk")
 sources/0 = SubResource("TileSetScenesCollectionSource_r2l15")
+sources/2 = SubResource("TileSetAtlasSource_khcsh")
