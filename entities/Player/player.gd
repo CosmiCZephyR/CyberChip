@@ -154,7 +154,6 @@ class IdleState:
 	extends CharacterState
 	
 	func enter():
-		print("Idle")
 		InputHandler.movement.connect(try_transition.bind(player.WALK))
 		InputHandler.dash.connect(try_transition.bind(player.DASH))
 	
@@ -171,7 +170,6 @@ class WalkState:
 	var connected = false
 	
 	func enter():
-		print("Walk")
 		if player.can_dash:
 			connected = true
 			InputHandler.dash.connect(try_transition.bind(player.DASH))
@@ -197,7 +195,6 @@ class DashState:
 	extends CharacterState
 	
 	func enter():
-		print("Dash")
 		player.direction = Input.get_vector("left", "right", "up", "down")
 		dash(player.direction)
 		InputHandler.movement.connect(try_transition.bind(player.SPRINT))
@@ -224,7 +221,6 @@ class SprintState:
 	extends CharacterState
 	
 	func enter():
-		print("Sprint")
 		player.speed = player.sprint_speed
 	
 	func update():
