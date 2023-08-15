@@ -144,6 +144,7 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]
 z_index = 5
+position = Vector2(32, 80)
 collision_mask = 9
 
 [node name="Block2" type="RigidBody2D" parent="."]

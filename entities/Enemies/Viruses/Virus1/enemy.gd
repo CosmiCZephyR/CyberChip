@@ -12,11 +12,11 @@ var _velocity: Vector2 = Vector2.ZERO
 @onready var _room: Area2D = get_parent()
 
 # States
-var state: EnemyState
-
 var WANDER: WanderState = WanderState.new(self)
 var FOLLOW: FollowState = FollowState.new(self)
 var ATTACK: AttackState = AttackState.new(self)
+
+var state: EnemyState = WANDER
 
 #shock variables
 var is_shocked = false
@@ -51,6 +51,7 @@ func _physics_process(delta):
 func _process(_delta):
 	if state:
 		state.update()
+	
 	if current_health <= 0:
 		queue_free()
 
@@ -101,8 +102,29 @@ class WanderState:
 	var directions: Array[Vector2] = [Vector2(0, 0), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1),
 		Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1)]
 	
+	var current_direction: Vector2
+	
+	const MIN_TIME: float = 1.0
+	const MAX_TIME: float = 5.0
+	
+	var wander_time: float
+	
+	func enter():
+		enemy.get_node("RandomTimer").timeout.connect(random_timeout)
+	
+	func random_timeout():
+		current_direction = directions.pick_random()
+		wander_time = randf_range(MIN_TIME, MAX_TIME)
+#		enemy.get_node("RandomTimer").wait_time = wander_time
+		enemy.get_node("RandomTimer").start(wander_time)
+	
 	func update():
-		enemy.global_position += directions[enemy.pick_random()] * enemy.speed
+		enemy._velocity += current_direction * enemy.speed
+		
+		print(enemy._velocity)
+		
+		enemy.set_velocity(enemy._velocity)
+		enemy.move_and_slide()
 
 class FollowState:
 	extends EnemyState

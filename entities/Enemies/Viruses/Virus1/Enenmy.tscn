@@ -111,9 +111,11 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
-autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 15.0
 path_max_distance = 100000.0
 avoidance_enabled = true
+
+[node name="RandomTimer" type="Timer" parent="."]
+autostart = true

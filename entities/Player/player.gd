@@ -54,9 +54,9 @@ var transistor = null
 
 func _ready():
 	animation_tree.active = true
-	Event.transistor_selected.connect(self._on_transistor_available)
+	Event.transistor_selected.connect(_on_transistor_available)
 	state.enter()
-	sec_timer.timeout.connect(self._second_passed)
+	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
 func _physics_process(_delta):
