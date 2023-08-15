@@ -155,20 +155,14 @@ class IdleState:
 	
 	func enter():
 		print("Idle")
-#		player.current_animation = "idle"
-#		player.animation_tree["parameters/conditions/idle"] = player.current_animation == "idle"
-		# TODO: тут коннектишь сигналы
 		InputHandler.movement.connect(try_transition.bind(player.WALK))
-#		InputHandler.attack.connect(try_transition.bind(player.ATTACK))
 		InputHandler.dash.connect(try_transition.bind(player.DASH))
 	
 	func exit():
 		InputHandler.movement.disconnect(try_transition)
-#		InputHandler.attack.disconnect(try_transition)
 		InputHandler.dash.disconnect(try_transition)
 	
 	func try_transition(state: CharacterState):
-		# TODO: заменить на коннект к сигналу
 		player.change_state_to(state)
 
 class WalkState:
@@ -178,9 +172,6 @@ class WalkState:
 	
 	func enter():
 		print("Walk")
-#		player.current_animation = "walk"
-#		player.animation_tree["parameters/walk/blend_position"] = player.movement.normalized()
-#		player.animation_tree["parameters/conditions/walk"] = player.current_animation == "walk"
 		if player.can_dash:
 			connected = true
 			InputHandler.dash.connect(try_transition.bind(player.DASH))

@@ -31,12 +31,7 @@ func fool_fill(pos: Vector2i):
 		var source_id = _tilemap.get_cell_source_id(wire_layer, neighbor_tile)
 		var atlas_coords = _tilemap.get_cell_atlas_coords(wire_layer, neighbor_tile)
 		
-		_tilemap.set_cell(glowing_wires_layer, neighbor_tile, source_id, atlas_coords)
-		
-#		var _tiledata = _tilemap.get_cell_tile_data(glowing_wires_layer, neighbor_tile)
-#
-#		if _tiledata:
-#			_tiledata.material = _material
+		_tilemap.set_cell(glowing_wires_layer, neighbor_tile, source_id, atlas_coords, 3)
 		
 		glowing_tiles[neighbor_tile] = true
 		fool_fill(neighbor_tile)
