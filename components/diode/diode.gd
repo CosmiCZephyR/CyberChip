@@ -29,7 +29,7 @@ func permanent_laser() -> void:
 # переменный лазер
 func variable_laser() -> void:
 	_ray.force_raycast_update()
-	
+
 	_laser = _laser_scene.instantiate()
 	add_child(_laser)
 	_laser.global_position = $Marker2D.global_position

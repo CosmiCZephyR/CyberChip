@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c00l6ucynnr5w"]
 
-[ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/enemy.gd" id="1_s80nu"]
+[ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/enemy.gd" id="1_aiswj"]
 [ext_resource type="Texture2D" uid="uid://caclooukjvhcb" path="res://sprites/Animations/VirusHit.png" id="2_njifk"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="3_05u7v"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="4_joe55"]
@@ -71,7 +71,7 @@ _data = {
 z_index = 5
 collision_layer = 8
 collision_mask = 9
-script = ExtResource("1_s80nu")
+script = ExtResource("1_aiswj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -120,3 +120,5 @@ avoidance_enabled = true
 
 [node name="RandomTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="EnemyStateMachine" type="Node" parent="."]

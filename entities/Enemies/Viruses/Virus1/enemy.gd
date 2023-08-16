@@ -11,17 +11,21 @@ var _velocity: Vector2 = Vector2.ZERO
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
 @onready var _room: Area2D = get_parent()
 
-# States
+#shock variables
+var is_shocked = false
+var shock_duration = 3
+var speed = 50 
+
+#room's corners
+var first_corner 
+var second_corner 
+
+#states
 var WANDER: WanderState = WanderState.new(self)
 var FOLLOW: FollowState = FollowState.new(self)
 var ATTACK: AttackState = AttackState.new(self)
 
 var state: EnemyState = WANDER
-
-#shock variables
-var is_shocked = false
-var shock_duration = 3
-var speed = 50 
 
 signal following_started
 signal following_finished
@@ -31,28 +35,14 @@ signal attack_released
 func _ready() -> void:
 	max_health = 100
 	current_health = 50
-	_timer.timeout.connect(self._update_pathfinding)
 	state.enter()
-#	_update_pathfinding()
+	_timer.timeout.connect(self._update_pathfinding)
 	add_to_group("Enemies")
 
-func _physics_process(delta):
-	pass
-#	print(global_position.distance_to(_player.global_position))
-#	if _agent.is_navigation_finished():
-#		await get_tree().create_timer(0.3).timeout
-#		return
-#
-#	var direction = global_position.direction_to(_agent.get_next_path_position())
-#
-#	var desired_velocity = direction * speed 
-#	var steering = (desired_velocity - _velocity) * delta * 4.0
-#	_velocity += steering
-#
-#	set_velocity(_velocity)
-#	move_and_slide()
-
 func _process(_delta):
+	first_corner = _room.get_node("Marker2D").global_position
+	second_corner = _room.get_node("Marker2D2").global_position
+	
 	if state:
 		state.update(_delta)
 	
@@ -80,8 +70,10 @@ func change_state(new_state):
 	state = new_state
 	new_state.enter()
 
+
 class EnemyState:
 	extends RefCounted
+	
 	var enemy: Enemy
 	
 	@warning_ignore("shadowed_variable")
@@ -105,8 +97,7 @@ class WanderState:
 	extends EnemyState
 	
 	var directions: Array[Vector2] = [
-		Vector2(0, 0), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1),
-#		Vector2(1, 1), Vector2(-1, 1), Vector2(1, -1), Vector2(-1, -1)
+		Vector2(0, 0), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1), Vector2(0, 0)
 	]
 	
 	var current_direction: Vector2
@@ -122,6 +113,7 @@ class WanderState:
 		enemy.following_started.connect(try_transition.bind(enemy.FOLLOW))
 	
 	func random_timeout():
+		await enemy.get_tree().create_timer(0.3).timeout
 		current_direction = directions.pick_random()
 		wander_time = randf_range(MIN_TIME, MAX_TIME)
 		enemy.get_node("RandomTimer").start(wander_time)
@@ -132,9 +124,9 @@ class WanderState:
 		else: 
 			enemy.get_node("VirusHit").flip_h = false
 		
-		enemy.global_position.clamp(Vector2(-85.5, 54.5), Vector2(89.5, -40.5))
+		enemy.global_position.clamp(enemy.first_corner, enemy.second_corner)
 		
-		enemy._velocity = current_direction * (enemy.speed * 0.66)
+		enemy._velocity = current_direction * (enemy.speed * 0.5)
 		enemy.set_velocity(enemy._velocity)
 		enemy.move_and_slide()
 	
@@ -194,7 +186,7 @@ class AttackState:
 		print_debug("Attack")
 		enemy.attack_released.connect(try_transition.bind(enemy.WANDER))
 	
-	func update(delta):
+	func update(_delta):
 		await enemy.get_tree().create_timer(0.5).timeout
 		enemy.emit_signal("attack_released")
 	
@@ -203,3 +195,4 @@ class AttackState:
 	
 	func try_transition(state: EnemyState):
 		enemy.change_state(state)
+
