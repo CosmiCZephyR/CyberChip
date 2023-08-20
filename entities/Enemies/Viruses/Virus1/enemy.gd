@@ -40,6 +40,7 @@ func _ready() -> void:
 	add_to_group("Enemies")
 
 func _process(_delta):
+	
 	first_corner = _room.get_node("Marker2D").global_position
 	second_corner = _room.get_node("Marker2D2").global_position
 	
@@ -69,7 +70,6 @@ func change_state(new_state):
 	state.exit()
 	state = new_state
 	new_state.enter()
-
 
 class EnemyState:
 	extends RefCounted
@@ -168,7 +168,7 @@ class FollowState:
 		enemy.set_velocity(enemy._velocity)
 		enemy.move_and_slide()
 		
-		if enemy._agent.distance_to_target() <= 20:
+		if enemy._agent.distance_to_target() <= 10:
 			try_transition(enemy.ATTACK)
 	
 	func exit():
@@ -184,14 +184,14 @@ class AttackState:
 	
 	func enter():
 		print_debug("Attack")
-		enemy.attack_released.connect(try_transition.bind(enemy.WANDER))
+		enemy.attack_released.connect(try_transition.bind(enemy.FOLLOW))
 	
 	func update(_delta):
 		await enemy.get_tree().create_timer(0.5).timeout
 		enemy.emit_signal("attack_released")
 	
 	func exit():
-		enemy.attack_released.disconnect(try_transition.bind(enemy.WANDER))
+		enemy.attack_released.disconnect(try_transition.bind(enemy.FOLLOW))
 	
 	func try_transition(state: EnemyState):
 		enemy.change_state(state)

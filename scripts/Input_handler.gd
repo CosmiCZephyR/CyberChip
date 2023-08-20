@@ -17,7 +17,7 @@ var actions: Array = [
 	"attack"
 ]
 
-var max_double_click_time: float = 100000
+var max_double_click_time: float = 500
 var last_key_press_time: float = 0.0
 var key_code: int = 0
 

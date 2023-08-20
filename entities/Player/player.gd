@@ -3,11 +3,11 @@ extends Entity
 class_name Player
 
 # Main variables
-var player_size: Vector2 = Vector2(11,15)
 var speed: float = 65
 var direction: Vector2 = Vector2.ZERO
-@onready var player_rect: Rect2 = Rect2(global_position - player_size / 2, player_size)
+var player_size: Vector2 = Vector2(11,15)
 @onready var sec_timer: Timer = $SecTimer
+@onready var player_rect: Rect2 = Rect2(global_position - player_size / 2, player_size)
 
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
@@ -22,7 +22,6 @@ var current_room: Area2D: set = get_current_room
 var previous_room: Area2D = current_room
 
 # Sprint
-
 var sprint_speed: float = 100.0
 
 # Dash

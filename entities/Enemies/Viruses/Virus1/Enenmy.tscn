@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c00l6ucynnr5w"]
+[gd_scene load_steps=12 format=3 uid="uid://c00l6ucynnr5w"]
 
 [ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/enemy.gd" id="1_aiswj"]
 [ext_resource type="Texture2D" uid="uid://caclooukjvhcb" path="res://sprites/Animations/VirusHit.png" id="2_njifk"]
@@ -9,7 +9,24 @@
 size = Vector2(7, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymre8"]
-size = Vector2(10, 4.5)
+size = Vector2(7.25, 7)
+
+[sub_resource type="Animation" id="Animation_3ae4x"]
+resource_name = "AttackE"
+length = 0.52
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VirusHit:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.32, 0.42, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9, 5]
+}
 
 [sub_resource type="Animation" id="Animation_t8fmd"]
 length = 0.001
@@ -45,8 +62,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i1aug"]
 resource_name = "hit1"
-length = 0.1
-step = 0.05
+length = 0.14
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,7 +71,7 @@ tracks/0/path = NodePath("VirusHit:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.13),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0, 1, 2]
@@ -62,6 +79,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wqs50"]
 _data = {
+"AttackE": SubResource("Animation_3ae4x"),
 "RESET": SubResource("Animation_t8fmd"),
 "hit": SubResource("Animation_pj42w"),
 "hit1": SubResource("Animation_i1aug")
@@ -96,13 +114,13 @@ script = ExtResource("4_joe55")
 damage = 10
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHitBox"]
-visible = false
-position = Vector2(3, -0.25)
+position = Vector2(2.375, -0.5)
 shape = SubResource("RectangleShape2D_ymre8")
 
 [node name="VirusHit" type="Sprite2D" parent="."]
 texture = ExtResource("2_njifk")
-hframes = 3
+hframes = 5
+vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
