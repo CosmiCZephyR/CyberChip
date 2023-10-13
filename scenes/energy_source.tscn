@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvwxfm01ruhx4"]
+[gd_scene load_steps=6 format=3 uid="uid://bvwxfm01ruhx4"]
 
 [ext_resource type="Script" path="res://scripts/energy_source.gd" id="1_5vphu"]
 [ext_resource type="Texture2D" uid="uid://crl5t8beh1rex" path="res://sprites/EnergySourceTile.png" id="1_c8x77"]
@@ -6,6 +6,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kysso"]
 size = Vector2(16, 16)
+
+[sub_resource type="Environment" id="Environment_enf60"]
+background_mode = 3
+glow_enabled = true
 
 [node name="EnergySource" type="Area2D"]
 script = ExtResource("1_5vphu")
@@ -25,3 +29,6 @@ texture = ExtResource("1_c8x77")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_enf60")

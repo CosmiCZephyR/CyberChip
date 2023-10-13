@@ -5,7 +5,7 @@ Godot plugin for metrics, insights, and time tracking automatically generated fr
 - [godot-wakatime](#godot-wakatime)
   - [Dependencies](#dependencies)
   - [Installation](#installation)
-	- [Activation](#activation)
+    - [Activation](#activation)
   - [Configuration](#configuration)
   - [Supported Godot \<\> Plugin versions](#supported-godot--plugin-versions)
 

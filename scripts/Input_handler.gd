@@ -34,7 +34,7 @@ func _input(event):
 		last_key_press_time = current_time
 		key_code = event.get_keycode()
 
-func is_double_click(e):
+func is_double_click(e: InputEvent):
 	var current_time := Time.get_ticks_msec()
 	return current_time - last_key_press_time < max_double_click_time and e.get_keycode() == key_code and not e.is_echo()
 

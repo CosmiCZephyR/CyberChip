@@ -1,13 +1,12 @@
-extends Entity
-
 class_name Player
+extends Entity
 
 # Main variables
 var speed: float = 65
 var direction: Vector2 = Vector2.ZERO
-var player_size: Vector2 = Vector2(11,15)
+const PLAYER_SIZE: Vector2 = Vector2(11,15)
 @onready var sec_timer: Timer = $SecTimer
-@onready var player_rect: Rect2 = Rect2(global_position - player_size / 2, player_size)
+@onready var player_rect: Rect2 = Rect2(global_position - PLAYER_SIZE / 2, PLAYER_SIZE)
 
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
@@ -21,9 +20,6 @@ var current_animation = "idle"
 var current_room: Area2D: set = get_current_room
 var previous_room: Area2D = current_room
 
-# Sprint
-var sprint_speed: float = 100.0
-
 # Dash
 var can_dash: bool = true
 var dash_speed: int = 5000
@@ -31,15 +27,6 @@ var dash_duration: float = 0.2
 var dash_cooldown: float = 2.0
 @onready var duration_timer = $DashDuration
 @onready var cooldown_timer = $DashCooldown
-
-# State machine
-var IDLE : IdleState = IdleState.new(self)
-var WALK : WalkState = WalkState.new(self)
-var DASH : DashState = DashState.new(self)
-var SPRINT : SprintState = SprintState.new(self)
-#var ATTACK : AttackState = AttackState.new(self)
-
-var state: CharacterState = IDLE
 
 # Abilities
 @onready var magnetism: Magnetism = load_ability("magnetism")
@@ -51,14 +38,22 @@ var nearby_component: Area2D
 
 var transistor = null
 
+var is_paused = false
+
 func _ready():
 	animation_tree.active = true
 	Event.transistor_selected.connect(_on_transistor_available)
-	state.enter()
 	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("pause") and not is_paused:
+		get_tree().paused = true
+		is_paused = true
+	elif Input.is_action_just_pressed("pause") and is_paused:
+		get_tree().paused = false
+		is_paused = false
+	
 	if Input.is_action_pressed("magnetism"):
 		magnetism.activate(player_rect, _delta, self)
 	if Input.is_action_just_pressed("repairing"):
@@ -72,8 +67,6 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	update_animation_parameters()
-	if state:
-		state.update()
 
 func _on_dash_duration_timeout():
 	movement = Vector2.ZERO
@@ -121,126 +114,3 @@ func update_animation_parameters():
 	animation_tree["parameters/conditions/idle"] = current_animation == "idle"
 	animation_tree["parameters/conditions/walk"] = current_animation == "walk"
 	animation_tree["parameters/conditions/attack"] = current_animation == "attack"
-
-func change_state_to(new_state):
-	state.exit()
-	state = new_state
-	new_state.enter()
-
-class CharacterState:
-	extends RefCounted
-	
-	var player: Player
-	
-	@warning_ignore("shadowed_variable")
-	func _init(player: Player):
-		self.player = player
-	
-	func enter():
-		pass
-	
-	func exit():
-		pass
-	
-	func update():
-		pass
-	
-	@warning_ignore("unused_parameter")
-	func try_transition(state: CharacterState):
-		pass
-
-class IdleState:
-	extends CharacterState
-	
-	func enter():
-		InputHandler.movement.connect(try_transition.bind(player.WALK))
-		InputHandler.dash.connect(try_transition.bind(player.DASH))
-	
-	func exit():
-		InputHandler.movement.disconnect(try_transition)
-		InputHandler.dash.disconnect(try_transition)
-	
-	func try_transition(state: CharacterState):
-		player.change_state_to(state)
-
-class WalkState:
-	extends CharacterState
-	
-	var connected = false
-	
-	func enter():
-		if player.can_dash:
-			connected = true
-			InputHandler.dash.connect(try_transition.bind(player.DASH))
-	
-	func exit():
-		if connected:
-			connected = false
-			InputHandler.dash.disconnect(try_transition.bind(player.DASH))
-	
-	func update():
-		player.direction = Input.get_vector("left", "right", "up", "down")
-		player.movement = player.direction * player.speed
-		player.set_velocity(player.movement)
-		player.move_and_slide()
-		
-		if not Input.is_anything_pressed():
-			try_transition(player.IDLE)
-	
-	func try_transition(state: CharacterState):
-		player.change_state_to(state)
-
-class DashState:
-	extends CharacterState
-	
-	func enter():
-		player.direction = Input.get_vector("left", "right", "up", "down")
-		dash(player.direction)
-		InputHandler.movement.connect(try_transition.bind(player.SPRINT))
-	
-	func exit():
-		InputHandler.movement.disconnect(try_transition.bind(player.SPRINT))
-	
-	func update():
-		if not Input.is_anything_pressed():
-			try_transition(player.IDLE)
-	
-	func dash(input_vector):
-		player.duration_timer.start(player.dash_duration)
-		player.movement = input_vector * player.dash_speed
-		player.set_velocity(player.movement)
-		player.move_and_slide()
-		player.can_dash = false
-		player.cooldown_timer.start(player.dash_cooldown)
-	
-	func try_transition(state: CharacterState):
-		player.change_state_to(state)
-
-class SprintState:
-	extends CharacterState
-	
-	func enter():
-		player.speed = player.sprint_speed
-	
-	func update():
-		player.direction = Input.get_vector("left", "right", "up", "down")
-		player.movement = player.speed * player.direction
-		player.set_velocity(player.movement)
-		player.move_and_slide()
-		
-		if not Input.is_action_pressed("movement"):
-			try_transition(player.IDLE)
-	
-	func exit():
-		player.speed = 65
-	
-	func try_transition(state: CharacterState):
-		player.change_state_to(state)
-
-#class AttackState:
-#	extends CharacterState
-#
-#	func enter():
-##		player.current_animation = "attack"
-##		player.animation_tree["parameters/attack/blend_position"] = position.direction_to(get_global_mouse_position()).normalized()
-#		pass

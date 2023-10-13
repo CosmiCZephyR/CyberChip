@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://wosxserqfgp0"]
+[gd_scene load_steps=23 format=3 uid="uid://wosxserqfgp0"]
 
 [ext_resource type="Script" path="res://entities/Player/player.gd" id="1_bany2"]
 [ext_resource type="Texture2D" uid="uid://dn15dawnaeead" path="res://sprites/Animations/Player.png" id="2_oevav"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="5_3qshv"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://drcscpts61ybs" path="res://resources/Player.tres" id="6_3l1u2"]
 [ext_resource type="PackedScene" uid="uid://d2jp1hekqb3dq" path="res://scenes/copter.tscn" id="7_l3gpq"]
+[ext_resource type="Script" path="res://entities/Player/StateMachine/PlayerStateMachine.gd" id="8_dnsyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw2vj"]
 size = Vector2(10, 11)
@@ -431,6 +432,9 @@ position = Vector2(-8, -8)
 
 [node name="SecTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="PlayerStateMachine" type="Node2D" parent="."]
+script = ExtResource("8_dnsyb")
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

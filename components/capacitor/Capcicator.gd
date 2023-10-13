@@ -6,7 +6,7 @@ func _ready():
 
 func _body_entered(body):
 	if body.is_in_group("Player"):
-		body.speed = body.sprint_speed
+		body.speed = 100
 
 func _body_exited(body):
 	if body.is_in_group("Player"):

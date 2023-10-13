@@ -135,6 +135,7 @@ autostart = true
 target_desired_distance = 15.0
 path_max_distance = 100000.0
 avoidance_enabled = true
+debug_enabled = true
 
 [node name="RandomTimer" type="Timer" parent="."]
 autostart = true

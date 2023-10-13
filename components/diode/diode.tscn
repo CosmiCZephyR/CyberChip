@@ -20,7 +20,6 @@ target_position = Vector2(0, 150)
 collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="."]
-visible = false
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 0, 28)
 width = 16.0

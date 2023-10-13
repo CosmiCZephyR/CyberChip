@@ -17,8 +17,8 @@ var shock_duration = 3
 var speed = 50 
 
 #room's corners
-var first_corner 
-var second_corner 
+var first_corner
+var second_corner
 
 #states
 var WANDER: WanderState = WanderState.new(self)
@@ -40,7 +40,6 @@ func _ready() -> void:
 	add_to_group("Enemies")
 
 func _process(_delta):
-	
 	first_corner = _room.get_node("Marker2D").global_position
 	second_corner = _room.get_node("Marker2D2").global_position
 	
@@ -96,9 +95,13 @@ class EnemyState:
 class WanderState:
 	extends EnemyState
 	
-	var directions: Array[Vector2] = [
-		Vector2(0, 0), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1), Vector2(0, 0)
-	]
+	var directions: Dictionary = {
+		Vector2(0, 0): 50,
+		Vector2(1, 0): 12.5,
+		Vector2(-1, 0): 12.5,
+		Vector2(0, 1): 12.5,
+		Vector2(0, -1): 12.5,
+	}
 	
 	var current_direction: Vector2
 	
@@ -114,9 +117,21 @@ class WanderState:
 	
 	func random_timeout():
 		await enemy.get_tree().create_timer(0.3).timeout
-		current_direction = directions.pick_random()
+		current_direction = pick_direction(directions)
 		wander_time = randf_range(MIN_TIME, MAX_TIME)
 		enemy.get_node("RandomTimer").start(wander_time)
+	
+	func pick_direction(directions: Dictionary):
+		var total = 0
+		for weight in directions.values():
+			total += weight
+		
+		var r = randi_range(0, total)
+		var upto = 0
+		for item in directions.keys():
+			if upto + directions[item] >= r:
+				return item
+			upto += directions[item]
 	
 	func update(delta):
 		if current_direction.x < 0:
@@ -195,4 +210,3 @@ class AttackState:
 	
 	func try_transition(state: EnemyState):
 		enemy.change_state(state)
-
