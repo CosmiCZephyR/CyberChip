@@ -4,4 +4,8 @@
 
 [resource]
 shader = ExtResource("1_t3mc2")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/BLOOM_THRESHOLD = 0.7
+shader_parameter/BLOOM_INTENSITY = 0.5
+shader_parameter/BLUR_ITERATIONS = 1
+shader_parameter/BLUR_SIZE = 0.03
+shader_parameter/BLUR_SUBDIVISIONS = 16

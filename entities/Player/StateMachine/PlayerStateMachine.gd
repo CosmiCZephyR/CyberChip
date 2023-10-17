@@ -1,17 +1,16 @@
 class_name PlayerStateMachine
 extends Node2D
 
-@onready var player = get_parent()
+@onready var player: Player = get_parent()
 
-@onready var IDLE : IdleState     = IdleState.new(player, self)
-@onready var WALK : WalkState     = WalkState.new(player, self)
-@onready var DASH : DashState     = DashState.new(player, self)
-@onready var SPRINT : SprintState = SprintState.new(player, self)
+@onready var IDLE: IdleState = IdleState.new(player, self)
+@onready var WALK: WalkState = WalkState.new(player, self)
+@onready var DASH: DashState = DashState.new(player, self)
+@onready var SPRINT: SprintState = SprintState.new(player, self)
 
 @onready var state: CharacterState = IDLE
 
 func _ready():
-	print(player)
 	await get_parent().ready
 	state.enter()
 

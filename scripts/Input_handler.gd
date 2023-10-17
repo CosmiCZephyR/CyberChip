@@ -5,6 +5,7 @@ signal movement
 signal repairing
 signal interaction
 signal electroShock
+signal magneticShock
 signal attack
 signal dash
 
@@ -14,6 +15,7 @@ var actions: Array = [
 	"repairing",
 	"interaction",
 	"electroShock",
+	"magneticShock",
 	"attack"
 ]
 
@@ -59,6 +61,10 @@ func event_signal_emit(action: String):
 		"electroShock":
 			if Input.is_action_just_pressed(action):
 				emit_signal("electroShock")
+		
+		"magneticShock":
+			if Input.is_action_just_pressed(action):
+				emit_signal("magneticShock")
 		
 		"attack":
 			if Input.is_action_just_pressed(action):

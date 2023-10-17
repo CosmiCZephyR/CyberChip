@@ -4,7 +4,7 @@ extends CharacterState
 func enter():
 	InputHandler.movement.connect(try_transition.bind(state_machine.WALK))
 	InputHandler.dash.connect(try_transition.bind(state_machine.DASH))
-
+ 
 func exit():
 	InputHandler.movement.disconnect(try_transition)
 	InputHandler.dash.disconnect(try_transition)

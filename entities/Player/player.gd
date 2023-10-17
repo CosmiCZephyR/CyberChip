@@ -43,19 +43,16 @@ var is_paused = false
 func _ready():
 	animation_tree.active = true
 	Event.transistor_selected.connect(_on_transistor_available)
+	InputHandler.magnetism.connect(InputHandler._on_magnetism)
+	InputHandler.repairing.connect(InputHandler._on_repairing)
+	InputHandler.magneticShock.connect(InputHandler._on_magnetic_shock)
+	InputHandler.interaction.connect(InputHandler._on_interaction)
 	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("pause") and not is_paused:
-		get_tree().paused = true
-		is_paused = true
-	elif Input.is_action_just_pressed("pause") and is_paused:
-		get_tree().paused = false
-		is_paused = false
-	
 	if Input.is_action_pressed("magnetism"):
-		magnetism.activate(player_rect, _delta, self)
+		magnetism.activate(player_rect, self, _delta)
 	if Input.is_action_just_pressed("repairing"):
 		repairing.activate_repairing(tilemap, self)
 	if Input.is_action_pressed("magneticShock"):
@@ -81,22 +78,6 @@ func _on_transistor_available(_transistor):
 func _second_passed():
 	self.regen_health()
 	self.regen_kosuki()
-
-func check_wires_connection(area: Area2D):
-	var collision_shape = area.get_node("CollisionShape2D")
-	var shape_extents = collision_shape.shape.extents
-	var area_rect = Rect2(area.global_position - shape_extents, shape_extents * 2)
-	
-	var broken_wires_layer = 2
-	
-	for cell in tilemap.get_used_cells(broken_wires_layer):
-		var cell_position = tilemap.map_to_local(cell)
-		if not area_rect.has_point(cell_position):
-			continue
-		
-		return false
-	
-	return true
 
 func get_current_room(area):
 	current_room = area

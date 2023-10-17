@@ -63,3 +63,17 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 			neighbors_pos.append(neighbor_tile_pos)
 	
 	return neighbors_pos
+
+func check_wires_connection(area: Area2D):
+	var collision_shape = area.get_node("CollisionShape2D")
+	var shape_extents = collision_shape.shape.extents
+	var area_rect = Rect2(area.global_position - shape_extents, shape_extents * 2)
+	
+	for cell in tilemap.get_used_cells(BROKEN_WIRES_LAYER):
+		var cell_position = tilemap.map_to_local(cell)
+		if not area_rect.has_point(cell_position):
+			continue
+		
+		return false
+	
+	return true

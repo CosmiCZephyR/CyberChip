@@ -2,20 +2,27 @@ extends Node
 
 class_name Magnetism
 
+var magnetic_objects: Array
+var collision_shape: CollisionShape2D
+var direction: Vector2
+var object_rect: Rect2
+var shape: Shape2D
+var extents
+
 @warning_ignore("shadowed_variable_base_class")
-func activate(player_rect: Rect2, delta: float, master) -> void:
-	var magnetic_objects = get_magnetic_objects()
-	for obj in magnetic_objects:
-		var collision_shape = obj.get_node("CollisionShape2D")
-		var shape = collision_shape.shape
-		var extents = shape.extents
-		var obj_rect = Rect2(obj.global_position - extents, extents * 2)
-		if player_rect.intersects(obj_rect):
+func activate(player_rect: Rect2, master: Node, delta: float) -> void:
+	magnetic_objects = get_magnetic_objects()
+	for object in magnetic_objects:
+		collision_shape = object.get_node("CollisionShape2D")
+		shape = collision_shape.shape
+		extents = shape.extents
+		object_rect = Rect2(object.global_position - extents, extents * 2)
+		if player_rect.intersects(object_rect):
 			continue
-		var direction = (master.global_position - obj.global_position).normalized()
-		obj.move_and_collide(direction * 100 * delta)
+		direction = (master.global_position - object.global_position).normalized()
+		object.move_and_collide(direction * 100)
 
 func get_magnetic_objects():
-	var magnetic_objects = []
+	magnetic_objects = []
 	magnetic_objects = get_tree().get_nodes_in_group("magnetic")
 	return magnetic_objects
