@@ -32,5 +32,5 @@ offset_left = 144.0
 offset_right = 224.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(288, 162)
-zoom = Vector2(2, 2)
+position = Vector2(192, 108)
+zoom = Vector2(3, 3)

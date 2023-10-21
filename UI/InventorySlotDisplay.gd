@@ -1,7 +1,10 @@
 extends CenterContainer
 
 var inventory = preload("res://resources/Inventory.tres")
- 
+
+const DISTANCE_TO_TILE_MAP = 150
+
+@onready var tile_map = get_tree().get_first_node_in_group("Tilemaps")
 @onready var item_texture_rect = $ItemTextureRect
 
 func display_item(item):
@@ -27,6 +30,9 @@ func _get_drag_data(at_position):
 		return data
 
 func _can_drop_data(at_position, data):
+	if at_position.to_global() < DISTANCE_TO_TILE_MAP:
+		
+		pass
 	return data is Dictionary and data.has("item")
 
 func _drop_data(at_position, data):

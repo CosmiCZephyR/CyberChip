@@ -43,18 +43,16 @@ var is_paused = false
 func _ready():
 	animation_tree.active = true
 	Event.transistor_selected.connect(_on_transistor_available)
-	InputHandler.magnetism.connect(InputHandler._on_magnetism)
-	InputHandler.repairing.connect(InputHandler._on_repairing)
-	InputHandler.magneticShock.connect(InputHandler._on_magnetic_shock)
-	InputHandler.interaction.connect(InputHandler._on_interaction)
+	InputHandler.magnetism.connect(_on_magnetism)
+	InputHandler.repairing.connect(_on_repairing)
+#	InputHandler.magneticShock.connect(_on_magnetic_shock)
+#	InputHandler.interaction.connect(_on_interaction)
 	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("magnetism"):
-		magnetism.activate(player_rect, self, _delta)
 	if Input.is_action_just_pressed("repairing"):
-		repairing.activate_repairing(tilemap, self)
+		
 	if Input.is_action_pressed("magneticShock"):
 		magnetic_shock.activate_magnetic_shock(self)
 	if Input.is_action_just_pressed("interaction") and transistor != null:
@@ -64,6 +62,13 @@ func _physics_process(_delta):
 
 func _process(_delta):
 	update_animation_parameters()
+
+func _on_magnetism():
+	var _delta = get_physics_process_delta_time()
+	magnetism.activate(player_rect, self, _delta)
+
+func _on_repairing():
+	repairing.activate_repairing(tilemap, self)
 
 func _on_dash_duration_timeout():
 	movement = Vector2.ZERO

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c00l6ucynnr5w"]
+[gd_scene load_steps=13 format=3 uid="uid://c00l6ucynnr5w"]
 
 [ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/enemy.gd" id="1_aiswj"]
 [ext_resource type="Texture2D" uid="uid://caclooukjvhcb" path="res://sprites/Animations/VirusHit.png" id="2_njifk"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwrj"]
 size = Vector2(7, 14)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlxx"]
+radius = 3.5
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymre8"]
 size = Vector2(7.25, 7)
@@ -102,9 +106,8 @@ collision_mask = 2
 script = ExtResource("3_05u7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_btwrj")
+shape = SubResource("CapsuleShape2D_krlxx")
 
 [node name="AttackHitBox" type="Area2D" parent="."]
 position = Vector2(2, -2)

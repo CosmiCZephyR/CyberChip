@@ -8,7 +8,7 @@ var _velocity: Vector2 = Vector2.ZERO
 
 @onready var _timer: Timer = $Timer
 @onready var _agent: NavigationAgent2D = $NavigationAgent2D
-@onready var _player: Player = get_tree().get_first_node_in_group("Player")
+@onready var _player: Player = get_parent().get_node("../Player")
 @onready var _room: Area2D = get_parent()
 
 #shock variables

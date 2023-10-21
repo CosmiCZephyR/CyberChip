@@ -2,14 +2,14 @@ extends Node
 
 class_name WiresManange
 
+@onready var tilemap: TileMap = get_tree().current_scene.get_node("TileMap2")
+@onready var tiledata: TileData
+
 const WIRE_LAYER: int = 1
 const BROKEN_WIRES_LAYER: int = 2
 const GLOWING_WIRES_LAYER: int = 3
 
 const ALT_TILE_ID = 1
-
-@onready var tilemap: TileMap = get_tree().current_scene.get_node("TileMap2")
-@onready var tiledata: TileData
 
 var _material: ShaderMaterial = preload("res://resources/tile_shader.tres")
 

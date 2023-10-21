@@ -10,7 +10,7 @@ var cosuki_modifier: float = 0.75
 func _ready():
 	self.body_entered.connect(self._body_entered)
 	self.body_exited.connect(self._body_exited)
-	self.mouse_entered.connect(self._mouse_entered)
+#	self.mouse_entered.connect(self._mouse_entered)
 
 func _physics_process(_delta):
 	for body in get_overlapping_bodies():
