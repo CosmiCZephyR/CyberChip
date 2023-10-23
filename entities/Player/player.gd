@@ -45,19 +45,12 @@ func _ready():
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magnetism.connect(_on_magnetism)
 	InputHandler.repairing.connect(_on_repairing)
-#	InputHandler.magneticShock.connect(_on_magnetic_shock)
-#	InputHandler.interaction.connect(_on_interaction)
+	InputHandler.magneticShock.connect(_on_magnetic_shock)
+	InputHandler.interaction.connect(_on_interaction)
 	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
-func _physics_process(_delta):
-	if Input.is_action_just_pressed("repairing"):
-		
-	if Input.is_action_pressed("magneticShock"):
-		magnetic_shock.activate_magnetic_shock(self)
-	if Input.is_action_just_pressed("interaction") and transistor != null:
-		transistor.toggle()
-	
+func _physics_process(_delta):	
 	direction = Input.get_vector("left", "right", "up", "down")
 
 func _process(_delta):
@@ -69,6 +62,13 @@ func _on_magnetism():
 
 func _on_repairing():
 	repairing.activate_repairing(tilemap, self)
+
+func _on_magnetic_shock():
+	magnetic_shock.activate_magnetic_shock(self)
+
+func _on_interaction():
+	if transistor != null:
+		transistor.toggle()
 
 func _on_dash_duration_timeout():
 	movement = Vector2.ZERO
