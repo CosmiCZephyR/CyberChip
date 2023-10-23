@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3ogaorkdqsci"]
 
+[ext_resource type="Script" path="res://UI/InvSlotGridContainer.gd" id="1_ijw0h"]
 [ext_resource type="PackedScene" uid="uid://ytbkgi6bjda6" path="res://UI/InventorySlotDisplay.tscn" id="1_mrdds"]
-[ext_resource type="Script" path="res://UI/InventoryDisplay.gd" id="1_toqlc"]
 
 [node name="InventoryDisplay" type="GridContainer"]
 anchors_preset = 15
@@ -12,7 +12,7 @@ grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
-script = ExtResource("1_toqlc")
+script = ExtResource("1_ijw0h")
 
 [node name="InventorySlotDisplay" parent="." instance=ExtResource("1_mrdds")]
 layout_mode = 2
