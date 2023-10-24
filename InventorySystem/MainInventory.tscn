@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://InventorySystem/InventoryContainer.gd" id="1_1t8vh"]
 [ext_resource type="Texture2D" uid="uid://dhu8mlohf8cui" path="res://sprites/TileMap2.png" id="2_b1d7w"]
-[ext_resource type="PackedScene" uid="uid://ch51yc7etmtt3" path="res://UI/InventoryRect.tscn" id="3_ytkud"]
+[ext_resource type="PackedScene" uid="uid://ch51yc7etmtt3" path="res://InventorySystem/UI/InventoryRect.tscn" id="3_ytkud"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xs16"]
 texture = ExtResource("2_b1d7w")
@@ -30,7 +30,3 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536
 [node name="InventoryContainer" parent="." instance=ExtResource("3_ytkud")]
 offset_left = 144.0
 offset_right = 224.0
-
-[node name="Control" type="GridContainer" parent="."]
-offset_right = 144.0
-offset_bottom = 192.0

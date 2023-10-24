@@ -19,8 +19,7 @@ var atlas_coords_dict: Dictionary = {
 func is_necessary_tile(id, atlas_coords, coords_dict):
 	return id == 1 and atlas_coords in coords_dict
 
-@warning_ignore("shadowed_variable_base_class")
-func activate_repairing(_tilemap: TileMap, owner) -> void:
+func activate_repairing(_tilemap: TileMap) -> void:
 	var tile_info = get_tile_info(_tilemap, tile_pos)
 	tile_id = tile_info[0]
 	tile_atlas_coords = tile_info[1]
