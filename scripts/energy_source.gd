@@ -10,8 +10,6 @@ var glowing_wires_layer: int = 3
 @onready var _manager = WiresManager
 @onready var _update_timer: Timer = $Timer
 
-var _material = preload("res://resources/tile_shader.tres")
-
 func _ready():
 	_update_timer.timeout.connect(self._timer_timeout)
 

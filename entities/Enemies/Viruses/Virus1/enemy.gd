@@ -82,7 +82,7 @@ class EnemyState:
 	func enter():
 		pass
 	
-	func update(delta):
+	func update(_delta):
 		pass
 	
 	func exit():
@@ -121,19 +121,22 @@ class WanderState:
 		wander_time = randf_range(MIN_TIME, MAX_TIME)
 		enemy.get_node("RandomTimer").start(wander_time)
 	
+	@warning_ignore("shadowed_variable")
 	func pick_direction(directions: Dictionary):
 		var total = 0
+		
 		for weight in directions.values():
 			total += weight
 		
-		var r = randi_range(0, total)
+		var random = randi_range(0, total)
 		var upto = 0
+		
 		for item in directions.keys():
-			if upto + directions[item] >= r:
+			if upto + directions[item] >= random:
 				return item
 			upto += directions[item]
 	
-	func update(delta):
+	func update(_delta):
 		if current_direction.x < 0:
 			enemy.get_node("VirusHit").flip_h = true
 		else: 

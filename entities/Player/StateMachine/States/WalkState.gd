@@ -14,7 +14,6 @@ func exit():
 		InputHandler.dash.disconnect(try_transition.bind(state_machine.DASH))
 
 func update():
-	player.direction = Input.get_vector("left", "right", "up", "down")
 	player.movement = player.direction * player.speed
 	player.set_velocity(player.movement)
 	player.move_and_slide()

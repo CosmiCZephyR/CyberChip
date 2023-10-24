@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch51yc7etmtt3"]
 
-[ext_resource type="Script" path="res://UI/InventoryRect.gd" id="1_qbxg4"]
-[ext_resource type="PackedScene" uid="uid://3ogaorkdqsci" path="res://UI/InventoryDisplay.tscn" id="1_wakmj"]
+[ext_resource type="Script" path="res://InventorySystem/UI/InventoryRect.gd" id="1_3df8i"]
+[ext_resource type="PackedScene" uid="uid://3ogaorkdqsci" path="res://InventorySystem/UI/InventoryDisplay.tscn" id="2_l1ih4"]
 
 [node name="InventoryRect" type="ColorRect"]
 offset_right = 80.0
 offset_bottom = 80.0
 color = Color(0.109804, 0.109804, 0.109804, 1)
-script = ExtResource("1_qbxg4")
+script = ExtResource("1_3df8i")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -18,5 +18,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="InventoryDisplay" parent="CenterContainer" instance=ExtResource("1_wakmj")]
+[node name="InventoryDisplay" parent="CenterContainer" instance=ExtResource("2_l1ih4")]
 layout_mode = 2

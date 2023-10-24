@@ -252,6 +252,7 @@ texture = ExtResource("7_khoxm")
 hframes = 5
 
 [node name="Door1" type="CollisionShape2D" parent="Room4/Door"]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_u3xy8")
 
@@ -319,5 +320,4 @@ collision_mask = 5
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]
 z_index = 5
-position = Vector2(-77, 137)
 collision_mask = 9

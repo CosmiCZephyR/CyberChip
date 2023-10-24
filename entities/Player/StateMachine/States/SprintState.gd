@@ -5,7 +5,6 @@ func enter():
 	player.speed = 100
 
 func update():
-	player.direction = Input.get_vector("left", "right", "up", "down")
 	player.movement = player.speed * player.direction
 	player.set_velocity(player.movement)
 	player.move_and_slide()

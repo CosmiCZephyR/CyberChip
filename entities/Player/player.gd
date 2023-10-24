@@ -2,9 +2,9 @@ class_name Player
 extends Entity
 
 # Main variables
-var speed: float = 65
 var direction: Vector2 = Vector2.ZERO
 const PLAYER_SIZE: Vector2 = Vector2(11,15)
+@export var speed: float = 65
 @onready var sec_timer: Timer = $SecTimer
 @onready var player_rect: Rect2 = Rect2(global_position - PLAYER_SIZE / 2, PLAYER_SIZE)
 
@@ -17,21 +17,23 @@ const PLAYER_SIZE: Vector2 = Vector2(11,15)
 var current_animation = "idle"
 
 # Rooms
-var current_room: Area2D: set = get_current_room
-var previous_room: Area2D = current_room
+var _current_room: Area2D: set = set_current_room
+var previous_room: Area2D = _current_room
 
 # Dash
 var can_dash: bool = true
-var dash_speed: int = 5000
 var dash_duration: float = 0.2
 var dash_cooldown: float = 2.0
+@export var dash_speed: int = 5000
+@warning_ignore("unused_parameter")
 @onready var duration_timer = $DashDuration
+@warning_ignore("unused_parameter")
 @onready var cooldown_timer = $DashCooldown
 
 # Abilities
-@onready var magnetism: Magnetism = load_ability("magnetism")
-@onready var repairing: Repairing = load_ability("repairing")
-@onready var magnetic_shock: Magnetic_shock = load_ability("magnetic_shock")
+@onready var _magnetism: Magnetism = load_ability("magnetism")
+@onready var _repairing: Repairing = load_ability("repairing")
+@onready var _magnetic_shock: Magnetic_shock = load_ability("magnetic_shock")
 
 # Components
 var nearby_component: Area2D
@@ -40,7 +42,7 @@ var transistor = null
 
 var is_paused = false
 
-func _ready():
+func _ready() -> void:
 	animation_tree.active = true
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magnetism.connect(_on_magnetism)
@@ -50,44 +52,44 @@ func _ready():
 	sec_timer.timeout.connect(_second_passed)
 	add_to_group("Player")
 
-func _physics_process(_delta):	
+func _physics_process(_delta) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 
-func _process(_delta):
+func _process(_delta) -> void:
 	update_animation_parameters()
 
-func _on_magnetism():
+func _on_magnetism() -> void:
 	var _delta = get_physics_process_delta_time()
-	magnetism.activate(player_rect, self, _delta)
+	_magnetism.activate(player_rect, self, _delta)
 
-func _on_repairing():
-	repairing.activate_repairing(tilemap, self)
+func _on_repairing() -> void:
+	_repairing.activate_repairing(tilemap, self)
 
-func _on_magnetic_shock():
-	magnetic_shock.activate_magnetic_shock(self)
+func _on_magnetic_shock() -> void:
+	_magnetic_shock.activate_magnetic_shock(self)
 
-func _on_interaction():
+func _on_interaction() -> void:
 	if transistor != null:
 		transistor.toggle()
 
-func _on_dash_duration_timeout():
+func _on_dash_duration_timeout() -> void:
 	movement = Vector2.ZERO
 	can_dash = false
 
-func _on_dash_cooldown_timeout():
+func _on_dash_cooldown_timeout() -> void:
 	can_dash = true
 
-func _on_transistor_available(_transistor):
+func _on_transistor_available(_transistor) -> void:
 	transistor = _transistor
 
-func _second_passed():
+func _second_passed() -> void:
 	self.regen_health()
 	self.regen_kosuki()
 
-func get_current_room(area):
-	current_room = area
+func set_current_room(_area) -> void:
+	_current_room = _area
 
-func update_animation_parameters():
+func update_animation_parameters() -> void:
 	current_animation = "idle"
 	
 	if movement != Vector2.ZERO:

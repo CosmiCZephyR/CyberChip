@@ -1,6 +1,6 @@
 extends ColorRect
 
-var inventory = preload("res://resources/Inventory.tres")
+var inventory = preload("res://InventorySystem/Resouces/Inventory.tres")
 
 func _can_drop_data(at_position, data):
 	return data is Dictionary and data.has("item")

@@ -6,7 +6,6 @@ var door: Door
 
 @onready var _tilemap: TileMap = get_parent()
 @onready var _source: EnergySource
-@onready var _manager = WiresManager
 
 var _material = preload("res://resources/tile_shader.tres")
 
@@ -20,7 +19,7 @@ func _ready():
 		if body is Door:
 			door = body
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var pos = _tilemap.local_to_map(global_position)
 	var neighbor_tile = _tilemap.get_neighbor_cell(pos, TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
 	
@@ -29,4 +28,3 @@ func _physics_process(delta):
 	if _tiledata and _tiledata.material == _material:
 		door.open_door(door)
 		$Sprite2D.material = _material
-#		_manager.stop()

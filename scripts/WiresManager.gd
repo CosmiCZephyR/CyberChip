@@ -11,8 +11,6 @@ const GLOWING_WIRES_LAYER: int = 3
 
 const ALT_TILE_ID = 1
 
-var _material: ShaderMaterial = preload("res://resources/tile_shader.tres")
-
 var is_running: bool = false
 
 var neighbors: Array[Vector2i] = [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0)]
@@ -28,17 +26,11 @@ var tiles_pos: Dictionary
 
 signal tile_filled
 
-#func start():
-#	is_running = true
-#
-#func stop():
-#	is_running = false
-
-func fool_fill(pos: Vector2i):
+func fool_fill(pos: Vector2i) -> void:
 	glowing_tiles.clear()
 	fill_tile(pos)
 
-func fill_tile(pos: Vector2i):
+func fill_tile(pos: Vector2i) -> void:
 	await get_tree().create_timer(0.5).timeout
 	neighboring_tiles = get_neighbors_pos(pos)
 	
@@ -64,7 +56,7 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 	
 	return neighbors_pos
 
-func check_wires_connection(area: Area2D):
+func check_wires_connection(area: Area2D) -> bool:
 	var collision_shape = area.get_node("CollisionShape2D")
 	var shape_extents = collision_shape.shape.extents
 	var area_rect = Rect2(area.global_position - shape_extents, shape_extents * 2)
