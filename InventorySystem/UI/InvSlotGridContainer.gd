@@ -1,11 +1,12 @@
 extends GridContainer
 
-var inventory: Inventory = preload("res://InventorySystem/Resouces/Inventory.tres")
+var inventory: Inventory = preload("res://InventorySystem/Resouces/Inventory.tres").duplicate_r(true)
 
 func _ready() -> void:
 	_setup_items_slots()
+	inventory.items_changed.connect(_setup_items_slots)
 
-func _setup_items_slots() -> void:
+func _setup_items_slots(_changed_indexes = []) -> void:
 	for item_index in inventory.items.size():
 		_update_inventory_slot_display(item_index)
 

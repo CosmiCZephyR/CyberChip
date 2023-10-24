@@ -63,7 +63,7 @@ func _on_magnetism() -> void:
 	_magnetism.activate(player_rect, self, _delta)
 
 func _on_repairing() -> void:
-	_repairing.activate_repairing(tilemap, self)
+	_repairing.activate_repairing(tilemap)
 
 func _on_magnetic_shock() -> void:
 	_magnetic_shock.activate_magnetic_shock(self)

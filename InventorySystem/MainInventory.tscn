@@ -20,6 +20,7 @@ texture = ExtResource("2_b1d7w")
 sources/0 = SubResource("TileSetAtlasSource_4xs16")
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_1t8vh")
 
 [node name="EquippedItemsContainer" type="TileMap" parent="." groups=["Tilemaps"]]
@@ -30,3 +31,9 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536
 [node name="InventoryContainer" parent="." instance=ExtResource("3_ytkud")]
 offset_left = 144.0
 offset_right = 224.0
+
+[node name="InventoryContainer2" parent="." instance=ExtResource("3_ytkud")]
+offset_left = 144.0
+offset_top = 109.5
+offset_right = 224.0
+offset_bottom = 189.5
