@@ -39,17 +39,26 @@ func regen_kosuki():
 
 func modify_kosuki(amount):
 	var new_kosuki = current_kosuki + amount
-	if new_kosuki < 0: current_kosuki = 0
-	if new_kosuki > max_kosuki: current_kosuki = max_kosuki
+	
+	if new_kosuki < 0:
+		current_kosuki = 0
+	
+	if new_kosuki > max_kosuki:
+		current_kosuki = max_kosuki
+	
 	else: current_kosuki += amount
 
 func apply_damage(amount):
 	print("hit")
-	if armor > 0: amount = amount * ((100 - armor) * .01)
-	if current_health > amount: current_health -= amount
-	else: 
+	
+	if armor > 0:
+		amount = amount * ((100 - armor) * 0.01)
+	
+	if current_health > amount:
+		current_health -= amount
+	
+	else:
 		print("death")
-#		queue_free()
 
 func _physics_process(_delta):
 	frame_count += 1

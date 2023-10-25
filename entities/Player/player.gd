@@ -24,7 +24,7 @@ var previous_room: Area2D = _current_room
 var can_dash: bool = true
 var dash_duration: float = 0.2
 var dash_cooldown: float = 2.0
-@export var dash_speed: int = 5000
+var dash_speed: int = 5000
 @warning_ignore("unused_parameter")
 @onready var duration_timer = $DashDuration
 @warning_ignore("unused_parameter")
@@ -63,7 +63,7 @@ func _on_magnetism() -> void:
 	_magnetism.activate(player_rect, self, _delta)
 
 func _on_repairing() -> void:
-	_repairing.activate_repairing(tilemap)
+	_repairing.activate_repairing(tilemap, self)
 
 func _on_magnetic_shock() -> void:
 	_magnetic_shock.activate_magnetic_shock(self)

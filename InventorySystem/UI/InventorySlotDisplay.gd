@@ -23,7 +23,6 @@ func _draw_item() -> void:
 	else:
 		_item_texture_rect.texture = load("res://sprites/Slot.png")
 
-
 @warning_ignore("unused_parameter")
 func _get_drag_data(at_position):
 	return pickup_item(at_position)
@@ -67,5 +66,5 @@ func drop_item(at_position, droped_data) -> void:
 	inventory.set_item(_local_target_item_index, droped_data.item)
 	
 	var _previous_slot = get_parent().get_child(droped_data.item_index)
-	_previous_slot.item_data = item_data
+	_previous_slot.item_data = set_item(item_data)
 	item_data = droped_data.item

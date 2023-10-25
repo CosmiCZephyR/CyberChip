@@ -15,9 +15,13 @@ func _ready():
 	Event.transistor_activated.connect(self.transistor_door_open)
 
 func _process(_delta):
-	wires_connected = _wires_manager.check_wires_connection(_room)
+	_is_wire_connected()
 	if wires_connected and (not _room.has_node("Transistor") or transistor_on):
 		open_door(self)
+
+func _is_wire_connected():
+	await get_tree().create_timer(0.5).timeout
+	return _wires_manager.check_wires_connection(_room)
 
 func open_door(_door) -> void:
 	if not (open and _animation.is_playing()):

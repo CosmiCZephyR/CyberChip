@@ -2,7 +2,7 @@ extends Node
 
 class_name WiresManange
 
-@onready var tilemap: TileMap = get_tree().current_scene.get_node("TileMap2")
+@onready var tilemap: TileMap
 @onready var tiledata: TileData
 
 const WIRE_LAYER: int = 1
@@ -25,6 +25,9 @@ var source_id: int
 var tiles_pos: Dictionary
 
 signal tile_filled
+
+func _physics_process(delta):
+	tilemap = get_tree().current_scene.get_node_or_null("TileMap2")
 
 func fool_fill(pos: Vector2i) -> void:
 	glowing_tiles.clear()
