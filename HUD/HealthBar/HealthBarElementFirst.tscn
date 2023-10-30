@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://csjmp1q4i4g2x"]
+
+[ext_resource type="Texture2D" uid="uid://doe6cyqcqfkyh" path="res://sprites/HealthBar/HealthBarElementSpecial.png" id="1_do7tf"]
+[ext_resource type="Script" path="res://scripts/HealthBarElement.gd" id="2_mdi36"]
+[ext_resource type="Texture2D" uid="uid://bcoq174bdbpwp" path="res://sprites/HealthBar/HealthBarElementSpecialSpecialUpper.png" id="2_p2ahm"]
+
+[node name="HealthBarElement" type="TextureRect"]
+offset_right = 9.0
+offset_bottom = 10.0
+texture = ExtResource("1_do7tf")
+stretch_mode = 4
+script = ExtResource("2_mdi36")
+
+[node name="HealthBarElementTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 9.0
+offset_bottom = 10.0
+texture = ExtResource("2_p2ahm")
+stretch_mode = 2

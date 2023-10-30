@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw2foq3dcmsj1"]
+
+[ext_resource type="PackedScene" uid="uid://d0ecj4vlkwv5u" path="res://HUD/EnergyBar/FirstElement.tscn" id="1_vsq72"]
+[ext_resource type="PackedScene" uid="uid://cydcgs1lgitgt" path="res://HUD/EnergyBar/Element.tscn" id="2_33nyu"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_constants/separation = -3
+
+[node name="TextureRect" parent="." instance=ExtResource("1_vsq72")]
+layout_mode = 2
+color = Color(0.105882, 0.141176, 0.278431, 1)
+
+[node name="TextureRect2" parent="." instance=ExtResource("2_33nyu")]
+layout_mode = 2
+color = Color(0.168627, 0.305882, 0.584314, 1)
+
+[node name="TextureRect3" parent="." instance=ExtResource("2_33nyu")]
+layout_mode = 2
+color = Color(0.152941, 0.537255, 0.803922, 1)
+
+[node name="TextureRect4" parent="." instance=ExtResource("2_33nyu")]
+layout_mode = 2
+color = Color(0.258824, 0.74902, 0.909804, 1)
+
+[node name="TextureRect5" parent="." instance=ExtResource("2_33nyu")]
+layout_mode = 2
+color = Color(0.45098, 0.937255, 0.909804, 1)

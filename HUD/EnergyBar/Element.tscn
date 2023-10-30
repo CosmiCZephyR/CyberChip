@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cydcgs1lgitgt"]
+
+[ext_resource type="Texture2D" uid="uid://cpsh6me577ra2" path="res://sprites/EnergyBar/Element.png" id="1_ogo4f"]
+[ext_resource type="Script" path="res://HUD/EnergyBar/EnergyBarElement.gd" id="2_5mqtv"]
+[ext_resource type="Texture2D" uid="uid://bwsj1mq7617ra" path="res://sprites/EnergyBar/ElementUpper.png" id="2_ai5x0"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("1_ogo4f")
+stretch_mode = 2
+script = ExtResource("2_5mqtv")
+
+[node name="EnergyBarElementTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("2_ai5x0")
+stretch_mode = 2

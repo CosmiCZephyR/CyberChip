@@ -34,6 +34,6 @@ offset_right = 224.0
 
 [node name="InventoryContainer2" parent="." instance=ExtResource("3_ytkud")]
 offset_left = 144.0
-offset_top = 109.5
+offset_top = 112.0
 offset_right = 224.0
-offset_bottom = 189.5
+offset_bottom = 192.0

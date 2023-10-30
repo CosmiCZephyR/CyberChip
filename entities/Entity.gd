@@ -1,12 +1,16 @@
+class_name Entity
 extends CharacterBody2D
 
-class_name Entity
+signal damage_applied
+signal health_healed
+
+signal kosuki_changed
 
 var movement: Vector2 = Vector2.ZERO
 
 # Health variables
 
-var max_health: int = 200
+var max_health: int = 150
 var current_health: int = 100
 var health_regen: int = 1
 var armor: int = 0
@@ -29,6 +33,9 @@ func regen_health():
 			current_health = max_health
 		else:
 			current_health += health_regen
+	
+	if current_health % 25 == 0:
+		emit_signal("health_healed")
 
 func regen_kosuki():
 	if current_kosuki < max_kosuki:
@@ -49,7 +56,7 @@ func modify_kosuki(amount):
 	else: current_kosuki += amount
 
 func apply_damage(amount):
-	print("hit")
+	emit_signal("damage_applied")
 	
 	if armor > 0:
 		amount = amount * ((100 - armor) * 0.01)

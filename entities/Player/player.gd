@@ -37,20 +37,17 @@ var dash_speed: int = 5000
 
 # Components
 var nearby_component: Area2D
-
-var transistor = null
-
+var transistor: Transistor
 var is_paused = false
 
 func _ready() -> void:
-	animation_tree.active = true
 	Event.transistor_selected.connect(_on_transistor_available)
-	InputHandler.magnetism.connect(_on_magnetism)
-	InputHandler.repairing.connect(_on_repairing)
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
 	InputHandler.interaction.connect(_on_interaction)
+	InputHandler.magnetism.connect(_on_magnetism)
+	InputHandler.repairing.connect(_on_repairing)
 	sec_timer.timeout.connect(_second_passed)
-	add_to_group("Player")
+	animation_tree.active = true
 
 func _physics_process(_delta) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")

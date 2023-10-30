@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://entities/Player/player.gd" id="1_bany2"]
 [ext_resource type="Texture2D" uid="uid://dn15dawnaeead" path="res://sprites/Animations/Player.png" id="2_oevav"]
-[ext_resource type="Texture2D" uid="uid://dgo5sytisri04" path="res://sprites/Hud.png" id="3_vqmdv"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="4_yv6h0"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="5_3qshv"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://drcscpts61ybs" path="res://resources/Player.tres" id="6_3l1u2"]
 [ext_resource type="PackedScene" uid="uid://d2jp1hekqb3dq" path="res://scenes/copter.tscn" id="7_l3gpq"]
 [ext_resource type="Script" path="res://entities/Player/StateMachine/PlayerStateMachine.gd" id="8_dnsyb"]
+[ext_resource type="PackedScene" uid="uid://dwa1kd3so14xd" path="res://HUD/Hud.tscn" id="8_maodr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw2vj"]
 size = Vector2(10, 11)
@@ -346,7 +346,7 @@ _data = {
 "Walk_W": SubResource("Animation_atxqp")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 collision_layer = 8
 script = ExtResource("1_bany2")
@@ -371,12 +371,6 @@ drag_bottom_margin = 0.05
 texture = ExtResource("2_oevav")
 hframes = 9
 vframes = 9
-
-[node name="Hud" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-80, -24)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_vqmdv")
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 2.0
@@ -435,6 +429,10 @@ autostart = true
 
 [node name="PlayerStateMachine" type="Node2D" parent="."]
 script = ExtResource("8_dnsyb")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("8_maodr")]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

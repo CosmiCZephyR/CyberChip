@@ -232,6 +232,7 @@ position = Vector2(30, 7)
 shape = SubResource("RectangleShape2D_vgitu")
 
 [node name="Room4" type="Area2D" parent="."]
+visible = false
 position = Vector2(-262, -44)
 collision_mask = 9
 script = ExtResource("6_66qk2")
@@ -320,5 +321,5 @@ collision_mask = 5
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]
 z_index = 5
-position = Vector2(-93, 4)
+position = Vector2(-81, 143)
 collision_mask = 9
