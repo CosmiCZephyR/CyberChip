@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://entities/Player/StateMachine/PlayerStateMachine.gd" id="8_dnsyb"]
 [ext_resource type="PackedScene" uid="uid://dwa1kd3so14xd" path="res://HUD/Hud.tscn" id="8_maodr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw2vj"]
-size = Vector2(10, 11)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnxgu"]
+radius = 4.0
+height = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frsso"]
 size = Vector2(6, 8)
@@ -352,9 +353,8 @@ collision_layer = 8
 script = ExtResource("1_bany2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_pw2vj")
+shape = SubResource("CapsuleShape2D_nnxgu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
@@ -380,6 +380,7 @@ one_shot = true
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_yv6h0")
@@ -389,6 +390,7 @@ visible = false
 shape = SubResource("RectangleShape2D_frsso")
 
 [node name="AttackHitBox" type="Area2D" parent="."]
+visible = false
 disable_mode = 1
 collision_layer = 2
 collision_mask = 4
@@ -431,8 +433,8 @@ autostart = true
 script = ExtResource("8_dnsyb")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_maodr")]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
+scale = Vector2(5, 5)
+transform = Transform2D(5, 0, 0, 5, 0, 0)
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

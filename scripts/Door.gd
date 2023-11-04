@@ -1,26 +1,26 @@
 class_name Door
 extends StaticBody2D
 
-var wires_connected: bool 
-var open: bool = false
-var transistor_on: bool = false
+@onready var _room: Area2D = get_parent()
+@onready var _animation: AnimationPlayer = get_node("AnimationPlayer")
+@onready var _wires_manager = WiresManager
 
 @export var transistor: Transistor
 
-@onready var _wires_manager = WiresManager
-@onready var _animation: AnimationPlayer = get_node("AnimationPlayer")
-@onready var _room: Area2D = get_parent()
+var wires_connected: bool 
+var open: bool = false
+var transistor_on: bool = false
 
 func _ready():
 	Event.transistor_activated.connect(self.transistor_door_open)
 
 func _process(_delta):
-	_is_wire_connected()
-	if wires_connected and (not _room.has_node("Transistor") or transistor_on):
+	wires_connected = await _is_wire_connected()
+	if wires_connected and not open and (not _room.has_node("Transistor") or transistor_on):
 		open_door(self)
 
 func _is_wire_connected():
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.1).timeout
 	return _wires_manager.check_wires_connection(_room)
 
 func open_door(_door) -> void:

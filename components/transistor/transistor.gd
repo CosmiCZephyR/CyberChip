@@ -30,10 +30,10 @@ func get_state() -> bool:
 	return is_on
 
 func player_in_zone() -> bool:
-	var final_flag := false
-	var all_bodies = get_overlapping_bodies()
+	var final_flag: bool = false
+	var all_bodies: Array[Node2D] = get_overlapping_bodies()
 	
 	for body in all_bodies:
-		final_flag = final_flag || body.is_in_group("Player")
+		final_flag = true if body.is_in_group("Player") else final_flag
 	
 	return final_flag

@@ -44,7 +44,7 @@ func _ready() -> void:
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
 	InputHandler.interaction.connect(_on_interaction)
-	InputHandler.magnetism.connect(_on_magnetism)
+#	InputHandler.magnetism.connect(_on_magnetism)
 	InputHandler.repairing.connect(_on_repairing)
 	sec_timer.timeout.connect(_second_passed)
 	animation_tree.active = true
@@ -54,10 +54,13 @@ func _physics_process(_delta) -> void:
 
 func _process(_delta) -> void:
 	update_animation_parameters()
+	
+	if Input.is_action_pressed("magnetism"):
+		_magnetism.activate(player_rect, self, _delta)
 
-func _on_magnetism() -> void:
-	var _delta = get_physics_process_delta_time()
-	_magnetism.activate(player_rect, self, _delta)
+#func _on_magnetism() -> void:
+#	var _delta = get_physics_process_delta_time()
+#	_magnetism.activate(player_rect, self, _delta)
 
 func _on_repairing() -> void:
 	_repairing.activate_repairing(tilemap, self)

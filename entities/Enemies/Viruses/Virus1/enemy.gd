@@ -4,6 +4,7 @@ class_name Enemy
 
 var enemy_virus: Entity = Entity.new()
 
+@warning_ignore("unused_private_class_variable")
 var _velocity: Vector2 = Vector2.ZERO
 
 @onready var _timer: Timer = $Timer

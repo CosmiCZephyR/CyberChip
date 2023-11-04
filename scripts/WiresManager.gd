@@ -26,7 +26,7 @@ var tiles_pos: Dictionary
 
 signal tile_filled
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	tilemap = get_tree().current_scene.get_node_or_null("TileMap2")
 
 func fool_fill(pos: Vector2i) -> void:

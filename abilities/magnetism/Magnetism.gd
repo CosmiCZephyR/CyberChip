@@ -11,14 +11,15 @@ var extents
 
 func activate(player_rect: Rect2, master: Node, delta: float) -> void:
 	magnetic_objects = _get_magnetic_objects()
+	
 	for object in magnetic_objects:
 		collision_shape = object.get_node("CollisionShape2D")
 		shape = collision_shape.shape
 		extents = shape.extents
 		object_rect = Rect2(object.global_position - extents, extents * 2)
 		
-		if player_rect.intersects(object_rect):
-			continue
+#		if player_rect.intersects(object_rect):
+#			continue
 		
 		direction = (master.global_position - object.global_position).normalized()
 		object.move_and_collide(direction * 100 * delta)
