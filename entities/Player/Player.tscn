@@ -353,7 +353,6 @@ collision_layer = 8
 script = ExtResource("1_bany2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_nnxgu")
 
 [node name="Camera2D" type="Camera2D" parent="."]

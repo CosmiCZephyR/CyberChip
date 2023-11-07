@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwa1kd3so14xd"]
+[gd_scene load_steps=5 format=3 uid="uid://dwa1kd3so14xd"]
 
 [ext_resource type="Texture2D" uid="uid://dgo5sytisri04" path="res://sprites/Hud.png" id="1_4th7j"]
+[ext_resource type="Script" path="res://HUD/TheBestScriptEver.gd" id="1_07gsy"]
 [ext_resource type="PackedScene" uid="uid://bblulc0yuqxvj" path="res://HUD/HealthBar/HealthBar.tscn" id="2_yqp03"]
 [ext_resource type="PackedScene" uid="uid://bw2foq3dcmsj1" path="res://HUD/EnergyBar/EnergyBar.tscn" id="3_w4j14"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_07gsy")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

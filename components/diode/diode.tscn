@@ -36,6 +36,4 @@ autostart = true
 visible = false
 position = Vector2(0, 14)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-
 [connection signal="timeout" from="LaserCooldown" to="." method="variable_laser"]
