@@ -320,7 +320,6 @@ collision_mask = 5
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]
 z_index = 5
-position = Vector2(-105, -5)
 collision_mask = 9
 
 [node name="StaticBody2D" parent="." instance=ExtResource("13_dfbjn")]
