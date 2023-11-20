@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var item = load("res://InventorySystem/Resouces/Resistor.tres")
+
 var _flag: bool = false
 
 var _speed_modifier: float = 0.666

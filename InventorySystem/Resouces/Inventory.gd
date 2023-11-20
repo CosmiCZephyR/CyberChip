@@ -4,8 +4,19 @@ extends Resource
 signal items_changed(indexes)
 
 @export var items: Array[Resource] = [
-	null, null, null, null, null, null, null, null, null, null, null, null
+#	null, null, null, null, null, null, null, null, null, null, null, null
 ]
+
+var size: int = 12
+
+func _init(_size = 12):
+	size = _size
+	_setup(size)
+
+func _setup(_arr_size):
+	for idx in _arr_size:
+		items.append(null)
+		pass
 
 #@warning_ignore()
 func duplicate_r(_flag: bool = false) -> Resource:

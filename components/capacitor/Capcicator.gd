@@ -1,5 +1,7 @@
 extends Area2D
 
+var item
+
 var speed_modifier: float = 1.333
 var normal_speed: float = 65
 
