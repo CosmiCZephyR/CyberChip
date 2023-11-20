@@ -22,9 +22,9 @@ var previous_room: Area2D = _current_room
 
 # Dash
 var can_dash: bool = true
-var dash_duration: float = 0.2
-var dash_cooldown: float = 2.0
 var dash_speed: int = 5000
+var dash_cooldown: float = 2.0
+var dash_duration: float = 0.2
 @warning_ignore("unused_parameter")
 @onready var duration_timer = $DashDuration
 @warning_ignore("unused_parameter")
@@ -36,15 +36,14 @@ var dash_speed: int = 5000
 @onready var _magnetic_shock: Magnetic_shock = load_ability("magnetic_shock")
 
 # Components
-var nearby_component: Area2D
+var is_paused: bool = false
 var transistor: Transistor
-var is_paused = false
+var nearby_component: Area2D
 
 func _ready() -> void:
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
 	InputHandler.interaction.connect(_on_interaction)
-#	InputHandler.magnetism.connect(_on_magnetism)
 	InputHandler.repairing.connect(_on_repairing)
 	sec_timer.timeout.connect(_second_passed)
 	animation_tree.active = true
@@ -57,10 +56,6 @@ func _process(_delta) -> void:
 	
 	if Input.is_action_pressed("magnetism"):
 		_magnetism.activate(player_rect, self, _delta)
-
-#func _on_magnetism() -> void:
-#	var _delta = get_physics_process_delta_time()
-#	_magnetism.activate(player_rect, self, _delta)
 
 func _on_repairing() -> void:
 	_repairing.activate_repairing(tilemap, self)

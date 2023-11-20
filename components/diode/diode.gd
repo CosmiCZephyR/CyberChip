@@ -1,6 +1,5 @@
-extends Area2D
-
 class_name Diode
+extends Area2D
 
 enum States {PERMANENT_LASER, VARIABLE_LASER, PERMANENT_LIGHT, VARIABLE_LIGHT}
 

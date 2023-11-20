@@ -13,7 +13,7 @@ radius = 3.5
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymre8"]
-size = Vector2(22.625, 17)
+size = Vector2(11.625, 16)
 
 [sub_resource type="Animation" id="Animation_3ae4x"]
 resource_name = "AttackE"
@@ -117,7 +117,7 @@ script = ExtResource("4_joe55")
 damage = 25
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHitBox"]
-position = Vector2(9.6875, 2.5)
+position = Vector2(4.1875, 2)
 shape = SubResource("RectangleShape2D_ymre8")
 
 [node name="VirusHit" type="Sprite2D" parent="."]

@@ -3,4 +3,4 @@ extends Resource
 
 @export var name: String = ""
 @export var texture: Texture
-@export var packed_scene: PackedScene
+@export var source_scene: PackedScene

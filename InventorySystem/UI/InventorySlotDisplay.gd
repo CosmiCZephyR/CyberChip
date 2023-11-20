@@ -41,7 +41,6 @@ func pickup_item(at_position):
 		_drag_preview.position = Vector2.ONE
 		
 		set_drag_preview(_drag_preview)
-#		item_data = null
 		
 		return data
 
@@ -62,7 +61,4 @@ func drop_item(at_position, droped_data) -> void:
 	inventory.swap_items(_local_target_item_index, droped_data)
 	inventory.set_item(_local_target_item_index, droped_data.item)
 	
-	
 	var _previous_slot = get_parent().get_child(droped_data.item_index)
-#	_previous_slot.item_data = set_item(item_data)
-#	item_data = droped_data.item

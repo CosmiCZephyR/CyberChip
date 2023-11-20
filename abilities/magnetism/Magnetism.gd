@@ -1,13 +1,12 @@
-extends Node
-
 class_name Magnetism
+extends Node
 
 var magnetic_objects: Array
 var collision_shape: CollisionShape2D
 var direction: Vector2
 var object_rect: Rect2
 var shape: Shape2D
-var extents
+var extents: Vector2
 
 func activate(player_rect: Rect2, master: Node, delta: float) -> void:
 	magnetic_objects = _get_magnetic_objects()

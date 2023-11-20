@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://df34u4nhwe8vf"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://df34u4nhwe8vf"]
 
 [ext_resource type="Script" path="res://InventorySystem/Resouces/Item.gd" id="1_1mv4c"]
+[ext_resource type="PackedScene" uid="uid://c86jstn7ui42y" path="res://components/resistor/resistor.tscn" id="1_g03uc"]
 [ext_resource type="Texture2D" uid="uid://bkhbl5rbly7lb" path="res://sprites/component_sprites/Resistor2.3ingame.png" id="2_hap71"]
 
 [resource]
 script = ExtResource("1_1mv4c")
 name = "Resistor"
 texture = ExtResource("2_hap71")
+source_scene = ExtResource("1_g03uc")

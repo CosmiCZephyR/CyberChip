@@ -25,6 +25,7 @@ func _on_timer_timeout() -> void:
 		
 		if body.is_in_group("Player"):
 			create_lightning()
+			print_debug("Da")
 
 func create_lightning() -> void:
 	for point in range(1, _line.points.size() - 1):

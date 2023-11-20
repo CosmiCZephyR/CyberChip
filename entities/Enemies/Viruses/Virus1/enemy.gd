@@ -2,8 +2,6 @@ extends Entity
 
 class_name Enemy
 
-var enemy_virus: Entity = Entity.new()
-
 @warning_ignore("unused_private_class_variable")
 var _velocity: Vector2 = Vector2.ZERO
 
@@ -12,22 +10,23 @@ var _velocity: Vector2 = Vector2.ZERO
 @onready var _player: Player = get_parent().get_node("../Player")
 @onready var _room: Area2D = get_parent()
 
-#shock variables
-var is_shocked = false
-var shock_duration = 3
-var speed = 50 
+# shock variables
+var is_shocked: bool = false
+var shock_duration: float = 3
+var speed: float = 50 
 
-#room's corners
-var first_corner
-var second_corner
+# room's corners
+var first_corner: Vector2
+var second_corner: Vector2
 
-#states
+# states
 var WANDER: WanderState = WanderState.new(self)
 var FOLLOW: FollowState = FollowState.new(self)
 var ATTACK: AttackState = AttackState.new(self)
 
 var state: EnemyState = WANDER
 
+# signals
 signal following_started
 signal following_finished
 signal zone_exited
