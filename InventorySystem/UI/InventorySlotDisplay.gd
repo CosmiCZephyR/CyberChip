@@ -5,17 +5,21 @@ extends CenterContainer
 @onready var _tile_map: TileMap = get_tree().get_first_node_in_group("Tilemaps")
 
 @onready var inventory = get_parent().inventory
+
+@export_range(0, 10000)
+var far: int = 5000
+
 var item_data = null : set = set_item
+
+func set_item(value):
+	item_data = value
+	_draw_item()
 
 # Vector and index position of items and convert them
 # index = get_index()
 # columns = get_parent().columns
 # vector_position = Vector2i(index % columns, index / columns)
 # index_position = vector_position.y * columns + vector_position.x
-
-func set_item(value):
-	item_data = value
-	_draw_item()
 
 func _draw_item() -> void:
 	if item_data is Item:
@@ -34,6 +38,7 @@ func pickup_item(at_position):
 		var data = {}
 		data.item = _item
 		data.item_index = _item_index
+		data.item_scene = _item.source_scene
 		data.inventory_res = inventory
 		
 		var _drag_preview = TextureRect.new()

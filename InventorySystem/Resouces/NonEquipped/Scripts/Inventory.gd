@@ -3,9 +3,7 @@ extends Resource
 
 signal items_changed(indexes)
 
-@export var items: Array[Resource] = [
-#	null, null, null, null, null, null, null, null, null, null, null, null
-]
+@export var items: Array[Resource]
 
 var size: int = 12
 
@@ -18,7 +16,6 @@ func _setup(_arr_size):
 		items.append(null)
 		pass
 
-#@warning_ignore()
 func duplicate_r(_flag: bool = false) -> Resource:
 	var _douplicate = duplicate(_flag)
 	

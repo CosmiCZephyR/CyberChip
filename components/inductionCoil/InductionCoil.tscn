@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cltk3ibp8xaaa"]
 
-[ext_resource type="Script" path="res://InductionCoil.gd" id="1_v6pkw"]
+[ext_resource type="Script" path="res://scripts/InductionCoil.gd" id="1_tm3xu"]
 [ext_resource type="Texture2D" uid="uid://dw0ec7ojdegl1" path="res://sprites/component_sprites/InductionCoil.png" id="2_gqwtq"]
 [ext_resource type="Texture2D" uid="uid://b5qutxd0q66ks" path="res://sprites/component_sprites/Lightning.png" id="3_juqht"]
 
@@ -11,7 +11,7 @@ size = Vector2(14, 14)
 radius = 64.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
-script = ExtResource("1_v6pkw")
+script = ExtResource("1_tm3xu")
 
 [node name="InductionCoil" type="Sprite2D" parent="."]
 texture = ExtResource("2_gqwtq")

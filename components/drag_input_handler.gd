@@ -1,10 +1,17 @@
 extends Control
 
+# I think, that signals are need here
+
+signal item_dragged
+signal data_dropped
+
+
 #func set_item(value):
 #	item_data = value
 #	_draw_item()
 
-func _get_drag_data(at_position):
+func _get_drag_data(at_position) -> Variant:
+	emit_signal("item_dragged")
 	return pickup_item(at_position)
 
 func pickup_item(at_position):
@@ -15,9 +22,10 @@ func pickup_item(at_position):
 		var data = {}
 		data.item = _item
 		data.item_index = _item_index
+		data.item_scene = _item.source_scene
 		
 		#HACK:
-		data.inventory_res = $"../../".inventory
+		data.inventory_res = $"../../../".inventory
 		
 		var _drag_preview = TextureRect.new()
 		_drag_preview.texture = _item.texture
@@ -27,11 +35,11 @@ func pickup_item(at_position):
 		
 		return data
 
-#func _can_drop_data(at_position, data) -> bool:
-#	return can_drop_item(at_position, data)
+func _can_drop_data(at_position, data) -> bool:
+	return can_drop_item(at_position, data)
 
-#func can_drop_item(at_position, data) -> bool:
-#	return data is Dictionary and data.has("item")
+func can_drop_item(at_position, data) -> bool:
+	return data is Dictionary and data.has("item")
 
 #func _drop_data(at_position, droped_data) -> void:
 #	drop_item(at_position, droped_data)

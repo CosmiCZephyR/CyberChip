@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf6yiy3ayep4x"]
+[gd_scene load_steps=12 format=3 uid="uid://cf6yiy3ayep4x"]
 
 [ext_resource type="Script" path="res://InventorySystem/InventoryContainer.gd" id="1_1t8vh"]
 [ext_resource type="Texture2D" uid="uid://dhu8mlohf8cui" path="res://sprites/TileMap2.png" id="2_b1d7w"]
 [ext_resource type="Script" path="res://InventorySystem/EquippedItemsContainer.gd" id="3_71w31"]
 [ext_resource type="PackedScene" uid="uid://ch51yc7etmtt3" path="res://InventorySystem/UI/InventoryRect.tscn" id="3_ytkud"]
-[ext_resource type="Resource" uid="uid://mc4e2kwgx7xr" path="res://InventorySystem/Resouces/TileInventory.tres" id="4_x6vml"]
+[ext_resource type="Resource" uid="uid://df34u4nhwe8vf" path="res://InventorySystem/Resouces/NonEquipped/Resources/Resistor.tres" id="4_f5f6j"]
 [ext_resource type="Script" path="res://InventorySystem/equipped_items_drag_input_handler.gd" id="4_yeocc"]
+[ext_resource type="Script" path="res://InventorySystem/Resouces/NonEquipped/Scripts/Inventory.gd" id="5_d7swm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecno8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xs16"]
 texture = ExtResource("2_b1d7w")
@@ -22,16 +25,21 @@ texture = ExtResource("2_b1d7w")
 [sub_resource type="TileSet" id="TileSet_fn80i"]
 sources/0 = SubResource("TileSetAtlasSource_4xs16")
 
+[sub_resource type="Resource" id="Resource_ir1eu"]
+script = ExtResource("5_d7swm")
+items = Array[Resource]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, ExtResource("4_f5f6j"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
 [node name="Node2D" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_1t8vh")
 
 [node name="EquippedItemsContainer" type="TileMap" parent="." groups=["Tilemaps"]]
+material = SubResource("ShaderMaterial_ecno8")
 tile_set = SubResource("TileSet_fn80i")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 6, 65536, 0, 7, 65536, 0, 8, 131072, 0, 65544, 131072, 1, 131080, 131072, 1, 196616, 131072, 1, 262152, 131072, 1, 327688, 131072, 1, 393224, 131072, 1, 458760, 131072, 1, 524296, 131072, 1, 589832, 131072, 1, 655368, 131072, 1, 720904, 131072, 2, 720903, 65536, 2, 720902, 65536, 2, 720901, 65536, 2, 720900, 65536, 2, 720899, 65536, 2, 720898, 65536, 2, 720897, 65536, 2, 720896, 0, 2, 655360, 0, 1, 589824, 0, 1, 524288, 0, 1, 458752, 0, 1, 393216, 0, 1, 327680, 0, 1, 262144, 0, 1, 196608, 0, 1, 131072, 0, 1, 65536, 0, 1, 131073, 65536, 1, 196609, 65536, 1, 262145, 65536, 1, 327681, 65536, 1, 393217, 65536, 1, 458753, 65536, 1, 524289, 65536, 1, 655361, 65536, 1, 65538, 65536, 1, 131074, 65536, 1, 458754, 65536, 1, 524290, 65536, 1, 589826, 65536, 1, 655362, 65536, 1, 65539, 65536, 1, 393219, 65536, 1, 458755, 65536, 1, 655363, 65536, 1, 65540, 65536, 1, 196612, 65536, 1, 262148, 65536, 1, 327684, 65536, 1, 458756, 65536, 1, 524292, 65536, 1, 655364, 65536, 1, 65541, 65536, 1, 131077, 65536, 1, 196613, 65536, 1, 262149, 65536, 1, 327685, 65536, 1, 393221, 65536, 1, 458757, 65536, 1, 524293, 65536, 1, 655365, 65536, 1, 65542, 65536, 1, 262150, 65536, 1, 327686, 65536, 1, 393222, 65536, 1, 458758, 65536, 1, 655366, 65536, 1, 65543, 65536, 1, 131079, 65536, 1, 196615, 65536, 1, 262151, 65536, 1, 327687, 65536, 1, 458759, 65536, 1, 524295, 65536, 1, 589831, 65536, 1, 655367, 65536, 1, 4, 65536, 0, 5, 65536, 0, 393223, 65536, 1, 589825, 65536, 1, 327682, 65536, 1, 393218, 65536, 1, 196611, 65536, 1, 196610, 65536, 1, 131078, 65536, 1, 393220, 65536, 1, 196614, 65536, 1, 65537, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 262146, 65536, 1, 262147, 65536, 1, 327683, 65536, 1, 524291, 65536, 1, 589827, 65536, 1, 589828, 65536, 1, 589829, 65536, 1, 589830, 65536, 1, 524294, 65536, 1)
 script = ExtResource("3_71w31")
-inventory = ExtResource("4_x6vml")
+inventory = SubResource("Resource_ir1eu")
 
 [node name="DragNDropInputHandler" type="Control" parent="EquippedItemsContainer"]
 layout_mode = 3
@@ -43,9 +51,10 @@ script = ExtResource("4_yeocc")
 
 [node name="InventoryContainer" parent="." instance=ExtResource("3_ytkud")]
 offset_left = 144.0
-offset_right = 224.0
+offset_right = 208.0
 
 [node name="InventoryContainer2" parent="." instance=ExtResource("3_ytkud")]
+visible = false
 offset_left = 144.0
 offset_top = 112.0
 offset_right = 224.0

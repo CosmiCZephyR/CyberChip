@@ -1,3 +1,4 @@
+## Default entity class
 class_name Entity
 extends CharacterBody2D
 
@@ -27,6 +28,7 @@ var frame_count: int = 0
 var is_busy: bool = false
 var last_ability: int = 0
 
+## Regenerate health
 func regen_health():
 	if current_health < max_health:
 		if (health_regen + current_health) > max_health:

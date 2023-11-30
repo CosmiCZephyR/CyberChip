@@ -4,7 +4,7 @@ extends GridContainer
 
 func _ready() -> void:
 	if not inventory:
-		inventory = load("res://InventorySystem/Resouces/Inventory.tres").duplicate_r(true)
+		inventory = load("res://InventorySystem/Resouces/NonEquipped/Resources/Inventory.tres").duplicate_r(true)
 	_setup_inventory()
 
 func _setup_inventory():

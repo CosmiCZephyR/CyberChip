@@ -29,13 +29,11 @@ func _can_drop_data(at_position, data) -> bool:
 func can_drop_item(at_position, data) -> bool:
 	return data is Dictionary and data.has("item")
 
-#func _drop_data(at_position, droped_data) -> void:
-#	drop_item(at_position, droped_data)
+func _drop_data(at_position, data) -> void:
+	drop_item(at_position, data)
 
-#func drop_item(at_position, droped_data) -> void:
-#	var _local_target_item_index = get_index()
-#
-#	inventory.swap_items(_local_target_item_index, droped_data)
-#	inventory.set_item(_local_target_item_index, droped_data.item)
-#
-#	var _previous_slot = get_parent().get_child(droped_data.item_index)
+func drop_item(at_position, data) -> void:
+	var scene = data["item_scene"]
+	var scene_instance = scene.instantiate()
+	scene_instance.position = get_local_mouse_position() as Vector2i
+	add_child(scene_instance)

@@ -2,19 +2,20 @@ class_name Player
 extends Entity
 
 # Main variables
-var direction: Vector2 = Vector2.ZERO
-const PLAYER_SIZE: Vector2 = Vector2(11,15)
 @export var speed: float = 65
+
 @onready var sec_timer: Timer = $SecTimer
 @onready var player_rect: Rect2 = Rect2(global_position - PLAYER_SIZE / 2, PLAYER_SIZE)
+
+const PLAYER_SIZE: Vector2 = Vector2(11,15)
+var direction: Vector2 = Vector2.ZERO
 
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
 
 # Animations
-@onready var animation_tree: AnimationTree = $AnimationTree
-
 var current_animation = "idle"
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 # Rooms
 var _current_room: Area2D: set = set_current_room
@@ -25,8 +26,10 @@ var can_dash: bool = true
 var dash_speed: int = 5000
 var dash_cooldown: float = 2.0
 var dash_duration: float = 0.2
+
 @warning_ignore("unused_parameter")
 @onready var duration_timer = $DashDuration
+
 @warning_ignore("unused_parameter")
 @onready var cooldown_timer = $DashCooldown
 
@@ -78,12 +81,13 @@ func _on_transistor_available(_transistor) -> void:
 	transistor = _transistor
 
 func _second_passed() -> void:
-	self.regen_health()
-	self.regen_kosuki()
+	regen_health()
+	regen_kosuki()
 
 func set_current_room(_area) -> void:
 	_current_room = _area
 
+## Upadate aniamation parameters
 func update_animation_parameters() -> void:
 	current_animation = "idle"
 	

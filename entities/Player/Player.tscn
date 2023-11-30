@@ -410,10 +410,12 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jma1t")
+}
 tree_root = ExtResource("6_3l1u2")
-anim_player = NodePath("../AnimationPlayer")
 advance_expression_base_node = NodePath("../AnimationPlayer")
-active = true
+anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
 parameters/conditions/idle = false
 parameters/conditions/walk = false

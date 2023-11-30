@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://637emd7vmkpa"]
 
-[ext_resource type="Script" path="res://InventorySystem/Resouces/Item.gd" id="1_kvdje"]
+[ext_resource type="Script" path="res://InventorySystem/Resouces/NonEquipped/Scripts/Item.gd" id="1_kvdje"]
 [ext_resource type="Texture2D" uid="uid://crl5t8beh1rex" path="res://sprites/EnergySourceTile.png" id="2_o2me2"]
 
 [resource]

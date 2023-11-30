@@ -9,9 +9,11 @@ var current_state = States.PERMANENT_LASER
 @onready var _ray: RayCast2D = $RayCast2D
 @onready var _line: Line2D = $Line2D
 
+
 var _laser
 
 func _ready():
+	
 	_line.visible = false
 
 func _physics_process(_delta):
@@ -40,3 +42,4 @@ func permanent_light() -> void:
 # пременный фонарь
 func variable_light() -> void:
 	pass
+
