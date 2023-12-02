@@ -1,6 +1,6 @@
 class_name Current
-extends Node
+
+## This is wrapper-class for currency on circuitboard
 
 var position: Vector2i
 var wires: Dictionary
-

@@ -1,6 +1,5 @@
-extends Area2D
-
 class_name Transistor
+extends Area2D
 
 ## This class is the representation of the transistor.
 ## It's work very simple

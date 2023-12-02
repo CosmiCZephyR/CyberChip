@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="EquippedIneventory" load_steps=3 format=3 uid="uid://bde3vdm2ygwdo"]
-
-[ext_resource type="Resource" uid="uid://pjbb2hjm3c0w" path="res://InventorySystem/Resouces/Equipped/Resources/Resistor.tres" id="1_d6trv"]
-[ext_resource type="Script" path="res://InventorySystem/Resouces/Equipped/Scripts/TilemapInventory.gd" id="1_ur2qb"]
-
-[resource]
-script = ExtResource("1_ur2qb")
-equipped_items = Array[Resource("res://InventorySystem/Resouces/Equipped/Scripts/EquippedItem.gd")]([ExtResource("1_d6trv"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

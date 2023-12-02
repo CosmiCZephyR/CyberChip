@@ -58,7 +58,7 @@ func _spawn_item_at_tile(spawning_item: PackedScene, tile_position: Vector2i) ->
 	var scene_instance = spawning_item.instantiate()
 	scene_instance.position = local_position
 	add_child(scene_instance)
-	
+
 ## Delete item at the given tile
 ## @experimental
 func _delete_item_at_tile(tile_position: Vector2i) -> void:

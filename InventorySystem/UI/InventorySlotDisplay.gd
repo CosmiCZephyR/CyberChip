@@ -1,17 +1,11 @@
 extends CenterContainer
 
 @onready var _item_texture_rect = $ItemTextureRect
-@warning_ignore("unused_private_class_variable")
-@onready var _tile_map: TileMap = get_tree().get_first_node_in_group("Tilemaps")
-
 @onready var inventory = get_parent().inventory
 
-@export_range(0, 10000)
-var far: int = 5000
+var item_data: Item = null: set = set_item
 
-var item_data = null : set = set_item
-
-func set_item(value):
+func set_item(value) -> void:
 	item_data = value
 	_draw_item()
 
@@ -27,15 +21,16 @@ func _draw_item() -> void:
 	else:
 		_item_texture_rect.texture = load("res://sprites/Slot.png")
 
-func _get_drag_data(at_position):
+func _get_drag_data(at_position) -> Dictionary:
 	return pickup_item(at_position)
 
-func pickup_item(at_position):
+func pickup_item(at_position) -> Dictionary:
 	var _item_index = get_index()
 	var _item = inventory.remove_item(_item_index)
 	
 	if _item is Item:
 		var data = {}
+		
 		data.item = _item
 		data.item_index = _item_index
 		data.item_scene = _item.source_scene
@@ -48,6 +43,8 @@ func pickup_item(at_position):
 		set_drag_preview(_drag_preview)
 		
 		return data
+	
+	return {}
 
 func _can_drop_data(at_position, data) -> bool:
 	return can_drop_item(at_position, data)

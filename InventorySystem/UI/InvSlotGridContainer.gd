@@ -4,7 +4,7 @@ extends GridContainer
 
 func _ready() -> void:
 	if not inventory:
-		inventory = load("res://InventorySystem/Resouces/NonEquipped/Resources/Inventory.tres").duplicate_r(true)
+		inventory = load("res://InventorySystem/Resouces/Resources/Inventory.tres").duplicate_r(true)
 	_setup_inventory()
 
 func _setup_inventory():
@@ -23,9 +23,6 @@ func _update_inventory_slot_display(item_index: int) -> void:
 	
 	_inventory_slot_display.item_data = _item
 
-func _on_items_updated(indexes):
+func _on_items_updated(indexes) -> void:
 	for item in indexes:
-#		if item:
-#			inventory.items[item]._draw_item()
 		get_child(item).item_data = inventory.items[item]
-		pass

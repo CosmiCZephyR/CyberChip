@@ -60,6 +60,7 @@ func _process(_delta) -> void:
 	if Input.is_action_pressed("magnetism"):
 		_magnetism.activate(player_rect, self, _delta)
 
+#region Accept Sinals
 func _on_repairing() -> void:
 	_repairing.activate_repairing(tilemap, self)
 
@@ -83,6 +84,7 @@ func _on_transistor_available(_transistor) -> void:
 func _second_passed() -> void:
 	regen_health()
 	regen_kosuki()
+#endregion
 
 func set_current_room(_area) -> void:
 	_current_room = _area

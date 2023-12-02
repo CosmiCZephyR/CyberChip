@@ -7,14 +7,13 @@ signal items_changed(indexes)
 
 var size: int = 12
 
-func _init(_size = 12):
+func _init(_size = 12) -> void:
 	size = _size
 	_setup(size)
 
-func _setup(_arr_size):
+func _setup(_arr_size) -> void:
 	for idx in _arr_size:
 		items.append(null)
-		pass
 
 func duplicate_r(_flag: bool = false) -> Resource:
 	var _douplicate = duplicate(_flag)

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://bcc5kda2ogoxk"]
 
-[ext_resource type="Script" path="res://InventorySystem/Resouces/NonEquipped/Scripts/Inventory.gd" id="1_1to2t"]
-[ext_resource type="Script" path="res://InventorySystem/Resouces/NonEquipped/Scripts/Item.gd" id="1_tbrcp"]
-[ext_resource type="Resource" uid="uid://df34u4nhwe8vf" path="res://InventorySystem/Resouces/NonEquipped/Resources/Resistor.tres" id="2_on3i4"]
+[ext_resource type="Script" path="res://InventorySystem/Resouces/Scripts/Inventory.gd" id="1_1to2t"]
+[ext_resource type="Script" path="res://InventorySystem/Resouces/Scripts/Item.gd" id="1_tbrcp"]
+[ext_resource type="Resource" uid="uid://df34u4nhwe8vf" path="res://InventorySystem/Resouces/Resources/Resistor.tres" id="2_on3i4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_061op"]
 load_path = "res://.godot/imported/EnergySourceTile.png-8331350bea67b6659b50368d43d80ec9.ctex"

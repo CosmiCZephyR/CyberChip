@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://components/resistor/Resistor.gd" id="1_0krt5"]
 [ext_resource type="Texture2D" uid="uid://cks4ogh4oaqx6" path="res://sprites/component_sprites/Resistor.png" id="2_3xaxp"]
-[ext_resource type="Script" path="res://components/drag_input_handler.gd" id="3_bn3wu"]
+[ext_resource type="Script" path="res://components/DragInputHandler.gd" id="3_bn3wu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_blisx"]
 radius = 8.0

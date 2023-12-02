@@ -1,28 +1,5 @@
 extends Control
 
-#func _get_drag_data(at_position):
-#	return pickup_item(at_position)
-#
-#func pickup_item(at_position):
-#	var _item_index = 0
-#	var _item = get_parent().item
-#
-#	if _item is Item:
-#		var data = {}
-#		data.item = _item
-#		data.item_index = _item_index
-#
-#		#HACK:
-#		data.inventory_res = $"../../".inventory
-#
-#		var _drag_preview = TextureRect.new()
-#		_drag_preview.texture = _item.texture
-#		_drag_preview.position = Vector2.ONE
-#
-#		set_drag_preview(_drag_preview)
-#
-#		return data
-
 @onready var _tilemap: TileMap = get_parent()
 
 func _can_drop_data(at_position, data) -> bool:

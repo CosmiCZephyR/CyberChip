@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dhu8mlohf8cui" path="res://sprites/TileMap2.png" id="2_b1d7w"]
 [ext_resource type="Script" path="res://InventorySystem/EquippedItemsContainer.gd" id="3_71w31"]
 [ext_resource type="PackedScene" uid="uid://ch51yc7etmtt3" path="res://InventorySystem/UI/InventoryRect.tscn" id="3_ytkud"]
-[ext_resource type="Resource" uid="uid://df34u4nhwe8vf" path="res://InventorySystem/Resouces/NonEquipped/Resources/Resistor.tres" id="4_f5f6j"]
-[ext_resource type="Script" path="res://InventorySystem/equipped_items_drag_input_handler.gd" id="4_yeocc"]
-[ext_resource type="Script" path="res://InventorySystem/Resouces/NonEquipped/Scripts/Inventory.gd" id="5_d7swm"]
+[ext_resource type="Resource" uid="uid://df34u4nhwe8vf" path="res://InventorySystem/Resouces/Resources/Resistor.tres" id="4_f5f6j"]
+[ext_resource type="Script" path="res://InventorySystem/EquippedItemsDragInput.gd" id="4_yeocc"]
+[ext_resource type="Script" path="res://InventorySystem/Resouces/Scripts/Inventory.gd" id="5_d7swm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecno8"]
 
@@ -52,10 +52,3 @@ script = ExtResource("4_yeocc")
 [node name="InventoryContainer" parent="." instance=ExtResource("3_ytkud")]
 offset_left = 144.0
 offset_right = 208.0
-
-[node name="InventoryContainer2" parent="." instance=ExtResource("3_ytkud")]
-visible = false
-offset_left = 144.0
-offset_top = 112.0
-offset_right = 224.0
-offset_bottom = 192.0
