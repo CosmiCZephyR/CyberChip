@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="CyberChip"
+config/description="Игра zksiphpsir"
 run/main_scene="res://Menus/SPLASH_TEAM.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
@@ -31,7 +32,7 @@ window/vsync/vsync_mode=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

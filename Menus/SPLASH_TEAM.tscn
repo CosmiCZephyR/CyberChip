@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvokto8cs8ya1"]
+[gd_scene load_steps=7 format=3 uid="uid://bvokto8cs8ya1"]
 
 [ext_resource type="Texture2D" uid="uid://dh51lql67fi4a" path="res://sprites/stupidsplash.png" id="1_ltt5k"]
 [ext_resource type="Script" path="res://scripts/teamsplash.gd" id="2_ym4jf"]
-[ext_resource type="AudioStream" uid="uid://bbaefywjon1s6" path="res://sounds/boop3.mp3" id="3_477mc"]
 [ext_resource type="AudioStream" uid="uid://b3jk0ukhn14q5" path="res://sounds/boop4.mp3" id="4_yik34"]
 
 [sub_resource type="Animation" id="Animation_mcy0a"]
@@ -202,14 +201,13 @@ texture = ExtResource("1_ltt5k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="logo_bundle"]
 root_node = NodePath("../JamGame")
-autoplay = "logo_start"
 libraries = {
 "": SubResource("AnimationLibrary_g2f8i")
 }
+autoplay = "logo_start"
 script = ExtResource("2_ym4jf")
 
 [node name="boop1" type="AudioStreamPlayer" parent="logo_bundle"]
-stream = ExtResource("3_477mc")
 
 [node name="boop2" type="AudioStreamPlayer" parent="logo_bundle"]
 stream = ExtResource("4_yik34")

@@ -10,6 +10,8 @@ extends TileMap
 ## This member contains all available slots
 var _available_slots: Array[Vector2i]
 
+#TODO: сделать систему сохранения. Кажется, через инвентарь будет проще
+#TODO: реализовать своп предметов
 func _ready() -> void:
 	inventory.size = _available_slots.size()
 	
@@ -53,11 +55,13 @@ func _setup_items_slots() -> void:
 			_spawn_item_at_tile(inventory.items[item_index].source_scene, _available_slots[item_index])
 
 ## Spawn given item at given tile.
+# ДУБЛИРОВАНИЕ!
 func _spawn_item_at_tile(spawning_item: PackedScene, tile_position: Vector2i) -> void:
 	var local_position = map_to_local(tile_position)
 	var scene_instance = spawning_item.instantiate()
+	scene_instance.tile_items_container = self
 	scene_instance.position = local_position
-	add_child(scene_instance)
+	$DragNDropInputHandler.add_child(scene_instance)
 
 ## Delete item at the given tile
 ## @experimental

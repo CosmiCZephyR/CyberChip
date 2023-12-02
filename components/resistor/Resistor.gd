@@ -2,6 +2,7 @@ class_name Resistor
 extends Area2D
 
 @onready var item = load("res://InventorySystem/Resouces/Resources/Resistor.tres")
+var tile_items_container
 
 @onready var _input_handler: Control = $DragNDropInputHolder
 

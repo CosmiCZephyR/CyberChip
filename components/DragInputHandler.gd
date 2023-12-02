@@ -21,8 +21,7 @@ func pickup_item(at_position):
 		data.item_index = _item_index
 		data.item_scene = _item.source_scene
 		
-		#HACK:
-		data.inventory_res = $"../../../".inventory
+		data.inventory_res = get_parent().tile_items_container.inventory
 		
 		var _drag_preview = TextureRect.new()
 		_drag_preview.texture = _item.texture
