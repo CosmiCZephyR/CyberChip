@@ -370,6 +370,7 @@ drag_bottom_margin = 0.05
 texture = ExtResource("2_oevav")
 hframes = 9
 vframes = 9
+region_rect = Rect2(0, 0, 288, 288)
 
 [node name="DashCooldown" type="Timer" parent="."]
 wait_time = 2.0
@@ -434,6 +435,7 @@ autostart = true
 script = ExtResource("8_dnsyb")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_maodr")]
+process_mode = 1
 scale = Vector2(5, 5)
 transform = Transform2D(5, 0, 0, 5, 0, 0)
 

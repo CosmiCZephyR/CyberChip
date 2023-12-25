@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bw2foq3dcmsj1" path="res://HUD/EnergyBar/EnergyBar.tscn" id="3_w4j14"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_07gsy")
 
 [node name="Control" type="Control" parent="."]

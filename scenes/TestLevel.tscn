@@ -314,5 +314,7 @@ collision_mask = 5
 position = Vector2(-256, -288)
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]
+process_mode = 3
 z_index = 5
 collision_mask = 9
+slide_on_ceiling = false

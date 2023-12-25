@@ -48,6 +48,7 @@ func _ready() -> void:
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
 	InputHandler.interaction.connect(_on_interaction)
 	InputHandler.repairing.connect(_on_repairing)
+	InputHandler.pause.connect(_on_pause)
 	sec_timer.timeout.connect(_second_passed)
 	animation_tree.active = true
 
@@ -61,6 +62,14 @@ func _process(_delta) -> void:
 		_magnetism.activate(player_rect, self, _delta)
 
 #region Accept Sinals
+func _on_pause():
+	if not get_tree().paused:
+		print_debug("pause")
+		get_tree().paused = true
+	else:
+		print_debug("not paused")
+		get_tree().paused = false
+
 func _on_repairing() -> void:
 	_repairing.activate_repairing(tilemap, self)
 

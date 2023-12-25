@@ -1,27 +1,31 @@
 extends Node
 
-signal magnetism
+signal dash
+signal pause
+signal attack
 signal movement
+signal magnetism
 signal repairing
 signal interaction
 signal electroShock
 signal magneticShock
-signal attack
-signal dash
 
-var actions: Array = [
-	"magnetism",
-	"movement",
-	"repairing",
-	"interaction",
-	"electroShock",
-	"magneticShock",
-	"attack"
-]
+var actions: Dictionary = {
+	"movement"      : Callable(Input, "is_action_pressed"),
+	"magnetism"     : Callable(Input, "is_action_pressed"),
+	"repairing"     : Callable(Input, "is_action_pressed"),
+	"pause"         : Callable(Input, "is_action_just_pressed"),
+	"attack"        : Callable(Input, "is_action_just_pressed"),
+	"interaction"   : Callable(Input, "is_action_just_pressed"),
+	"magneticShock" : Callable(Input, "is_action_just_pressed"),
+}
 
-var max_double_click_time: float = 500
-var last_key_press_time: float = 0.0
-var key_code: int = 0
+var _max_double_click_time: float = 500
+var _last_key_press_time: float = 0.0
+var _key_code: int = 0
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event):
 	if event.is_action_type():
@@ -30,42 +34,16 @@ func _input(event):
 				event_signal_emit(action)
 	
 	if event is InputEventKey and event.pressed:
-		var current_time := Time.get_ticks_msec()
+		var current_time: int = Time.get_ticks_msec()
 		if is_double_click(event):
 			emit_signal("dash")
-		last_key_press_time = current_time
-		key_code = event.get_keycode()
+		_last_key_press_time = current_time
+		_key_code = event.get_keycode()
 
 func is_double_click(e: InputEvent):
-	var current_time := Time.get_ticks_msec()
-	return current_time - last_key_press_time < max_double_click_time and e.get_keycode() == key_code and not e.is_echo()
+	var current_time: int = Time.get_ticks_msec()
+	return current_time - _last_key_press_time < _max_double_click_time and e.get_keycode() == _key_code and not e.is_echo()
 
 func event_signal_emit(action: String):
-	match action:
-		"magnetism":
-			if Input.is_action_pressed(action):
-				emit_signal("magnetism")
-		
-		"movement":
-			if Input.is_action_pressed(action):
-				emit_signal("movement")
-		
-		"repairing":
-			if Input.is_action_just_pressed(action):
-				emit_signal("repairing")
-		
-		"interaction":
-			if Input.is_action_just_pressed(action):
-				emit_signal("interaction")
-		
-		"electroShock":
-			if Input.is_action_just_pressed(action):
-				emit_signal("electroShock")
-		
-		"magneticShock":
-			if Input.is_action_just_pressed(action):
-				emit_signal("magneticShock")
-		
-		"attack":
-			if Input.is_action_just_pressed(action):
-				emit_signal("attack")
+	if action in actions and actions[action].call(action):
+		emit_signal(action)
