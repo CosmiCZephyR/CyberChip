@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://dqakbrvs4w5jj"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://dqakbrvs4w5jj"]
 
 [ext_resource type="Texture2D" uid="uid://c3gqtdlqg774x" path="res://sprites/tileset.png" id="1_1r4vb"]
 [ext_resource type="PackedScene" uid="uid://bvwxfm01ruhx4" path="res://scenes/energy_source.tscn" id="1_hdhug"]
-[ext_resource type="Material" uid="uid://c4cea3p6yav8m" path="res://resources/tile_shader.tres" id="2_lu048"]
 [ext_resource type="PackedScene" uid="uid://f6f1gsw77tlq" path="res://scenes/EnergyReceiver.tscn" id="2_n510j"]
+[ext_resource type="Material" uid="uid://c4cea3p6yav8m" path="res://Shaders/tile_shader.tres" id="3_j8r02"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r2l15"]
 resource_name = "WireSource"
@@ -47,6 +47,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2.625, -8, 1.875, -8, 
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pklnt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_oy0o3"]
+vertices = PackedVector2Array(8, -3, 8, 1, 3, 8, -2, 8, -8, 2, -8, -2, -2, -8, 2, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2.375, -8, 2, -8, 8, -3.125, 8, 1.25, 2.5, 8, -1.75, 8, -8, 1.5, -8, -2.375)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_16q68"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -161,7 +168,7 @@ texture = ExtResource("1_1r4vb")
 6:1/0/terrains_peering_bit/right_side = 0
 6:1/0/terrains_peering_bit/top_side = 0
 6:1/1 = 1
-6:1/1/material = ExtResource("2_lu048")
+6:1/1/material = ExtResource("3_j8r02")
 6:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/1/physics_layer_0/angular_velocity = 0.0
 6:1/2 = 2
@@ -177,7 +184,7 @@ texture = ExtResource("1_1r4vb")
 6:0/0/terrains_peering_bit/right_side = 0
 6:0/0/terrains_peering_bit/bottom_side = 0
 6:0/1 = 1
-6:0/1/material = ExtResource("2_lu048")
+6:0/1/material = ExtResource("3_j8r02")
 6:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/1/physics_layer_0/angular_velocity = 0.0
 6:0/2 = 2
@@ -193,7 +200,7 @@ texture = ExtResource("1_1r4vb")
 7:0/0/terrains_peering_bit/bottom_side = 0
 7:0/0/terrains_peering_bit/left_side = 0
 7:0/1 = 1
-7:0/1/material = ExtResource("2_lu048")
+7:0/1/material = ExtResource("3_j8r02")
 7:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:0/1/physics_layer_0/angular_velocity = 0.0
 7:0/2 = 2
@@ -213,7 +220,7 @@ texture = ExtResource("1_1r4vb")
 4:2/0/terrains_peering_bit/bottom_side = 0
 4:2/0/terrains_peering_bit/left_side = 0
 4:2/1 = 1
-4:2/1/material = ExtResource("2_lu048")
+4:2/1/material = ExtResource("3_j8r02")
 4:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/1/physics_layer_0/angular_velocity = 0.0
 4:2/2 = 2
@@ -233,7 +240,7 @@ texture = ExtResource("1_1r4vb")
 4:1/0/terrains_peering_bit/right_side = 0
 4:1/0/terrains_peering_bit/left_side = 0
 4:1/1 = 1
-4:1/1/material = ExtResource("2_lu048")
+4:1/1/material = ExtResource("3_j8r02")
 4:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:1/1/physics_layer_0/angular_velocity = 0.0
 4:1/2 = 2
@@ -249,7 +256,7 @@ texture = ExtResource("1_1r4vb")
 7:1/0/terrains_peering_bit/left_side = 0
 7:1/0/terrains_peering_bit/top_side = 0
 7:1/1 = 1
-7:1/1/material = ExtResource("2_lu048")
+7:1/1/material = ExtResource("3_j8r02")
 7:1/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/1/physics_layer_0/angular_velocity = 0.0
 7:1/2 = 2
@@ -270,7 +277,7 @@ texture = ExtResource("1_1r4vb")
 4:0/0/terrains_peering_bit/bottom_side = 0
 4:0/0/terrains_peering_bit/top_side = 0
 4:0/1 = 1
-4:0/1/material = ExtResource("2_lu048")
+4:0/1/material = ExtResource("3_j8r02")
 4:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/1/physics_layer_0/angular_velocity = 0.0
 4:0/2 = 2
@@ -286,7 +293,7 @@ texture = ExtResource("1_1r4vb")
 4:3/0/terrains_peering_bit/left_side = 0
 4:3/0/terrains_peering_bit/top_side = 0
 4:3/1 = 1
-4:3/1/material = ExtResource("2_lu048")
+4:3/1/material = ExtResource("3_j8r02")
 4:3/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:3/1/physics_layer_0/angular_velocity = 0.0
 4:3/2 = 2
@@ -302,7 +309,7 @@ texture = ExtResource("1_1r4vb")
 5:3/0/terrains_peering_bit/bottom_side = 0
 5:3/0/terrains_peering_bit/top_side = 0
 5:3/1 = 1
-5:3/1/material = ExtResource("2_lu048")
+5:3/1/material = ExtResource("3_j8r02")
 5:3/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:3/1/physics_layer_0/angular_velocity = 0.0
 5:3/2 = 2
@@ -319,7 +326,7 @@ texture = ExtResource("1_1r4vb")
 6:3/0/terrains_peering_bit/left_side = 0
 6:3/0/terrains_peering_bit/top_side = 0
 6:3/1 = 1
-6:3/1/material = ExtResource("2_lu048")
+6:3/1/material = ExtResource("3_j8r02")
 6:3/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:3/1/physics_layer_0/angular_velocity = 0.0
 6:3/2 = 2
@@ -335,7 +342,7 @@ texture = ExtResource("1_1r4vb")
 5:2/0/terrains_peering_bit/left_side = 0
 5:2/0/terrains_peering_bit/top_side = 0
 5:2/1 = 1
-5:2/1/material = ExtResource("2_lu048")
+5:2/1/material = ExtResource("3_j8r02")
 5:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:2/1/physics_layer_0/angular_velocity = 0.0
 5:2/2 = 2
@@ -396,7 +403,7 @@ texture = ExtResource("1_1r4vb")
 2:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_47i1s")
 2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:5/0/physics_layer_0/angular_velocity = 0.0
-2:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1t0ab")
+2:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_oy0o3")
 1:5/0 = 0
 1:5/0/terrain_set = 0
 1:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_47i1s")

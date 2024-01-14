@@ -1,6 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://byhb5cjp8hnva"]
+[gd_scene load_steps=32 format=3 uid="uid://byhb5cjp8hnva"]
 
 [ext_resource type="TileSet" uid="uid://dqakbrvs4w5jj" path="res://resources/AAAAAAAAAAAAAA.tres" id="1_nd3fa"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_pmrrh"]
+[ext_resource type="Resource" uid="uid://7bulxj65ew1s" path="res://resources/lvl.tres" id="2_dmq2y"]
 [ext_resource type="PackedScene" uid="uid://brwn3cv4tjxjx" path="res://components/capacitor/capacitor.tscn" id="2_n1cjg"]
 [ext_resource type="PackedScene" uid="uid://wosxserqfgp0" path="res://entities/Player/Player.tscn" id="2_utnw2"]
 [ext_resource type="Texture2D" uid="uid://bkln88qa66ld1" path="res://sprites/Block.png" id="3_2dmyb"]
@@ -13,11 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://c86jstn7ui42y" path="res://components/resistor/resistor.tscn" id="9_i4pnt"]
 [ext_resource type="PackedScene" uid="uid://bisaf4xjv7imw" path="res://components/diode/diode.tscn" id="12_100kb"]
 [ext_resource type="PackedScene" uid="uid://cltk3ibp8xaaa" path="res://components/inductionCoil/InductionCoil.tscn" id="13_dfbjn"]
+[ext_resource type="Resource" uid="uid://bylnxhk7aosqp" path="res://resources/Plr.tres" id="16_m53du"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="17_5nhmu"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="18_7sjll"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="19_74jl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66ju0"]
 size = Vector2(8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgitu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr1dr"]
 size = Vector2(176, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xy8"]
@@ -111,10 +117,28 @@ _data = {
 "RESET": SubResource("Animation_rm2cf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2pte"]
+size = Vector2(176, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgitu"]
+size = Vector2(240, 96)
+
+[sub_resource type="Resource" id="Resource_r6k78"]
+script = ExtResource("19_74jl1")
+duration = 0.6
+transition = 1
+ease = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kl383"]
+size = Vector2(176, 96)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbqgp"]
 size = Vector2(48, 240)
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource("1_pmrrh")
+save_resource = ExtResource("2_dmq2y")
+save_path = "C:/Клондайк/SavesTest/"
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource("1_nd3fa")
@@ -162,8 +186,8 @@ script = ExtResource("6_66qk2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room1"]
 visible = false
-position = Vector2(2, 4)
-shape = SubResource("RectangleShape2D_vgitu")
+position = Vector2(8, 4)
+shape = SubResource("RectangleShape2D_nr1dr")
 
 [node name="Door" type="StaticBody2D" parent="Room1"]
 z_index = 2
@@ -189,6 +213,25 @@ libraries = {
 "": SubResource("AnimationLibrary_3o26u")
 }
 
+[node name="PCamRoom1" type="Node2D" parent="Room1"]
+script = ExtResource("18_7sjll")
+priority_override = false
+priority = 0
+zoom = Vector2(5, 5)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = false
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
 [node name="Room2" type="Area2D" parent="."]
 position = Vector2(54, 105)
 collision_mask = 9
@@ -197,7 +240,7 @@ script = ExtResource("6_66qk2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2"]
 visible = false
 position = Vector2(2, 7)
-shape = SubResource("RectangleShape2D_vgitu")
+shape = SubResource("RectangleShape2D_u2pte")
 
 [node name="Marker2D" type="Marker2D" parent="Room2"]
 position = Vector2(-86, 55)
@@ -206,10 +249,10 @@ position = Vector2(-86, 55)
 position = Vector2(90, -41)
 
 [node name="Enemy" parent="Room2" instance=ExtResource("3_xddfp")]
-position = Vector2(9, 14)
+position = Vector2(10, 15)
 
 [node name="Enemy3" parent="Room2" instance=ExtResource("3_xddfp")]
-position = Vector2(4, -18)
+position = Vector2(2, -17)
 
 [node name="Room3" type="Area2D" parent="."]
 position = Vector2(-262, 105)
@@ -218,8 +261,28 @@ script = ExtResource("6_66qk2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room3"]
 visible = false
-position = Vector2(30, 7)
+position = Vector2(-2, 7)
 shape = SubResource("RectangleShape2D_vgitu")
+
+[node name="PCamRoom3" type="Node2D" parent="Room3"]
+position = Vector2(-2, 7)
+script = ExtResource("18_7sjll")
+priority_override = false
+priority = 0
+zoom = Vector2(4, 4)
+follow_mode = 0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = false
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = SubResource("Resource_r6k78")
+tween_on_load = true
+inactive_update_mode = 0
 
 [node name="Room4" type="Area2D" parent="."]
 position = Vector2(-262, -44)
@@ -229,7 +292,7 @@ script = ExtResource("6_66qk2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room4"]
 visible = false
 position = Vector2(30, 12)
-shape = SubResource("RectangleShape2D_vgitu")
+shape = SubResource("RectangleShape2D_kl383")
 
 [node name="Door" type="StaticBody2D" parent="Room4"]
 position = Vector2(62, -44)
@@ -317,4 +380,11 @@ position = Vector2(-256, -288)
 process_mode = 3
 z_index = 5
 collision_mask = 9
-slide_on_ceiling = false
+save_resource = ExtResource("16_m53du")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4.5, 4.5)
+position_smoothing_speed = 10.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("17_5nhmu")

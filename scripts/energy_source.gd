@@ -14,4 +14,5 @@ func _ready():
 	_update_timer.timeout.connect(self._timer_timeout)
 
 func _timer_timeout():
-	_manager.fool_fill(_tilemap.local_to_map(global_position))
+	if _manager.tilemap:
+		_manager.fool_fill(_tilemap.local_to_map(global_position))

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cudj2rdudrdb4"
-path="res://.godot/imported/PLAY_BTN_HOVER.png-e0ce05cfcff602c66dbab186ea941d0f.ctex"
+uid="uid://b8iu6c1lm7l6d"
+path="res://.godot/imported/PLAY_BTN_NORMAL.png-6f6c697c875176dcf087dfb290fecc43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BUTTONS/PLAY_BTN_HOVER.png"
-dest_files=["res://.godot/imported/PLAY_BTN_HOVER.png-e0ce05cfcff602c66dbab186ea941d0f.ctex"]
+source_file="res://sprites/BUTTONS/MainMenuButtons/PLAY_BTN_NORMAL.png"
+dest_files=["res://.godot/imported/PLAY_BTN_NORMAL.png-6f6c697c875176dcf087dfb290fecc43.ctex"]
 
 [params]
 

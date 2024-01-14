@@ -1,35 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwa1kd3so14xd"]
+[gd_scene load_steps=6 format=3 uid="uid://dwa1kd3so14xd"]
 
 [ext_resource type="Texture2D" uid="uid://dgo5sytisri04" path="res://sprites/Hud.png" id="1_4th7j"]
 [ext_resource type="Script" path="res://HUD/TheBestScriptEver.gd" id="1_07gsy"]
 [ext_resource type="PackedScene" uid="uid://bblulc0yuqxvj" path="res://HUD/HealthBar/HealthBar.tscn" id="2_yqp03"]
 [ext_resource type="PackedScene" uid="uid://bw2foq3dcmsj1" path="res://HUD/EnergyBar/EnergyBar.tscn" id="3_w4j14"]
+[ext_resource type="PackedScene" uid="uid://c15w5vbq215t0" path="res://Menus/PauseMenu.tscn" id="5_v0qb5"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_07gsy")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="HUD" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+
+[node name="TextureRect" type="TextureRect" parent="Control/HUD"]
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("1_4th7j")
 
-[node name="HBoxContainer" parent="Control" instance=ExtResource("2_yqp03")]
+[node name="HBoxContainer" parent="Control/HUD" instance=ExtResource("2_yqp03")]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 49.0
 offset_bottom = 13.0
 
-[node name="HBoxContainer2" parent="Control" instance=ExtResource("3_w4j14")]
+[node name="HBoxContainer2" parent="Control/HUD" instance=ExtResource("3_w4j14")]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 15.0
 offset_right = 36.0
 offset_bottom = 23.0
+
+[node name="CenterContainer" parent="Control" instance=ExtResource("5_v0qb5")]
+layout_mode = 1

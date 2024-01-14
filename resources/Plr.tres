@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerRes" load_steps=3 format=3 uid="uid://bylnxhk7aosqp"]
+
+[ext_resource type="Resource" uid="uid://bcc5kda2ogoxk" path="res://InventorySystem/Resouces/Resources/Inventory.tres" id="1_0jbry"]
+[ext_resource type="Script" path="res://resources/PlayerRes.gd" id="2_ojaao"]
+
+[resource]
+script = ExtResource("2_ojaao")
+inventory = ExtResource("1_0jbry")

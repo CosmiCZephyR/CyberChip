@@ -25,11 +25,11 @@ func _on_timer_timeout() -> void:
 		
 		if body.is_in_group("Player"):
 			create_lightning()
-			print_debug("Da")
 
 func create_lightning() -> void:
 	for point in range(1, _line.points.size() - 1):
-		_line.points[point].y = randi_range(-16, 16)
+		_line.points[point].y += randi_range(-8, 8)
 	
 	visibility = true
 	last_point_pos = to_local(_player.global_position)
+	

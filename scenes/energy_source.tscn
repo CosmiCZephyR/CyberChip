@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/energy_source.gd" id="1_5vphu"]
 [ext_resource type="Texture2D" uid="uid://crl5t8beh1rex" path="res://sprites/EnergySourceTile.png" id="1_c8x77"]
-[ext_resource type="Material" uid="uid://c4cea3p6yav8m" path="res://resources/tile_shader.tres" id="2_akr4o"]
+[ext_resource type="Material" uid="uid://c4cea3p6yav8m" path="res://Shaders/tile_shader.tres" id="2_v6864"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kysso"]
 size = Vector2(16, 16)
@@ -14,16 +14,12 @@ glow_enabled = true
 [node name="EnergySource" type="Area2D"]
 script = ExtResource("1_5vphu")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-zoom = Vector2(14.4, 13.5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_kysso")
 
 [node name="EnergySourceTile" type="Sprite2D" parent="."]
-material = ExtResource("2_akr4o")
+material = ExtResource("2_v6864")
 texture = ExtResource("1_c8x77")
 
 [node name="Timer" type="Timer" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4jnwxepb7m6d"
-path="res://.godot/imported/PLAY_BTN_PRESSED.png-f1bbd3c7edada82157ec4bf3dc00439d.ctex"
+uid="uid://chtl4temdykxg"
+path="res://.godot/imported/PlayBtn.png-49a63fd6d0d890ca9772f297a1ceedb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BUTTONS/PLAY_BTN_PRESSED.png"
-dest_files=["res://.godot/imported/PLAY_BTN_PRESSED.png-f1bbd3c7edada82157ec4bf3dc00439d.ctex"]
+source_file="res://sprites/BUTTONS/PauseMenuButtons/PlayBtn.png"
+dest_files=["res://.godot/imported/PlayBtn.png-49a63fd6d0d890ca9772f297a1ceedb5.ctex"]
 
 [params]
 

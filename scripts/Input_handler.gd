@@ -35,8 +35,10 @@ func _input(event):
 	
 	if event is InputEventKey and event.pressed:
 		var current_time: int = Time.get_ticks_msec()
+		
 		if is_double_click(event):
 			emit_signal("dash")
+		
 		_last_key_press_time = current_time
 		_key_code = event.get_keycode()
 

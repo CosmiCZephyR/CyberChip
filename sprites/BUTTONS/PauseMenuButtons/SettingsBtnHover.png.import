@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp8cc05s2hnfi"
-path="res://.godot/imported/OPT_BTN_PRESSED.png-b5b68fe55731ce2e1738566cc92434e0.ctex"
+uid="uid://bh1ieft22o06y"
+path="res://.godot/imported/SettingsBtnHover.png-729ef7b442654e2b24bc6c1c33197f44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/BUTTONS/OPT_BTN_PRESSED.png"
-dest_files=["res://.godot/imported/OPT_BTN_PRESSED.png-b5b68fe55731ce2e1738566cc92434e0.ctex"]
+source_file="res://sprites/BUTTONS/PauseMenuButtons/SettingsBtnHover.png"
+dest_files=["res://.godot/imported/SettingsBtnHover.png-729ef7b442654e2b24bc6c1c33197f44.ctex"]
 
 [params]
 

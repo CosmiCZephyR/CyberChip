@@ -1,14 +1,25 @@
 class_name Player
 extends Entity
 
+# TODAY I INTRODUCE YOU THE MAINEST VALUE IN THIS UNIVERSE!!!!
+const LEALEALEADOSSA_AAMKO = "{{{L100, 100}{100, 100} [&] L,10}{10,10} [&] L, 10}L, 10}{10, 10}100, 10"
+
 # Main variables
 @export var speed: float = 65
+@export var save_resource: PlayerRes
 
+@onready var saver = Saver.new()
 @onready var sec_timer: Timer = $SecTimer
 @onready var player_rect: Rect2 = Rect2(global_position - PLAYER_SIZE / 2, PLAYER_SIZE)
+@onready var hud: CanvasLayer = get_node("CanvasLayer")
+@onready var pause_menu: Control = get_node(pause_path)
+@onready var state_machine: PlayerStateMachine = get_node("PlayerStateMachine")
 
 const PLAYER_SIZE: Vector2 = Vector2(11,15)
 var direction: Vector2 = Vector2.ZERO
+
+# Paths
+var pause_path: NodePath = NodePath("CanvasLayer/Control/CenterContainer")
 
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
@@ -43,6 +54,9 @@ var is_paused: bool = false
 var transistor: Transistor
 var nearby_component: Area2D
 
+# Misc
+var paused: bool = false
+
 func _ready() -> void:
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
@@ -56,6 +70,10 @@ func _physics_process(_delta) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 
 func _process(_delta) -> void:
+	if Input.is_action_just_pressed("save"):
+		saver.save_game_data(get_parent().save_resource)
+	
+	pause_menu.visible = paused
 	update_animation_parameters()
 	
 	if Input.is_action_pressed("magnetism"):
@@ -63,12 +81,10 @@ func _process(_delta) -> void:
 
 #region Accept Sinals
 func _on_pause():
-	if not get_tree().paused:
-		print_debug("pause")
-		get_tree().paused = true
+	if not paused:
+		paused = true
 	else:
-		print_debug("not paused")
-		get_tree().paused = false
+		paused = false
 
 func _on_repairing() -> void:
 	_repairing.activate_repairing(tilemap, self)
@@ -97,6 +113,7 @@ func _second_passed() -> void:
 
 func set_current_room(_area) -> void:
 	_current_room = _area
+	save_resource.current_room = _current_room
 
 ## Upadate aniamation parameters
 func update_animation_parameters() -> void:

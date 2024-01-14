@@ -2,6 +2,8 @@ extends Node
 
 class_name WiresManange
 
+## Global wires manager
+
 @onready var tilemap: TileMap
 @onready var tiledata: TileData
 
@@ -17,7 +19,7 @@ var neighbors: Array[Vector2i] = [Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -
 var neighboring_tiles: Array[Vector2i]
 var neighbors_pos: Array[Vector2i]
 
-var glowing_tiles: Dictionary
+static var glowing_tiles: Dictionary
 var neighbor_tile_pos: Vector2i
 var atlas_coords: Vector2i
 var source_id: int
@@ -27,11 +29,13 @@ var tiles_pos: Dictionary
 signal tile_filled
 
 func _physics_process(_delta):
-	tilemap = get_tree().current_scene.get_node_or_null("TileMap2")
+	if get_tree().current_scene:
+		tilemap = get_tree().current_scene.get_node_or_null("TileMap2")
 
 func fool_fill(pos: Vector2i) -> void:
-	glowing_tiles.clear()
-	fill_tile(pos)
+	if tilemap:
+		glowing_tiles.clear()
+		fill_tile(pos)
 
 func fill_tile(pos: Vector2i) -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -53,9 +57,10 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 	neighbors_pos.clear()
 	
 	for neighbor in neighbors:
-		if tilemap.get_cell_source_id(WIRE_LAYER, tile_pos + neighbor) != -1:
-			neighbor_tile_pos = tile_pos + neighbor
-			neighbors_pos.append(neighbor_tile_pos)
+		if tilemap:
+			if tilemap.get_cell_source_id(WIRE_LAYER, tile_pos + neighbor) != -1:
+				neighbor_tile_pos = tile_pos + neighbor
+				neighbors_pos.append(neighbor_tile_pos)
 	
 	return neighbors_pos
 

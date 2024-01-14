@@ -52,11 +52,11 @@ func _vector_sort_by_x(a: Vector2i, b: Vector2i) -> bool:
 func _setup_items_slots() -> void:
 	for item_index in inventory.items.size():
 		if inventory.items[item_index]:
-			_spawn_item_at_tile(inventory.items[item_index].source_scene, _available_slots[item_index])
+			spawn_item_at_tile(inventory.items[item_index].source_scene, _available_slots[item_index])
 
 ## Spawn given item at given tile.
 # ДУБЛИРОВАНИЕ!
-func _spawn_item_at_tile(spawning_item: PackedScene, tile_position: Vector2i) -> void:
+func spawn_item_at_tile(spawning_item: PackedScene, tile_position: Vector2i) -> void:
 	var local_position = map_to_local(tile_position)
 	var scene_instance = spawning_item.instantiate()
 	scene_instance.tile_items_container = self

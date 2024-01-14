@@ -7,7 +7,7 @@ var door: Door
 @onready var _tilemap: TileMap = get_parent()
 @onready var _source: EnergySource
 
-var _material = preload("res://resources/tile_shader.tres")
+var _material = preload("res://Shaders/tile_shader.tres")
 
 signal open_door
 

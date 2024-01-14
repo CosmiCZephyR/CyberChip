@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wosxserqfgp0"]
+[gd_scene load_steps=24 format=3 uid="uid://wosxserqfgp0"]
 
 [ext_resource type="Script" path="res://entities/Player/player.gd" id="1_bany2"]
 [ext_resource type="Texture2D" uid="uid://dn15dawnaeead" path="res://sprites/Animations/Player.png" id="2_oevav"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2jp1hekqb3dq" path="res://scenes/copter.tscn" id="7_l3gpq"]
 [ext_resource type="Script" path="res://entities/Player/StateMachine/PlayerStateMachine.gd" id="8_dnsyb"]
 [ext_resource type="PackedScene" uid="uid://dwa1kd3so14xd" path="res://HUD/Hud.tscn" id="8_maodr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="9_cgyea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnxgu"]
 radius = 4.0
@@ -348,23 +349,13 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_mode = 1
 z_index = 2
 collision_layer = 8
 script = ExtResource("1_bany2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_nnxgu")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4.5, 4.5)
-position_smoothing_enabled = true
-position_smoothing_speed = 1.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.05
-drag_top_margin = 0.05
-drag_right_margin = 0.05
-drag_bottom_margin = 0.05
 
 [node name="Player" type="Sprite2D" parent="."]
 texture = ExtResource("2_oevav")
@@ -435,9 +426,32 @@ autostart = true
 script = ExtResource("8_dnsyb")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_maodr")]
-process_mode = 1
-scale = Vector2(5, 5)
-transform = Transform2D(5, 0, 0, 5, 0, 0)
+visible = false
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("9_cgyea")
+priority_override = false
+priority = 2
+zoom = Vector2(4.5, 4.5)
+follow_mode = 5
+follow_target = NodePath("..")
+follow_parameters/target_offset = Vector2(0, 0)
+follow_parameters/damping = false
+follow_parameters/dead_zone_horizontal = 0.5
+follow_parameters/dead_zone_vertical = 0.5
+follow_parameters/viewfinder_in_play = false
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = false
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = true
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
