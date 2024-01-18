@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://byhb5cjp8hnva"]
+[gd_scene load_steps=27 format=3 uid="uid://byhb5cjp8hnva"]
 
 [ext_resource type="TileSet" uid="uid://dqakbrvs4w5jj" path="res://resources/AAAAAAAAAAAAAA.tres" id="1_nd3fa"]
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_pmrrh"]
@@ -7,14 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://wosxserqfgp0" path="res://entities/Player/Player.tscn" id="2_utnw2"]
 [ext_resource type="Texture2D" uid="uid://bkln88qa66ld1" path="res://sprites/Block.png" id="3_2dmyb"]
 [ext_resource type="PackedScene" uid="uid://c00l6ucynnr5w" path="res://entities/Enemies/Viruses/Virus1/Enenmy.tscn" id="3_xddfp"]
-[ext_resource type="Script" path="res://scripts/BlockV2.gd" id="4_b3lof"]
-[ext_resource type="Script" path="res://scripts/Very_neccesary_script.gd" id="6_66qk2"]
-[ext_resource type="Texture2D" uid="uid://b6cdv14w5jxva" path="res://sprites/Door.png" id="7_khoxm"]
-[ext_resource type="Script" path="res://scripts/Door.gd" id="7_oc84s"]
+[ext_resource type="Script" path="res://scripts/GameObjects/BlockV2.gd" id="4_b3lof"]
+[ext_resource type="Script" path="res://scripts/GameObjects/Room.gd" id="6_66qk2"]
+[ext_resource type="PackedScene" uid="uid://b2guguydup55u" path="res://scenes/door.tscn" id="7_w36jp"]
 [ext_resource type="PackedScene" uid="uid://dhe61ebf6togp" path="res://components/transistor/transistor.tscn" id="8_7w1rt"]
 [ext_resource type="PackedScene" uid="uid://c86jstn7ui42y" path="res://components/resistor/resistor.tscn" id="9_i4pnt"]
 [ext_resource type="PackedScene" uid="uid://bisaf4xjv7imw" path="res://components/diode/diode.tscn" id="12_100kb"]
 [ext_resource type="PackedScene" uid="uid://cltk3ibp8xaaa" path="res://components/inductionCoil/InductionCoil.tscn" id="13_dfbjn"]
+[ext_resource type="PackedScene" uid="uid://cu1abiewevfxt" path="res://components/saveComponent/saverComponent.tscn" id="15_rrcys"]
 [ext_resource type="Resource" uid="uid://bylnxhk7aosqp" path="res://resources/Plr.tres" id="16_m53du"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="17_5nhmu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="18_7sjll"]
@@ -25,97 +25,6 @@ size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr1dr"]
 size = Vector2(176, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xy8"]
-size = Vector2(16, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gju7m"]
-size = Vector2(16, 8)
-
-[sub_resource type="Animation" id="Animation_858be"]
-resource_name = "Open"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Door1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 4), Vector2(0, 5), Vector2(0, 7), Vector2(0, 9), Vector2(0, 11)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Door2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -4), Vector2(0, -6), Vector2(0, -8), Vector2(0, -10), Vector2(0, -11)]
-}
-
-[sub_resource type="Animation" id="Animation_rm2cf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Door1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 4)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Door2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -4)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3o26u"]
-_data = {
-"Open": SubResource("Animation_858be"),
-"RESET": SubResource("Animation_rm2cf")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2pte"]
 size = Vector2(176, 96)
@@ -189,29 +98,10 @@ visible = false
 position = Vector2(8, 4)
 shape = SubResource("RectangleShape2D_nr1dr")
 
-[node name="Door" type="StaticBody2D" parent="Room1"]
-z_index = 2
+[node name="Door" parent="Room1" instance=ExtResource("7_w36jp")]
+z_index = 1
 position = Vector2(-88, 28)
-script = ExtResource("7_oc84s")
-
-[node name="Sprite2D" type="Sprite2D" parent="Room1/Door"]
-texture = ExtResource("7_khoxm")
-hframes = 5
-
-[node name="Door1" type="CollisionShape2D" parent="Room1/Door"]
-visible = false
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_u3xy8")
-
-[node name="Door2" type="CollisionShape2D" parent="Room1/Door"]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_gju7m")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room1/Door"]
-libraries = {
-"": SubResource("AnimationLibrary_3o26u")
-}
+rotation = -3.14159
 
 [node name="PCamRoom1" type="Node2D" parent="Room1"]
 script = ExtResource("18_7sjll")
@@ -251,7 +141,7 @@ position = Vector2(90, -41)
 [node name="Enemy" parent="Room2" instance=ExtResource("3_xddfp")]
 position = Vector2(10, 15)
 
-[node name="Enemy3" parent="Room2" instance=ExtResource("3_xddfp")]
+[node name="Enemy2" parent="Room2" instance=ExtResource("3_xddfp")]
 position = Vector2(2, -17)
 
 [node name="Room3" type="Area2D" parent="."]
@@ -294,34 +184,12 @@ visible = false
 position = Vector2(30, 12)
 shape = SubResource("RectangleShape2D_kl383")
 
-[node name="Door" type="StaticBody2D" parent="Room4"]
+[node name="Door" parent="Room4" node_paths=PackedStringArray("transistor") instance=ExtResource("7_w36jp")]
+z_index = 1
 position = Vector2(62, -44)
-rotation = 1.5708
-scale = Vector2(0.996524, 1)
-script = ExtResource("7_oc84s")
-
-[node name="Sprite2D" type="Sprite2D" parent="Room4/Door"]
-z_index = 2
-texture = ExtResource("7_khoxm")
-hframes = 5
-
-[node name="Door1" type="CollisionShape2D" parent="Room4/Door"]
-visible = false
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_u3xy8")
-
-[node name="Door2" type="CollisionShape2D" parent="Room4/Door"]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_gju7m")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room4/Door"]
-libraries = {
-"": SubResource("AnimationLibrary_3o26u")
-}
+transistor = NodePath("../Transistor")
 
 [node name="Transistor" parent="Room4" instance=ExtResource("8_7w1rt")]
-visible = false
 z_index = 2
 position = Vector2(78, 36)
 scale = Vector2(0.987158, 1)
@@ -336,29 +204,10 @@ visible = false
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_tbqgp")
 
-[node name="Door" type="StaticBody2D" parent="Room5"]
+[node name="Door" parent="Room5" instance=ExtResource("7_w36jp")]
+z_index = 1
 position = Vector2(0, 112)
-rotation = -1.5708
-script = ExtResource("7_oc84s")
-
-[node name="Sprite2D" type="Sprite2D" parent="Room5/Door"]
-texture = ExtResource("7_khoxm")
-hframes = 5
-
-[node name="Door1" type="CollisionShape2D" parent="Room5/Door"]
-visible = false
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_u3xy8")
-
-[node name="Door2" type="CollisionShape2D" parent="Room5/Door"]
-visible = false
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_gju7m")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Room5/Door"]
-libraries = {
-"": SubResource("AnimationLibrary_3o26u")
-}
+rotation = 1.5708
 
 [node name="Resistor" parent="." instance=ExtResource("9_i4pnt")]
 position = Vector2(-200, 136)
@@ -373,7 +222,10 @@ position = Vector2(48, -152)
 collision_layer = 2
 collision_mask = 5
 
-[node name="StaticBody2D" parent="." instance=ExtResource("13_dfbjn")]
+[node name="SaverComponent" parent="." instance=ExtResource("15_rrcys")]
+position = Vector2(-280, -72)
+
+[node name="InductionCoil" parent="." instance=ExtResource("13_dfbjn")]
 position = Vector2(-256, -288)
 
 [node name="Player" parent="." instance=ExtResource("2_utnw2")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu1abiewevfxt"]
+
+[ext_resource type="Script" path="res://SaverComponent.gd" id="1_awnd2"]
+[ext_resource type="Texture2D" uid="uid://cfupt0uht41ey" path="res://sprites/component_sprites/Saver.png" id="2_shi1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps5jd"]
+size = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 9
+script = ExtResource("1_awnd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_ps5jd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_shi1v")

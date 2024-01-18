@@ -4,6 +4,9 @@ class_name WiresManange
 
 ## Global wires manager
 
+signal wires_connected(area)
+signal tile_filled
+
 @onready var tilemap: TileMap
 @onready var tiledata: TileData
 
@@ -26,7 +29,6 @@ var source_id: int
 
 var tiles_pos: Dictionary
 
-signal tile_filled
 
 func _physics_process(_delta):
 	if get_tree().current_scene:
@@ -64,6 +66,8 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 	
 	return neighbors_pos
 
+func get_cells_in_area(area: Area2D) -> Array[Vector2]: return []
+
 func check_wires_connection(area: Area2D) -> bool:
 	var collision_shape = area.get_node("CollisionShape2D")
 	var shape_extents = collision_shape.shape.extents
@@ -76,4 +80,5 @@ func check_wires_connection(area: Area2D) -> bool:
 		
 		return false
 	
+	emit_signal("wires_connected", area)
 	return true

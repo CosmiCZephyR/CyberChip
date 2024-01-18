@@ -2,13 +2,13 @@ class_name Player
 extends Entity
 
 # TODAY I INTRODUCE YOU THE MAINEST VALUE IN THIS UNIVERSE!!!!
-const LEALEALEADOSSA_AAMKO = "{{{L100, 100}{100, 100} [&] L,10}{10,10} [&] L, 10}L, 10}{10, 10}100, 10"
+const LEALEALEADOSSA_AAMKO = "{{{L100, 100}{100, 100} {&} L,10}{10,10} {&} L, 10}L, 10}{10, 10}100, 10"
 
 # Main variables
 @export var speed: float = 65
 @export var save_resource: PlayerRes
 
-@onready var saver = Saver.new()
+@onready var saver = Saver
 @onready var sec_timer: Timer = $SecTimer
 @onready var player_rect: Rect2 = Rect2(global_position - PLAYER_SIZE / 2, PLAYER_SIZE)
 @onready var hud: CanvasLayer = get_node("CanvasLayer")
@@ -70,9 +70,6 @@ func _physics_process(_delta) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 
 func _process(_delta) -> void:
-	if Input.is_action_just_pressed("save"):
-		saver.save_game_data(get_parent().save_resource)
-	
 	pause_menu.visible = paused
 	update_animation_parameters()
 	

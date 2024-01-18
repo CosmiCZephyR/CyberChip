@@ -7,7 +7,6 @@ const SAVE_FILE_PATH = "C:/Клондайк/SavesTest/sav.tres"
 
 func load_game_data() -> Resource:
 	if ResourceLoader.exists(SAVE_FILE_PATH, "tres"):
-		print_debug(inst_to_dict(ResourceLoader.load(SAVE_FILE_PATH)))
 		return load(SAVE_FILE_PATH)
 	return null
 

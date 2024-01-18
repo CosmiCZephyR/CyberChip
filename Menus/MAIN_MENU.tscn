@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://b8iu6c1lm7l6d" path="res://sprites/BUTTONS/MainMenuButtons/PLAY_BTN_NORMAL.png" id="2_d61vk"]
 [ext_resource type="Texture2D" uid="uid://4jnwxepb7m6d" path="res://sprites/BUTTONS/MainMenuButtons/PLAY_BTN_PRESSED.png" id="3_vfvw7"]
 [ext_resource type="Texture2D" uid="uid://cudj2rdudrdb4" path="res://sprites/BUTTONS/MainMenuButtons/PLAY_BTN_HOVER.png" id="4_0jjid"]
-[ext_resource type="Script" path="res://scripts/PLAY_BTN.gd" id="5_w0uci"]
+[ext_resource type="Script" path="res://scripts/Buttons/PlayButton.gd" id="5_w0uci"]
 [ext_resource type="Texture2D" uid="uid://bl36ox2ivnjgi" path="res://sprites/BUTTONS/MainMenuButtons/OPT_BTN_NORMAL.png" id="6_nb4q6"]
 [ext_resource type="Texture2D" uid="uid://dp8cc05s2hnfi" path="res://sprites/BUTTONS/MainMenuButtons/OPT_BTN_PRESSED.png" id="7_2gysp"]
 [ext_resource type="Texture2D" uid="uid://dvbk5c0cid0nf" path="res://sprites/BUTTONS/MainMenuButtons/OPT_BTN_HOVER.png" id="8_ye3n6"]
 [ext_resource type="Texture2D" uid="uid://bhj7is8f58cx3" path="res://sprites/BUTTONS/MainMenuButtons/EXIT_BTN_NORMAL.png" id="9_nap55"]
 [ext_resource type="Texture2D" uid="uid://b80pcg5ers6e0" path="res://sprites/BUTTONS/MainMenuButtons/EXIT_BTN_HOVER.png" id="10_07pgp"]
-[ext_resource type="Script" path="res://scripts/EXIT_BUTTON.gd" id="11_ueb87"]
+[ext_resource type="Script" path="res://scripts/Buttons/ExitButton.gd" id="11_ueb87"]
 
 [node name="MAIN_MENU" type="Node2D"]
 

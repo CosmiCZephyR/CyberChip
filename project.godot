@@ -20,11 +20,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Event="*res://scripts/Events.gd"
-InputHandler="*res://scripts/Input_handler.gd"
-WiresManager="*res://scripts/WiresManager.gd"
+Event="*res://scripts/Globals/Events.gd"
+InputHandler="*res://scripts/Globals/Input_handler.gd"
+WiresManager="*res://scripts/Globals/WiresManager.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
-GameSaver="*res://scripts/Saver.gd"
+GameSaver="*res://scripts/Globals/Saver.gd"
 
 [display]
 

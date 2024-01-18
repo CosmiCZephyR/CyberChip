@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://chtl4temdykxg" path="res://sprites/BUTTONS/PauseMenuButtons/PlayBtn.png" id="2_uuux6"]
 [ext_resource type="Texture2D" uid="uid://c5ul4lmif3vhv" path="res://sprites/BUTTONS/PauseMenuButtons/PlayBtnPressed.png" id="3_grhks"]
 [ext_resource type="Texture2D" uid="uid://dprjdlpgsvi3g" path="res://sprites/BUTTONS/PauseMenuButtons/PlayBtnHover.png" id="4_4a6xr"]
-[ext_resource type="Script" path="res://scripts/ResumeButton.gd" id="5_3jjus"]
+[ext_resource type="Script" path="res://scripts/Buttons/ResumeButton.gd" id="5_3jjus"]
 [ext_resource type="Texture2D" uid="uid://c0oxw3hgrw8ty" path="res://sprites/BUTTONS/PauseMenuButtons/SettingsBtn.png" id="5_xaqq4"]
 [ext_resource type="Texture2D" uid="uid://brer8gqcrnhp1" path="res://sprites/BUTTONS/PauseMenuButtons/SettingsBtnPressed.png" id="6_qc4gf"]
 [ext_resource type="Texture2D" uid="uid://bh1ieft22o06y" path="res://sprites/BUTTONS/PauseMenuButtons/SettingsBtnHover.png" id="7_gpmdl"]
 [ext_resource type="Texture2D" uid="uid://2ampdjvldmnv" path="res://sprites/BUTTONS/PauseMenuButtons/QuitBtn.png" id="8_msaud"]
 [ext_resource type="Texture2D" uid="uid://bgch5h6y3sps" path="res://sprites/BUTTONS/PauseMenuButtons/QuitBtnPressed.png" id="9_di560"]
-[ext_resource type="Script" path="res://scripts/SettingsButton.gd" id="9_p2x8i"]
+[ext_resource type="Script" path="res://scripts/Buttons/SettingsButton.gd" id="9_p2x8i"]
 [ext_resource type="Texture2D" uid="uid://bcbm23ppfkarp" path="res://sprites/BUTTONS/PauseMenuButtons/QuitBtnHover.png" id="10_rxkic"]
-[ext_resource type="Script" path="res://scripts/QuitButton.gd" id="13_0n5o5"]
+[ext_resource type="Script" path="res://scripts/Buttons/QuitButton.gd" id="13_0n5o5"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

@@ -1,6 +1,7 @@
 extends Node
 
 signal dash
+signal save 
 signal pause
 signal attack
 signal movement
@@ -14,6 +15,7 @@ var actions: Dictionary = {
 	"movement"      : Callable(Input, "is_action_pressed"),
 	"magnetism"     : Callable(Input, "is_action_pressed"),
 	"repairing"     : Callable(Input, "is_action_pressed"),
+	"save"          : Callable(Input, "is_action_just_pressed"),
 	"pause"         : Callable(Input, "is_action_just_pressed"),
 	"attack"        : Callable(Input, "is_action_just_pressed"),
 	"interaction"   : Callable(Input, "is_action_just_pressed"),

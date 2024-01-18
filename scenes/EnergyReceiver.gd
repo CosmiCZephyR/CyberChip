@@ -26,5 +26,5 @@ func _physics_process(_delta):
 	var _tiledata: TileData = _tilemap.get_cell_tile_data(3, neighbor_tile)
 	
 	if _tiledata and _tiledata.material == _material:
-		door.open_door(door)
+		door.open()
 		$Sprite2D.material = _material

@@ -19,7 +19,7 @@ func _interaction(_body) -> void:
 		Event.emit_signal("transistor_selected", self)
 
 func toggle() -> void:
-	if !player_in_zone():
+	if not player_in_zone():
 		return
 	if is_on:
 		_animation.play("Off")
