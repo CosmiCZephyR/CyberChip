@@ -9,7 +9,10 @@ var is_on: bool = false
 
 @onready var _animation: AnimationPlayer = $AnimationPlayer
 
+@export var target: Node2D
+
 func _ready():
+	#WiresManager.devices[get_parent().get_parent().get_node("TileMap2").local_to_map()] = self
 	_animation.seek(0.2)
 	body_entered.connect(self._interaction)
 
@@ -17,6 +20,9 @@ func _ready():
 func _interaction(_body) -> void:
 	if _body.is_in_group("Player"):
 		Event.emit_signal("transistor_selected", self)
+
+func activate() -> void:
+	pass
 
 func toggle() -> void:
 	if not player_in_zone():
@@ -28,6 +34,7 @@ func toggle() -> void:
 		_animation.play_backwards("Off")
 		is_on = not is_on
 	
+	apply_target()
 	Event.emit_signal("transistor_activated", self)
 
 # this method returns current transistor's state 
@@ -43,3 +50,9 @@ func player_in_zone() -> bool:
 		final_flag = true if body.is_in_group("Player") else final_flag
 	
 	return final_flag
+
+func apply_target():
+	if not target:
+		return
+	
+	target.activate()

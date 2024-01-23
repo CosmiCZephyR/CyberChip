@@ -75,10 +75,10 @@ func get_player_resource() -> PlayerRes:
 	return player.save_resource
 
 func set_glowing_wires() -> void:
-	var manager = WiresManange
+	var manager = WiresManager
 	manager.glowing_tiles = save_resource.glowing_wires_dict
 
 func get_glowing_wires() -> Dictionary:
-	var manager = WiresManange
+	var manager = WiresManager
 	return manager.glowing_tiles
 

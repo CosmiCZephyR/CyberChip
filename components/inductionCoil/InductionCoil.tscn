@@ -8,7 +8,7 @@
 size = Vector2(14, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5sdp"]
-radius = 64.0
+radius = 70.0
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_n681r")
@@ -26,10 +26,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v5sdp")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="LineRotator" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="LineRotator"]
 z_index = 2
 texture_repeat = 2
-points = PackedVector2Array(0, 0, 8, -8, 15, -15, 25, -25, 36, -36, 45, -45)
+points = PackedVector2Array(0, 0, 11, 0, 22, 0, 33, 0, 44, 0, 55, 0, 66, 0)
 texture = ExtResource("3_juqht")
 texture_mode = 1
 

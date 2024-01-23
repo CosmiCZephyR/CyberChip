@@ -29,3 +29,5 @@ func activate_repairing(_tilemap: TileMap, master: CharacterBody2D) -> void:
 		new_tile_id = 1
 		_tilemap.set_cell(2, tile_pos, -1)
 		_tilemap.set_cell(1, tile_pos, new_tile_id, new_tile_atlas_coords)
+	
+	WiresManager.area_has_broken_wires(master._current_room)

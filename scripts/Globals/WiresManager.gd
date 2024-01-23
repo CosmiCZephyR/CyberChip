@@ -29,6 +29,7 @@ var source_id: int
 
 var tiles_pos: Dictionary
 
+var devices: Dictionary = {}
 
 func _physics_process(_delta):
 	if get_tree().current_scene:
@@ -52,6 +53,11 @@ func fill_tile(pos: Vector2i) -> void:
 		
 		tilemap.set_cell(GLOWING_WIRES_LAYER, neighbor_tile, source_id, atlas_coords, ALT_TILE_ID)
 		
+		#print_debug(devices)
+		
+		if devices.has(neighbor_tile):
+			devices[neighbor_tile].activate()
+		
 		glowing_tiles[neighbor_tile] = true
 		fill_tile(neighbor_tile)
 
@@ -68,7 +74,7 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 
 func get_cells_in_area(area: Area2D) -> Array[Vector2]: return []
 
-func check_wires_connection(area: Area2D) -> bool:
+func area_has_broken_wires(area: Area2D) -> bool:
 	var collision_shape = area.get_node("CollisionShape2D")
 	var shape_extents = collision_shape.shape.extents
 	var area_rect = Rect2(area.global_position - shape_extents, shape_extents * 2)

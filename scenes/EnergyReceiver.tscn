@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://f6f1gsw77tlq"]
 
-[ext_resource type="Script" path="res://scenes/EnergyReceiver.gd" id="1_jqmux"]
+[ext_resource type="Script" path="res://scripts/GameObjects/EnergyReceiver.gd" id="1_jqmux"]
 [ext_resource type="Texture2D" uid="uid://crl5t8beh1rex" path="res://sprites/EnergySourceTile.png" id="1_xeb71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ju6s5"]

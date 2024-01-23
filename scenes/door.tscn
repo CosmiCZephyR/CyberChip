@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2guguydup55u"]
 
-[ext_resource type="Script" path="res://scripts/GameObjects/Door.gd" id="1_o4m88"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="1_o4m88"]
 [ext_resource type="Texture2D" uid="uid://b6cdv14w5jxva" path="res://sprites/Door.png" id="2_5gl6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xy8"]
@@ -95,6 +95,7 @@ _data = {
 }
 
 [node name="Door" type="StaticBody2D"]
+z_index = 5
 rotation = -1.5708
 script = ExtResource("1_o4m88")
 
