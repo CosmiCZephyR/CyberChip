@@ -31,7 +31,7 @@ shape = SubResource("CircleShape2D_v5sdp")
 [node name="Line2D" type="Line2D" parent="LineRotator"]
 z_index = 2
 texture_repeat = 2
-points = PackedVector2Array(0, 0, 11, 0, 22, 0, 33, 0, 44, 0, 55, 0, 66, 0)
+points = PackedVector2Array(0, 0, 10, 0, 20, 0, 30, 0, 40, 0, 50, 0, 60, 0, 70, 0)
 texture = ExtResource("3_juqht")
 texture_mode = 1
 

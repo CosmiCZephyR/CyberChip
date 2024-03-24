@@ -14,7 +14,7 @@ signal magneticShock
 var actions: Dictionary = {
 	"movement"      : Callable(Input, "is_action_pressed"),
 	"magnetism"     : Callable(Input, "is_action_pressed"),
-	"repairing"     : Callable(Input, "is_action_pressed"),
+	"repairing"     : Callable(Input, "is_action_just_pressed"),
 	"save"          : Callable(Input, "is_action_just_pressed"),
 	"pause"         : Callable(Input, "is_action_just_pressed"),
 	"attack"        : Callable(Input, "is_action_just_pressed"),
@@ -22,6 +22,7 @@ var actions: Dictionary = {
 	"magneticShock" : Callable(Input, "is_action_just_pressed"),
 }
 
+# Double click di
 var _max_double_click_time: float = 500
 var _last_key_press_time: float = 0.0
 var _key_code: int = 0

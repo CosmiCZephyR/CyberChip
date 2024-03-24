@@ -1,16 +1,29 @@
 extends Node
 class_name Saver
 
-const SAVE_FILE_PATH = "C:/Клондайк/SavesTest/sav.tres"
+signal request_load(res: LevelResource)
 
-@onready var level: Level = get_tree().current_scene.get_node("/root/TestScene")
+const SAVE_FILE_PATH = "E:/Saves/sav.tres"
 
-func load_game_data() -> Resource:
+func _ready() -> void:
+	SaveManager.request_save.connect(_on_save_requested)
+	
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		print("save file exists")
+	else:
+		var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+		file.store_string("")
+		file.close()
+
+func load_res() -> void:
 	if ResourceLoader.exists(SAVE_FILE_PATH, "tres"):
-		return load(SAVE_FILE_PATH)
-	return null
+		#print_debug(inst_to_dict(ResourceLoader.load(SAVE_FILE_PATH)))
+		emit_signal(&"request_load", ResourceLoader.load(SAVE_FILE_PATH))
+	else:
+		emit_signal(&"request_load", null)
 
-func save_game_data(data: LevelResource) -> void:
+func _on_save_requested(data: LevelResource) -> void:
+	#print_debug(inst_to_dict(data))
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string("")
 	file.close()

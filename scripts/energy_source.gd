@@ -1,6 +1,5 @@
-extends Area2D
-
 class_name EnergySource
+extends Area2D
 
 var wire_layer: int = 1
 var broken_wires_layer: int = 2

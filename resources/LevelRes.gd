@@ -1,7 +1,13 @@
 extends Resource
 class_name LevelResource
 
-@export var positions: Array[Vector2]
 @export var player_resource: PlayerRes
-@export var glowing_wires_dict: Dictionary
-@export var doors_states: Dictionary
+# Object : {"property": value}
+@export var objects: Dictionary
+var tilemap
+
+func set_player_resouce(r: PlayerRes):
+	player_resource = r
+
+func set_tilemap(t: TileMap):
+	tilemap = t

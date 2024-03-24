@@ -14,6 +14,8 @@ var _normal_speed: float = 65
 var _cosuki_modifier: float = 0.75
 
 func _ready() -> void:
+	SaveManager.register_object(self)
+	
 	_input_handler.item_dragged.connect(_on_item_dragged)
 	
 	body_entered.connect(_body_entered)

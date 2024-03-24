@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_5xqpx")
-positions = Array[Vector2]([])
-glowing_wires_dict = {}
+objects = {}

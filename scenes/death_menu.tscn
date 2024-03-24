@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca4wpjo1jef7f"]
+
+[ext_resource type="Texture2D" uid="uid://nomayxxrphih" path="res://sprites/death_menu.png" id="1_d8xgp"]
+[ext_resource type="Script" path="res://scenes/death_menu.gd" id="1_q87n6"]
+[ext_resource type="Texture2D" uid="uid://be34m4qqv6ok2" path="res://sprites/BUTTONS/DeathMenuButtons/continue_btn.png" id="2_uidrt"]
+[ext_resource type="Texture2D" uid="uid://d2c1silfh0t7s" path="res://sprites/BUTTONS/DeathMenuButtons/continue_btn_pressed.png" id="3_ukjxp"]
+[ext_resource type="Texture2D" uid="uid://p0rhbcm73vkg" path="res://sprites/BUTTONS/DeathMenuButtons/continue_btn_hover.png" id="4_g4tn0"]
+[ext_resource type="Texture2D" uid="uid://bfnrd1y26ne4v" path="res://sprites/BUTTONS/DeathMenuButtons/exit_btn.png" id="5_ao6ug"]
+[ext_resource type="Texture2D" uid="uid://dci62cpojvwur" path="res://sprites/BUTTONS/DeathMenuButtons/exit_btn_pressed.png" id="6_ftym2"]
+[ext_resource type="Texture2D" uid="uid://chyde4rtpv1cd" path="res://sprites/BUTTONS/DeathMenuButtons/exit_btn_hover.png" id="7_pm258"]
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_q87n6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_d8xgp")
+
+[node name="ContinueButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 175.75
+offset_top = 80.0
+offset_right = 239.75
+offset_bottom = 96.0
+texture_normal = ExtResource("2_uidrt")
+texture_pressed = ExtResource("3_ukjxp")
+texture_hover = ExtResource("4_g4tn0")
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 104.0
+offset_right = 240.0
+offset_bottom = 120.0
+texture_normal = ExtResource("5_ao6ug")
+texture_pressed = ExtResource("6_ftym2")
+texture_hover = ExtResource("7_pm258")

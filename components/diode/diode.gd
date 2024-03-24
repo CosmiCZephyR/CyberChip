@@ -13,6 +13,7 @@ var current_state = States.PERMANENT_LASER
 var _laser
 
 func _ready():
+	SaveManager.register_object(self)
 	
 	_line.visible = false
 

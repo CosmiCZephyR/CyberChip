@@ -27,10 +27,12 @@ func _on_damage_applied():
 	active_segments.pop_back()
 
 func _on_health_healed():
-	if not unactive_segments.is_empty():
-		last_segment = active_segments.back()
-		last_segment.element_texture.visible = true
-		
-		var last_segment_index = unactive_segments.front()
-		
-		active_segments.append(last_segment_index)
+	if unactive_segments.is_empty():
+		return
+	
+	last_segment = active_segments.back()
+	last_segment.element_texture.visible = true
+	
+	var last_segment_index = unactive_segments.front()
+	
+	active_segments.append(last_segment_index)

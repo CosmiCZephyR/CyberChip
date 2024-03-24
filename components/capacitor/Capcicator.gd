@@ -6,6 +6,8 @@ var speed_modifier: float = 1.333
 var normal_speed: float = 65
 
 func _ready():
+	SaveManager.register_object(self)
+	
 	self.body_entered.connect(self._body_entered)
 	self.body_exited.connect(self._body_exited)
 

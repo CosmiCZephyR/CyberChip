@@ -1,9 +1,6 @@
 class_name Player
 extends Entity
 
-# TODAY I INTRODUCE YOU THE MAINEST VALUE IN THIS UNIVERSE!!!!
-const LEALEALEADOSSA_AAMKO = "{{{L100, 100}{100, 100} {&} L,10}{10,10} {&} L, 10}L, 10}{10, 10}100, 10"
-
 # Main variables
 @export var speed: float = 65
 @export var save_resource: PlayerRes
@@ -19,7 +16,7 @@ const PLAYER_SIZE: Vector2 = Vector2(11,15)
 var direction: Vector2 = Vector2.ZERO
 
 # Paths
-var pause_path: NodePath = NodePath("CanvasLayer/Control/CenterContainer")
+var pause_path: NodePath = NodePath("CanvasLayer/Control/PauseMenu")
 
 # Tilemap
 @onready var tilemap: TileMap = get_node("/root/TestScene/TileMap2")
@@ -52,12 +49,13 @@ var dash_duration: float = 0.2
 # Components
 var is_paused: bool = false
 var transistor: Transistor
-var nearby_component: Area2D
 
 # Misc
 var paused: bool = false
 
 func _ready() -> void:
+	SaveManager.register_object(self)
+	SaveManager.register_object(save_resource)
 	Event.transistor_selected.connect(_on_transistor_available)
 	InputHandler.magneticShock.connect(_on_magnetic_shock)
 	InputHandler.interaction.connect(_on_interaction)
@@ -72,6 +70,9 @@ func _physics_process(_delta) -> void:
 func _process(_delta) -> void:
 	pause_menu.visible = paused
 	update_animation_parameters()
+	
+	if Input.is_action_just_pressed("load"):
+		GameSaver.load_res()
 	
 	if Input.is_action_pressed("magnetism"):
 		_magnetism.activate(player_rect, self, _delta)

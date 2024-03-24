@@ -429,9 +429,10 @@ script = ExtResource("8_dnsyb")
 visible = false
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
+visible = false
 script = ExtResource("9_cgyea")
 priority_override = false
-priority = 2
+priority = 1
 zoom = Vector2(4.5, 4.5)
 follow_mode = 5
 follow_target = NodePath("..")

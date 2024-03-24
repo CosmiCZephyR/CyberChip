@@ -53,6 +53,7 @@ func player_in_zone() -> bool:
 
 func apply_target():
 	if not target:
+		print_debug("ti eblan")
 		return
 	
 	target.activate()
