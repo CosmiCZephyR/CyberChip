@@ -67,7 +67,10 @@ func apply_damage(amount):
 		current_health -= amount
 	
 	else:
-		print("death")
+		apply_death()
+
+func apply_death() -> void:
+	print("death")
 
 func _physics_process(_delta):
 	frame_count += 1

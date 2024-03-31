@@ -76,7 +76,7 @@ func get_neighbors_pos(tile_pos: Vector2i) -> Array[Vector2i]:
 	
 	return neighbors_pos
 
-func get_cells_in_area(area: Area2D) -> Array[Vector2]: return []
+func get_cells_in_area(_area: Area2D) -> Array[Vector2]: return []
 
 func area_has_broken_wires(area: Area2D) -> bool:
 	var collision_shape = area.get_node("CollisionShape2D")

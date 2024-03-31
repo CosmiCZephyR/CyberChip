@@ -14,7 +14,7 @@ func _ready():
 	await get_parent().ready
 	state.enter()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if state:
 		state.update()
 

@@ -283,7 +283,7 @@ collision_mask = 5
 [node name="SaverComponent" parent="." instance=ExtResource("15_rrcys")]
 position = Vector2(-280, -72)
 
-[node name="InductionCoil" parent="." instance=ExtResource("13_dfbjn")]
+[node name="InductionCoil" parent="." instance=ExtResource("")]
 position = Vector2(-241, -304)
 
 [node name="InductionCoil2" parent="." instance=ExtResource("13_dfbjn")]

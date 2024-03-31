@@ -8,9 +8,7 @@ func _ready() -> void:
 	exit_btn.button_down.connect(_on_exit_pressed)
 
 func _on_continue_pressed() -> void:
-	GameSaver.load_res()
-	visible = false
+	get_tree().change_scene_to_file("res://scenes/TestLevel.tscn")
 
 func _on_exit_pressed() -> void:
-	visible = false
 	get_tree().change_scene_to_file("res://Menus/MAIN_MENU.tscn")

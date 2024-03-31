@@ -7,7 +7,6 @@
 size = Vector2(8, 8)
 
 [node name="Block" type="RigidBody2D"]
-position = Vector2(-126, -11)
 script = ExtResource("1_gnqe7")
 
 [node name="Tilemap" type="Sprite2D" parent="."]

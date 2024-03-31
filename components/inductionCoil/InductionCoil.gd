@@ -15,7 +15,6 @@ var last_point_pos: Vector2 = Vector2(0, 64)
 func _ready() -> void:
 	_line.set_visible(false)
 	SaveManager.register_object(self)
-	#_decrease_distance_by(7)
 	_timer.timeout.connect(_on_timer_timeout)
 	_area.body_entered.connect(_on_body_entered)
 	_area.body_exited.connect(_on_body_exited)
@@ -28,7 +27,7 @@ func _on_timer_timeout():
 		if body is Player:
 			create_lightning()
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	_line.set_visible(true)
 
 func _on_body_exited(_body) -> void:
@@ -46,4 +45,3 @@ func _decrease_distance_by(x: int) -> void:
 	
 	for point in range(1, _line.get_point_count()):
 		_line.points[point].x -= tmp
-	

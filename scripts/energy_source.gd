@@ -10,7 +10,7 @@ var glowing_wires_layer: int = 3
 @onready var _update_timer: Timer = $Timer
 
 func _ready():
-	_update_timer.timeout.connect(self._timer_timeout)
+	_update_timer.timeout.connect(_timer_timeout)
 
 func _timer_timeout():
 	if _manager.tilemap:

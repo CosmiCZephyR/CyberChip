@@ -1,19 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://c00l6ucynnr5w"]
+[gd_scene load_steps=14 format=3 uid="uid://c00l6ucynnr5w"]
 
 [ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/enemy.gd" id="1_aiswj"]
 [ext_resource type="Texture2D" uid="uid://caclooukjvhcb" path="res://sprites/Animations/VirusHit.png" id="2_njifk"]
 [ext_resource type="Script" path="res://scripts/HurtBox.gd" id="3_05u7v"]
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="4_joe55"]
+[ext_resource type="Script" path="res://entities/Enemies/Viruses/Virus1/fsm/EnemyStateMachine.gd" id="5_04jkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btwrj"]
 size = Vector2(7, 14)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krlxx"]
-radius = 3.5
+radius = 4.0
 height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ymre8"]
-size = Vector2(11.625, 16)
+size = Vector2(12, 16)
 
 [sub_resource type="Animation" id="Animation_3ae4x"]
 resource_name = "AttackE"
@@ -106,18 +107,16 @@ collision_mask = 2
 script = ExtResource("3_05u7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_krlxx")
 
 [node name="AttackHitBox" type="Area2D" parent="."]
-position = Vector2(2, -2)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("4_joe55")
 damage = 25
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AttackHitBox"]
-position = Vector2(4.1875, 2)
+position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_ymre8")
 
 [node name="VirusHit" type="Sprite2D" parent="."]
@@ -144,3 +143,4 @@ debug_enabled = true
 autostart = true
 
 [node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("5_04jkp")

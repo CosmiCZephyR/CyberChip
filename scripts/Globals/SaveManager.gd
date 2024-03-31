@@ -3,14 +3,6 @@ extends Node
 
 signal request_save(resource: LevelResource)
 
-# Enum obviously for special types of objects
-enum ObjectType {
-	OBJECT,
-	DOOR,
-	RES,
-	HUY = -1
-}
-
 @onready var res: LevelResource
 
 var registred_objects: Array

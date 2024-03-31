@@ -51,6 +51,7 @@ var is_paused: bool = false
 var transistor: Transistor
 
 # Misc
+var death_menu: PackedScene = preload("res://scenes/death_menu.tscn")
 var paused: bool = false
 
 func _ready() -> void:
@@ -108,6 +109,10 @@ func _second_passed() -> void:
 	regen_health()
 	regen_kosuki()
 #endregion
+
+func apply_death() -> void:
+	await get_tree().create_timer(0.2).timeout
+	get_tree().change_scene_to_packed(death_menu)
 
 func set_current_room(_area) -> void:
 	_current_room = _area

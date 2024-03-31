@@ -19,7 +19,7 @@ func _ready():
 	SaveManager.register_object(self)
 	WiresManager.devices[_room.get_parent().get_node("TileMap2").local_to_map(global_position)] = self
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	wires = await _is_wire_connected()
 
 func _is_wire_connected():
